@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Prototype — Demand & Traction Agent (low-fi v1)</title>
+<style>
+  :root{
+    --paper:#f4f4f2;
+    --wire:#ffffff;
+    --ink:#1a1a1a;
+    --ink-2:#3a3a3a;
+    --muted:#8a8a8a;
+    --line:#d9d9d6;
+    --line-2:#c4c4c0;
+    --ph:#ededea;
+    --ph-line:#d2d2cd;
+    --accent:#2563eb;       /* annotation only */
+    --accent-bg:#eef2ff;
+    --accent-line:#c7d2fe;
+    --test:#b45309;
+    --test-bg:#fef6e7;
+    --test-line:#f0d9a8;
+    --mono:"SF Mono",ui-monospace,"Cascadia Code","Roboto Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- doc header ---------- */
+  .doc-head{padding:54px 0 30px;border-bottom:1px solid var(--line);}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;}
+  .doc-head h1{font-size:clamp(26px,4.4vw,38px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px;}
+  .doc-head p.lede{font-size:17px;color:var(--ink-2);margin:0 0 26px;max-width:680px;}
+  .meta{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  @media(min-width:640px){.meta{grid-template-columns:1fr 1fr;}}
+  .meta div{background:var(--wire);padding:12px 16px;font-size:14px;}
+  .meta b{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:3px;font-weight:600;}
+  .toc{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin:24px 0 0;line-height:2;}
+  .toc a{color:var(--ink-2);text-decoration:none;border-bottom:1px dashed var(--line-2);}
+  .toc a:hover{color:var(--accent);border-color:var(--accent);}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;font-size:12.5px;color:var(--muted);}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .sw{width:14px;height:14px;border-radius:3px;display:inline-block;}
+
+  /* ---------- screen block ---------- */
+  .screen{margin:46px 0;}
+  .screen-bar{
+    display:flex;align-items:baseline;gap:12px;margin-bottom:12px;
+    font-family:var(--mono);
+  }
+  .screen-no{
+    font-size:12px;font-weight:600;letter-spacing:.06em;color:#fff;background:var(--ink);
+    padding:4px 10px;border-radius:6px;white-space:nowrap;
+  }
+  .screen-name{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+  .screen-goal{margin-left:auto;font-size:12px;color:var(--muted);font-family:var(--sans);font-style:italic;}
+
+  .group{border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--wire);box-shadow:0 1px 0 rgba(0,0,0,.02);}
+
+  /* ---------- wireframe canvas ---------- */
+  .wire{padding:30px 26px;background:
+      linear-gradient(var(--paper) 1px,transparent 1px) 0 0/100% 22px;
+    background-color:var(--wire);}
+  .wire.center{text-align:center;}
+  .badge{
+    display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px;background:var(--paper);margin-bottom:18px;
+  }
+  .wordmark{font-family:var(--mono);font-size:12px;color:var(--muted);border:1px dashed var(--line-2);border-radius:6px;padding:5px 10px;display:inline-block;}
+  .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px;}
+  .navph{display:flex;gap:14px;}
+  .navph i{display:block;width:54px;height:9px;border-radius:3px;background:var(--ph);font-style:normal;}
+  h2.head{font-size:clamp(24px,4.2vw,34px);line-height:1.12;letter-spacing:-.02em;margin:0 auto 16px;max-width:680px;}
+  .wire.center h2.head{margin-inline:auto;}
+  .sub{font-size:16px;color:var(--ink-2);max-width:560px;margin:0 0 22px;}
+  .wire.center .sub{margin-inline:auto;}
+  .ey{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;}
+
+  .btn{
+    display:inline-block;background:var(--ink);color:#fff;font-weight:600;font-size:15px;
+    padding:13px 24px;border-radius:9px;border:none;
+  }
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-2);}
+  .microtrust{font-size:13px;color:var(--muted);margin-top:12px;}
+
+  .ph{
+    background:repeating-linear-gradient(135deg,var(--ph),var(--ph) 9px,#e6e6e2 9px,#e6e6e2 18px);
+    border:1px dashed var(--ph-line);border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:.04em;text-align:center;padding:14px;
+  }
+  .ph.hero-visual{height:150px;margin-top:24px;}
+  .ph.icon{width:40px;height:40px;border-radius:9px;margin:0 auto 12px;flex:0 0 40px;}
+
+  /* columns / cards inside wires */
+  .cols{display:grid;gap:16px;margin-top:6px;}
+  @media(min-width:600px){.cols.c2{grid-template-columns:1fr 1fr;}.cols.c3{grid-template-columns:repeat(3,1fr);}.cols.c4{grid-template-columns:repeat(4,1fr);}}
+  .cell{border:1px solid var(--line);border-radius:10px;padding:18px;background:var(--paper);}
+  .cell h4{margin:0 0 6px;font-size:15.5px;}
+  .cell p{margin:0;font-size:14px;color:var(--ink-2);}
+  .cell .num{font-family:var(--mono);font-size:12px;color:var(--muted);display:block;margin-bottom:8px;}
+  .state-tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px;}
+
+  /* comparison rows */
+  .vs{margin-top:8px;border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+  .vs .row{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);font-size:14.5px;}
+  .vs .row:last-child{border-bottom:none;}
+  .vs .row span:last-child{color:var(--muted);font-family:var(--mono);font-size:12.5px;}
+  .vs .row.win{background:var(--paper);font-weight:600;}
+  .vs .row.win span:last-child{color:var(--ink);}
+
+  /* report mock */
+  .report{border:1px solid var(--line-2);border-radius:12px;background:var(--paper);padding:0;overflow:hidden;margin-top:6px;}
+  .report .rhead{background:var(--ink);color:#fff;padding:10px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;display:flex;justify-content:space-between;}
+  .report .rrow{display:flex;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);}
+  .report .rrow:last-child{border-bottom:none;}
+  .report .rlab{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);flex:0 0 120px;padding-top:3px;}
+  .report .rval{font-size:14.5px;color:var(--ink-2);flex:1;}
+  .pill{display:inline-block;font-family:var(--mono);font-size:12px;padding:2px 9px;border-radius:999px;border:1px solid var(--line-2);background:var(--wire);color:var(--ink);}
+
+  /* form */
+  .form{max-width:480px;margin:6px auto 0;}
+  .field{margin-bottom:14px;text-align:left;}
+  .field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:6px;}
+  .field label .req{color:#b91c1c;}
+  .field label .opt{font-weight:400;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.06em;}
+  .input{border:1px solid var(--line-2);border-radius:9px;background:var(--wire);padding:12px 14px;color:var(--muted);font-size:14px;}
+  .input.area{min-height:58px;}
+
+  /* faq */
+  .faq .q{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:10px;background:var(--paper);}
+  .faq .q b{display:block;font-size:14.5px;margin-bottom:3px;}
+  .faq .q p{margin:0;font-size:14px;color:var(--ink-2);}
+
+  /* ---------- WHY panel ---------- */
+  .why{border-top:1px dashed var(--line-2);background:var(--accent-bg);padding:18px 22px;}
+  .why .wlab{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;}
+  .why p{margin:0 0 9px;font-size:14.5px;color:#1e293b;}
+  .why p:last-child{margin-bottom:0;}
+  .why ul{margin:0;padding-left:18px;}
+  .why li{font-size:14.5px;color:#1e293b;margin-bottom:4px;}
+  .testing{
+    display:flex;gap:10px;align-items:flex-start;margin-top:12px;
+    background:var(--test-bg);border:1px solid var(--test-line);border-radius:8px;padding:10px 13px;
+  }
+  .testing .tlab{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--test);flex:0 0 auto;padding-top:1px;}
+  .testing p{margin:0;font-size:13.5px;color:#5b3d12;}
+
+  .alt{margin-top:12px;font-size:13.5px;color:#1e293b;}
+  .alt b{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);}
+
+  /* ---------- closing ---------- */
+  .closing{margin:54px 0 30px;border:1px solid var(--line-2);border-radius:14px;background:var(--wire);padding:28px 26px;}
+  .closing h3{margin:0 0 6px;font-size:20px;}
+  .closing .sub2{color:var(--muted);font-size:14px;margin:0 0 20px;}
+  .closing h4{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:20px 0 8px;}
+  .closing ul{margin:0;padding-left:20px;}
+  .closing li{font-size:14.5px;margin-bottom:6px;color:var(--ink-2);}
+  .closing code{font-family:var(--mono);font-size:13px;background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:1px 6px;}
+  footer{padding:30px 0 60px;text-align:center;color:var(--muted);font-size:12.5px;font-family:var(--mono);}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===================== DOC HEADER ===================== -->
+  <div class="doc-head">
+    <p class="kicker">Landing Prototype · Low-fidelity · Copy + flow only</p>
+    <h1>Demand &amp; Traction Agent — landing walkthrough</h1>
+    <p class="lede">A screen-by-screen, copy-first prototype for a demand test. No visual design yet, just what each screen <b>shows and tells</b>, the order, and <b>why</b>. The grey blocks are placeholders for images and layout you'll design later.</p>
+
+    <div class="meta">
+      <div><b>Goal</b>Test demand. One conversion event: the signup form.</div>
+      <div><b>Primary metric</b>Signup rate (visitors who drop a link + email)</div>
+      <div><b>Audience</b>Both: pre-launch founders + founders who already shipped</div>
+      <div><b>Signal we collect</b>Interest (lowest friction, no price shown)</div>
+      <div><b>The promise</b>"Leave your app or website. We'll show you your users."</div>
+      <div><b>Fields</b>Short context + email (required) · product link + App Store link (optional)</div>
+    </div>
+
+    <p class="toc">
+      Screens:
+      <a href="#s1">1 Hero</a> ·
+      <a href="#s2">2 Problem</a> ·
+      <a href="#s3">3 What you get</a> ·
+      <a href="#s4">4 How it works</a> ·
+      <a href="#s5">5 Why different</a> ·
+      <a href="#s6">6 The output</a> ·
+      <a href="#s7">7 Who it's for</a> ·
+      <a href="#s8">8 The form</a> ·
+      <a href="#s9">9 FAQ + final CTA</a>
+    </p>
+
+    <div class="legend">
+      <span><span class="sw" style="background:repeating-linear-gradient(135deg,#ededea,#ededea 5px,#e0e0dc 5px,#e0e0dc 10px);border:1px dashed #d2d2cd;"></span> placeholder (image / layout TBD)</span>
+      <span><span class="sw" style="background:var(--accent-bg);border:1px solid var(--accent-line);"></span> why this screen</span>
+      <span><span class="sw" style="background:var(--test-bg);border:1px solid var(--test-line);"></span> what it tests</span>
+    </div>
+  </div>
+
+
+  <!-- ===================== SCREEN 1 — HERO ===================== -->
+  <section class="screen" id="s1">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 1</span>
+      <span class="screen-name">Hero — above the fold</span>
+      <span class="screen-goal">earn the scroll + the first click</span>
+    </div>
+    <div class="group">
+      <div class="wire center">
+        <div class="topbar">
+          <span class="wordmark">Sonar</span>
+          <span class="navph"><i></i><i></i><i></i></span>
+        </div>
+        <span class="badge">Demand &amp; distribution agent for founders</span>
+        <h2 class="head">Find your users. We'll show you where they are and how to reach them.</h2>
+        <p class="sub">Sonar reads your live market and hands you the people who already want it. Real profiles you can message today, plus where to reach more. Data, not guesses.</p>
+        <span class="btn">Show me my users</span>
+        <p class="microtrust">No credit card · Report sent straight to your inbox</p>
+        <div class="ph hero-visual">[ visual: your link → a map of where your users are ]</div>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>Sell the outcome, not the mechanism.</b> "Find your users" beats "AI agent with an MCP layer." The how (live data) earns trust later; the what wins the click now.</li>
+          <li><b>One promise that fits both audiences.</b> The headline plus the optional link let a pre-launch founder and a shipped-but-stuck founder both see themselves.</li>
+          <li><b>Single CTA.</b> One button, one decision. It scrolls to the form so the page can make its case first.</li>
+          <li><b>Kill the biggest signup fears immediately</b> with the trust line: no payment to start, and you won't get spammed.</li>
+        </ul>
+        <p class="alt"><b>A/B the headline:</b> (a) "Find your users. We'll show you where they are and how to reach them." · (b) "You built it. Now let's find the people who want it." · (c) "Stop guessing who your users are. See it in your real market."</p>
+        <div class="testing"><span class="tlab">Tests</span><p>Does the promise alone, with no proof yet, earn a scroll and a click? Watch scroll-depth past the fold and clicks on the hero CTA.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SCREEN 2 — PROBLEM ===================== -->
+  <section class="screen" id="s2">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 2</span>
+      <span class="screen-name">The problem — make them feel seen</span>
+      <span class="screen-goal">resonance before pitch</span>
+    </div>
+    <div class="group">
+      <div class="wire">
+        <h2 class="head">Building the product was never the hard part. Finding the people who want it is.</h2>
+        <div class="cols c2">
+          <div class="cell">
+            <span class="state-tag">Before you build</span>
+            <p>You've got the idea and the fear that comes with it. What if you pour in several months and nobody shows up?</p>
+          </div>
+          <div class="cell">
+            <span class="state-tag">After you ship</span>
+            <p>Crickets. No signups, no idea why, and every piece of advice boils down to "just post more."</p>
+          </div>
+        </div>
+        <p class="sub" style="margin-top:20px;">Either way you're guessing. And guessing with months of your life is the most expensive thing you can do.</p>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>Agitate before you pitch.</b> People buy when they feel understood. Naming the exact pain earns the right to offer a fix.</li>
+          <li><b>Two columns = two audiences, one page.</b> The pre-launch fear and the post-launch silence are the two sharpest pains from your positioning. Each visitor reads their own.</li>
+          <li><b>Name the enemy.</b> "Just post more" and "guessing" set up your wedge on the next screens: data, not guesses.</li>
+        </ul>
+        <div class="testing"><span class="tlab">Tests</span><p>Which pain lands harder. Later you can split the page by audience and compare. For v1, watch whether people keep scrolling here or bounce.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SCREEN 3 — WHAT YOU GET ===================== -->
+  <section class="screen" id="s3">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 3</span>
+      <span class="screen-name">What you get — the 3 answers</span>
+      <span class="screen-goal">core value, made concrete</span>
+    </div>
+    <div class="group">
+      <div class="wire">
+        <h2 class="head">Three answers, pulled from your real market. Not an opinion.</h2>
+        <div class="cols c3">
+          <div class="cell">
+            <div class="ph icon">[ic]</div>
+            <p>Proof the demand is real, in live numbers.</p>
+          </div>
+          <div class="cell">
+            <div class="ph icon">[ic]</div>
+            <p>The exact people who want it, with links to message them.</p>
+          </div>
+          <div class="cell">
+            <div class="ph icon">[ic]</div>
+            <p>The channels and communities where to find more.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>This is the spine of the whole offer:</b> real? → who? → where? Lifted straight from your positioning, in the order a founder actually thinks.</li>
+          <li><b>Naming real people with profile links is the hook.</b> It turns "insights" into "here are users you can message today," the single most compelling thing on the page.</li>
+          <li><b>Three concrete answers turn an abstract "AI agent" into things you can hold.</b> Vague tools don't convert; specific outcomes do.</li>
+        </ul>
+        <div class="testing"><span class="tlab">Tests</span><p>Is the three-part promise compelling enough to push people toward the form? Watch scroll-through and CTA clicks below this block.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SCREEN 4 — HOW IT WORKS ===================== -->
+  <section class="screen" id="s4">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 4</span>
+      <span class="screen-name">How it works — reduce uncertainty</span>
+      <span class="screen-goal">"what happens after I sign up?"</span>
+    </div>
+    <div class="group">
+      <div class="wire">
+        <div class="cols c3">
+          <div class="cell">
+            <p>You drop your link.</p>
+          </div>
+          <div class="cell">
+            <p>Sonar reads your live market.</p>
+          </div>
+          <div class="cell">
+            <p>You get real users, plus the strategy to scale them.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>"What actually happens after I hand over my email?" is the silent signup blocker.</b> Three plain cards answer it at a glance.</li>
+          <li><b>The effort balance is the point:</b> you drop a link, Sonar does the work, you get users and a plan. Low effort in, high payoff out.</li>
+          <li><b>The first card rehearses the form ask</b> ("drop your link") right before they reach it, so the form feels expected, not abrupt.</li>
+        </ul>
+        <div class="testing"><span class="tlab">Tests</span><p>Whether perceived effort is low enough. If people drop here, the ask feels heavier than the reward.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SCREEN 5 — WHY DIFFERENT ===================== -->
+  <section class="screen" id="s5">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 5</span>
+      <span class="screen-name">Why it's different — the wedge</span>
+      <span class="screen-goal">"isn't this just ChatGPT?"</span>
+    </div>
+    <div class="group">
+      <div class="wire">
+        <h2 class="head">Data, not guesses.</h2>
+        <p class="sub">ChatGPT agrees with you. Friends are polite. Gut feel is hope. Sonar reads your real, live market right now and shows you the evidence.</p>
+        <div class="vs">
+          <div class="row"><span>Gut feel / asking friends</span><span>opinion</span></div>
+          <div class="row"><span>Generic AI chat</span><span>agrees with you</span></div>
+          <div class="row"><span>Spray-and-pray posting</span><span>hope</span></div>
+          <div class="row win"><span>Sonar agent</span><span>your real, live market data</span></div>
+        </div>
+        <div style="margin-top:18px;border:1px solid var(--line-2);border-left:3px solid var(--ink);border-radius:10px;padding:16px 18px;background:var(--paper);">
+          <p style="margin:0;font-size:15px;color:var(--ink-2);"><b>And it's today's data, not last year's.</b> Yesterday, someone on X or in a buried Reddit comment asked for exactly what you're building. In a week that thread is gone. We catch demand while it's still warm, so you reach those people first.</p>
+        </div>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>This is your trust anchor.</b> Every alternative a founder already uses runs on opinion or hope. The contrast table makes "why you're different" readable in two seconds.</li>
+          <li><b>Recency is its own selling point.</b> "Caught yesterday, still warm" is a reason to act now, not later, and it makes the abstract "live data" claim concrete and believable.</li>
+          <li><b>Pre-empts the #1 objection</b> ("can't I just ask ChatGPT?") by naming it and answering it head-on.</li>
+          <li><b>"Data, not guesses" is the line to repeat</b> across ads, emails, and the final CTA. One wedge, said everywhere.</li>
+        </ul>
+        <div class="testing"><span class="tlab">Tests</span><p>Is the differentiation believed? If signups are low despite good scroll-depth, the "why trust it" story is the suspect.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SCREEN 6 — THE OUTPUT ===================== -->
+  <section class="screen" id="s6">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 6</span>
+      <span class="screen-name">The output — make it tangible</span>
+      <span class="screen-goal">show the thing they'll receive</span>
+    </div>
+    <div class="group">
+      <div class="wire">
+        <h2 class="head">A report you can act on this week.</h2>
+        <p class="sub">Real demand, real numbers, and real people you can message in a minute. Not vague personas.</p>
+        <div class="report">
+          <div class="rhead"><span>YOUR DEMAND REPORT</span><span>illustrative</span></div>
+          <div class="rrow"><span class="rlab">Demand verdict</span><span class="rval"><span class="pill">Real</span> &nbsp;Search demand up 34% in 6 months, active in 4 communities</span></div>
+          <div class="rrow"><span class="rlab">Keyword volume</span><span class="rval">12 buying-intent search terms, ~28,000 searches a month combined</span></div>
+          <div class="rrow"><span class="rlab">Competitors</span><span class="rval">3 rivals and their website-traffic trend: one up 2x this quarter, two flat</span></div>
+          <div class="rrow"><span class="rlab">People asking</span><span class="rval">47 real people asked for this in the last 30 days, across Reddit, X, and YouTube comments</span></div>
+          <div class="rrow"><span class="rlab">Warm leads</span><span class="rval">Their profiles, with links, ranked by intent. Message them in a minute and land your first paying users</span></div>
+          <div class="rrow"><span class="rlab">Do this first</span><span class="rval">3 concrete moves to reach them this week</span></div>
+        </div>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>Showing the artifact converts skeptics.</b> A pictured deliverable turns "some AI thing" into "a report I'll actually get," which raises perceived value right before the ask.</li>
+          <li><b>Concrete numbers do the persuading.</b> Search volume, competitor traffic trends, and a hard count of real people asking make the value impossible to wave away.</li>
+          <li><b>The warm-lead row is the peak.</b> "Named people, with links, message them in a minute" is the "I could get a paying user tonight" moment. It's your strongest pull, placed right before the form.</li>
+        </ul>
+        <div class="testing"><span class="tlab">Tests</span><p>Does a concrete preview lift signups versus describing it in words? Easy later A/B: this screen on vs off.</p></div>
+        <p class="alt"><b>Keep honest:</b> the numbers are illustrative, label them until you have a real sample. Never imply results you can't yet deliver.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SCREEN 7 — WHO IT'S FOR ===================== -->
+  <section class="screen" id="s7">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 7</span>
+      <span class="screen-name">Who it's for — qualify + honest trust</span>
+      <span class="screen-goal">self-identification, no fake proof</span>
+    </div>
+    <div class="group">
+      <div class="wire">
+        <h2 class="head">If this is you, drop your link.</h2>
+        <div class="cols c2">
+          <div class="cell">
+            <span class="state-tag">You already shipped</span>
+            <p>You have few or no users, and you need to know where the real ones are hiding.</p>
+          </div>
+          <div class="cell">
+            <span class="state-tag">You want proof first</span>
+            <p>You're about to build, and you want evidence someone wants this before you spend the next several months on it.</p>
+          </div>
+        </div>
+        <div class="ph" style="margin-top:18px;padding:18px;">
+          [ founder's note ] "Built by founders who got tired of guessing. We're onboarding the first batch now and reading every submission ourselves."
+        </div>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>A brand-new demand test has no testimonials, so don't fake them.</b> Fabricated proof is a fast way to lose trust (and it's just wrong).</li>
+          <li><b>Qualify instead.</b> "Is this me?" cards let both audiences self-select, which makes the upcoming ask feel personal.</li>
+          <li><b>An honest founder's note</b> ("we read every submission ourselves") is real, human proof you can stand behind on day one.</li>
+        </ul>
+        <div class="testing"><span class="tlab">Tests</span><p>Do both segments recognize themselves? If one converts far worse, sharpen or split that side of the page.</p></div>
+        <p class="alt"><b>Swap in over time:</b> replace the note with real quotes, a signup counter, or logos as soon as you genuinely have them.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SCREEN 8 — THE FORM ===================== -->
+  <section class="screen" id="s8">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 8</span>
+      <span class="screen-name">The form — the conversion event</span>
+      <span class="screen-goal">this is the test</span>
+    </div>
+    <div class="group">
+      <div class="wire center">
+        <h2 class="head">Drop your product. We'll show you your users.</h2>
+        <p class="sub">We read every submission and send your report by email.</p>
+        <div class="form">
+          <div class="field">
+            <label>Your product link <span class="opt">optional</span></label>
+            <div class="input">Website, app, or product link, if you have one</div>
+          </div>
+          <div class="field">
+            <label>App Store / Google Play link <span class="opt">optional</span></label>
+            <div class="input">Paste it if you have a mobile app</div>
+          </div>
+          <div class="field">
+            <label>Tell us about it <span class="req">*</span></label>
+            <div class="input area">What does it do, and who is it for? One or two lines.</div>
+          </div>
+          <div class="field">
+            <label>Email <span class="req">*</span></label>
+            <div class="input">Where we send your report</div>
+          </div>
+          <span class="btn" style="width:100%;text-align:center;">Show me my users</span>
+          <p class="microtrust">No spam · No credit card · We only email you about your report</p>
+        </div>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>Only two required fields:</b> a sentence about it, and an email. Everything else is optional, so a pre-launch founder with nothing but an idea can still sign up. That is the point of making the product link optional.</li>
+          <li><b>Field order is deliberate.</b> Optional link first (low pressure, easy start) → optional App Store → the one required sentence → email last. People hand over an email more readily once they've already typed something.</li>
+          <li><b>"optional" is stated out loud</b> on both link fields, so a website-only or idea-only founder never stalls wondering if it's required.</li>
+          <li><b>Trust microcopy sits at the exact point of commitment,</b> where doubt peaks.</li>
+        </ul>
+        <div class="testing"><span class="tlab">Tests</span><p>This is THE metric: form-start rate, field drop-off, and completed signups. Completion rate = your real demand signal.</p></div>
+        <p class="alt"><b>Higher-volume variant:</b> put a 2-field version (link + email) in the hero to catch impulse signups, and keep this full form for considered scrollers. Trade-off: hero signups arrive without context.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== SCREEN 9 — FAQ + FINAL CTA ===================== -->
+  <section class="screen" id="s9">
+    <div class="screen-bar">
+      <span class="screen-no">SCREEN 9</span>
+      <span class="screen-name">FAQ + final CTA — clear the last doubts</span>
+      <span class="screen-goal">catch the considered scroller</span>
+    </div>
+    <div class="group">
+      <div class="wire">
+        <div class="faq">
+          <div class="q"><b>Do I need a finished product?</b><p>No. A live app, a website, or a clear sentence about the idea all work.</p></div>
+          <div class="q"><b>How do you actually find the people who want it?</b><p>We read public conversations and search behavior, X, Reddit, YouTube comments, niche communities, alongside search demand and competitor signals, and match them to what your product does.</p></div>
+          <div class="q"><b>How current is the data?</b><p>As fresh as it gets. We surface demand from the last few days, often within hours, so the people we find are still active and still warm, not names pulled from a year-old report.</p></div>
+          <div class="q"><b>Can I trust the leads you send?</b><p>Every person we list publicly asked for or described wanting something like your product. We include the link to the original post, so you can read it and verify it yourself.</p></div>
+          <div class="q"><b>How long until I hear back?</b><p>We onboard in batches and read each submission. Your report comes by email.</p></div>
+          <div class="q"><b>Is my idea safe?</b><p>We only use what you send to build your report. We don't share it.</p></div>
+        </div>
+        <div style="text-align:center;margin-top:24px;">
+          <h2 class="head" style="font-size:24px;">Stop guessing who your users are.</h2>
+          <span class="btn">Show me my users</span>
+        </div>
+      </div>
+      <div class="why">
+        <p class="wlab">Why this screen</p>
+        <ul>
+          <li><b>FAQ is objection removal, not decoration.</b> Here the doubts are about credibility: how do you find these people, is the data current, can I trust the leads, is my idea safe. Answer them and the fence-sitters convert.</li>
+          <li><b>"How do you find them?" and "Can I trust the leads?"</b> are the trust questions that matter most for a "we'll find your users" promise. They make the claim believable instead of magical.</li>
+          <li><b>"Do I need a finished product?" pulls double duty,</b> reassuring the pre-launch audience one more time.</li>
+          <li><b>End on the wedge + one more CTA.</b> The scroller who needed every doubt answered first gets their button exactly when they're finally ready.</li>
+        </ul>
+        <div class="testing"><span class="tlab">Tests</span><p>Does objection-handling lift conversion for deep scrollers? Compare signups from the final CTA vs the hero CTA.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== CLOSING — HOW TO RUN IT ===================== -->
+  <div class="closing">
+    <h3>How to actually run this as a demand test</h3>
+    <p class="sub2">The page is only half the experiment. Here's the rest, kept lean.</p>
+
+    <h4>The one number that matters</h4>
+    <ul>
+      <li><b>Signup conversion rate</b> = completed forms ÷ unique visitors. That single number is your demand signal.</li>
+      <li>Rough read for a cold-traffic landing: under ~2% is weak, ~5%+ is a real "keep going," in between means iterate the hero and offer.</li>
+    </ul>
+
+    <h4>Where to send traffic</h4>
+    <ul>
+      <li>The communities your own positioning points to: founder subreddits, Indie Hackers, relevant Slack/Discord groups, X.</li>
+      <li>A small paid test (a few hundred dollars of search or social ads) to get clean, comparable numbers fast.</li>
+      <li>Your own audience and DMs, useful for signal, but weight it lower since it's warm traffic.</li>
+    </ul>
+
+    <h4>What to instrument before you launch</h4>
+    <ul>
+      <li>Scroll-depth per screen (where do people stop reading?).</li>
+      <li>Hero CTA clicks vs final CTA clicks.</li>
+      <li>Form start rate and per-field drop-off.</li>
+      <li>A short "what made you sign up?" question on the thank-you screen, free qualitative gold.</li>
+    </ul>
+
+    <h4>First things to A/B once traffic flows</h4>
+    <ul>
+      <li>The <b>hero headline</b> (three variants are on Screen 1).</li>
+      <li>Hero CTA scrolls-to-form vs a 2-field form inlined in the hero.</li>
+      <li>Pre-launch-first vs shipped-first ordering of the audience copy.</li>
+    </ul>
+
+    <h4>Next step from here</h4>
+    <ul>
+      <li>Lock the copy on this doc, then I can turn it into a single working HTML landing page (real layout, live form posting to a sheet/email tool) you can ship and point traffic at.</li>
+    </ul>
+  </div>
+
+  <footer>
+    Low-fidelity copy prototype · v1 · "Sonar" (working name) · built from research-agent-positioning.html
+  </footer>
+
+</div>
+</body>
+</html>

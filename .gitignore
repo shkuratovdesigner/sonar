@@ -36,3 +36,10 @@ out/
 .vscode/
 .idea/
 *.swp
+
+# Recon scratch staging (key artifacts are preserved in references/*/docs/)
+.recon/
+
+# Oversized master screenshots (per-section crops + research JSON are kept)
+**/docs/design-references/*-fullpage-*.png
+**/docs/design-references/_*.png

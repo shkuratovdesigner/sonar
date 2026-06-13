@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Fonts (wired via next/font/local in layout.tsx) */
+  --font-sans: var(--font-room);
+  --font-serif: var(--font-arizona);
+  --font-extended: var(--font-room-extended);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-arizona);
+
+  /* shadcn semantic tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Daylight palette (extracted from daylightcomputer.com) */
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-amber: var(--amber);
+  --color-beige: var(--beige);
+  --color-olive: var(--olive);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.4);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Daylight brand */
+  --ink: #18190f;
+  --ink-soft: rgba(24, 25, 15, 0.6);
+  --paper: #faf4f2;
+  --paper-2: #faf5f2;
+  --amber: #ff9d00;
+  --beige: #e8ded8;
+  --olive: #434626;
+
+  /* shadcn tokens remapped to Daylight values */
+  --background: #faf4f2;
+  --foreground: #18190f;
+  --card: #faf4f2;
+  --card-foreground: #18190f;
+  --popover: #faf4f2;
+  --popover-foreground: #18190f;
+  --primary: #ff9d00;
+  --primary-foreground: #18190f;
+  --secondary: #e8ded8;
+  --secondary-foreground: #18190f;
+  --muted: #efe7e2;
+  --muted-foreground: rgba(24, 25, 15, 0.6);
+  --accent: #ff9d00;
+  --accent-foreground: #18190f;
+  --destructive: #c0492b;
+  --border: rgba(24, 25, 15, 0.12);
+  --input: rgba(24, 25, 15, 0.16);
+  --ring: #ff9d00;
+
+  --chart-1: #ff9d00;
+  --chart-2: #434626;
+  --chart-3: #e8ded8;
+  --chart-4: #18190f;
+  --chart-5: #a8a294;
+
+  --sidebar: #faf4f2;
+  --sidebar-foreground: #18190f;
+  --sidebar-primary: #ff9d00;
+  --sidebar-primary-foreground: #18190f;
+  --sidebar-accent: #e8ded8;
+  --sidebar-accent-foreground: #18190f;
+  --sidebar-border: rgba(24, 25, 15, 0.12);
+  --sidebar-ring: #ff9d00;
+
+  --header-height: 44px;
+}
+
+.dark {
+  --background: #18190f;
+  --foreground: #faf4f2;
+  --card: #1f2015;
+  --card-foreground: #faf4f2;
+  --popover: #1f2015;
+  --popover-foreground: #faf4f2;
+  --primary: #ff9d00;
+  --primary-foreground: #18190f;
+  --secondary: #434626;
+  --secondary-foreground: #faf4f2;
+  --muted: #2a2b1d;
+  --muted-foreground: rgba(250, 244, 242, 0.6);
+  --accent: #ff9d00;
+  --accent-foreground: #18190f;
+  --destructive: #e06a4a;
+  --border: rgba(250, 244, 242, 0.14);
+  --input: rgba(250, 244, 242, 0.18);
+  --ring: #ff9d00;
+  --sidebar: #18190f;
+  --sidebar-foreground: #faf4f2;
+  --sidebar-primary: #ff9d00;
+  --sidebar-primary-foreground: #18190f;
+  --sidebar-accent: #434626;
+  --sidebar-accent-foreground: #faf4f2;
+  --sidebar-border: rgba(250, 244, 242, 0.14);
+  --sidebar-ring: #ff9d00;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Lenis smooth scroll */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Scroll reveal — applied by ScrollReveal.tsx (class added via JS, so no-JS stays visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

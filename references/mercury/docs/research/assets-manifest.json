@@ -1,0 +1,532 @@
+{
+  "count": {
+    "images": 39,
+    "videos": 6,
+    "bgImages": 25,
+    "fonts": 0
+  },
+  "images": [
+    {
+      "src": "https://mercury.com/_next/image?url=https%3A%2F%2Fcdn.mercury.com%2Ffem%2F_next%2Fstatic%2Fmedia%2Fhero_start_frame_xl.42d06f20.jpg&w=3840&q=75",
+      "srcset": "/_next/image?url=https%3A%2F%2Fcdn.mercury.com%2Ffem%2F_next%2Fstatic%2Fmedia%2Fhero_start_frame_sm.19c6178c.jpg&w=1920&q=75 1x, /_next/image?url=https%3A%2F%2Fcdn.mercury.com%2Ffem%2F_next%2Fstatic%2Fmedia%2Fhero_start_frame_sm.19c6178c.jpg&w=3840&q=75 2x",
+      "alt": "",
+      "w": 3840,
+      "h": 1440
+    },
+    {
+      "src": "https://cdn.mercury.com/fem/_next/static/media/hero_end_frame_xl.30ad39be.jpg",
+      "srcset": null,
+      "alt": "",
+      "w": 3840,
+      "h": 1440
+    },
+    {
+      "src": "https://cdn.mercury.com/fem/_next/static/media/hero_end_frame_xl.30ad39be.jpg",
+      "srcset": null,
+      "alt": "",
+      "w": 3840,
+      "h": 1440
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764095939-2025_fem_testimonial-linear_2x1.webp?ar64=Mjox&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Portrait of a man sitting indoors next to a testimonial about Mercury\u2019s speed and ease of use.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764095998-2025_fem_testimonial-linear_9x16.webp?ar64=OToxNg&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Portrait of a man sitting indoors next to a testimonial about Mercury\u2019s speed and ease of use.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764169450-2025_fem_homepage-testimonial-gainful_4x5.webp?ar64=Mjox&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Portrait of two founders next to a testimonial about how Mercury keeps pace with company-building.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764173362-2025_fem_testimonial-gainful_9x16.webp?ar64=OToxNg&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Portrait of two founders next to a testimonial about how Mercury keeps pace with company-building.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764096101-2025_fem_testimonial-ways-and-means_2x1.webp?ar64=Mjox&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Portrait of a woman indoors next to a testimonial about Mercury\u2019s built-in permissions.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764096181-2025_fem_testimonial-ways-and-means_9x16-webp.webp?ar64=OToxNg&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Portrait of a woman indoors next to a testimonial about Mercury\u2019s built-in permissions.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764181747-2025_fem_homepage-virtual-cards_3x2.webp?auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Animation that rotates through multiple credit cards stacking.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgFCgoFBQwFBQUFBREJCgUMFxMZGBYTFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAB//EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAVAQEBAAAAAAAAAAAAAAAAAAACAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKyAJACT/9k=",
+      "srcset": null,
+      "alt": "",
+      "w": 24,
+      "h": 16
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764016774-2025_fem_homepage-invoicing_3x2.webp?auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Illustration of the Invoicing flow with the date, payment terms, and repeat settings.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgFCgoFBQwFBQUFBREJCgUMFxMZGBYTFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAB//EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAVAQEBAAAAAAAAAAAAAAAAAAACAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKoARACT/9k=",
+      "srcset": null,
+      "alt": "",
+      "w": 24,
+      "h": 16
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764189457-2025_fem_homepage-apply-online_1x1.webp?ar64=MTox&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Abstract illustration depicting multiple points converging into a single focal point, suggesting simplicity and streamlined finances.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764189501-2025_fem_homepage-cards_1x1.webp?ar64=MTox&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Close-up, stylized image of the corner of a Mercury card.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBhIQEBMLEQ4NDBANDQ0NDRQNDQ0YFxUZGBYTFhUdHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg0LFQ0QHC8cFh0vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAGAMBIgACEQEDEQH/xAAaAAACAgMAAAAAAAAAAAAAAAAAAwEEBQYH/8QAGxAAAwEBAAMAAAAAAAAAAAAAAAEDAgQUIlH/xAAWAQEBAQAAAAAAAAAAAAAAAAABAwD/xAAXEQEBAQEAAAAAAAAAAAAAAAAAARIR/9oADAMBAAIRAxEAPwDrLvMXrqkkVNNL6I00xxCsedFUAxNce5JTEZsm5w0xT5ogBCWknXLF6IACnaH/2Q==",
+      "srcset": null,
+      "alt": "",
+      "w": 24,
+      "h": 24
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764029665-2025_fem_homepage-apply-online_4x5.webp?ar64=NDo1&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Abstract illustration depicting multiple points converging into a single focal point, suggesting simplicity and streamlined finances.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764029696-2025_fem_homepage-cards_4x5.webp?ar64=NDo1&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Close-up, stylized image of the corner of a Mercury card.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoKEwgLDQcRDg0KBwgNDh0NFgcYFxUZGBYTIhUaHysjGh0oHSEWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg0OHRAKHC8cFhwvLy8vLy8vLy8vLy8vLzUvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAZAAEAAgMAAAAAAAAAAAAAAAAAAwYEBQf/xAAfEAACAgEEAwAAAAAAAAAAAAAAAwECQQQRE2EhMlH/xAAXAQADAQAAAAAAAAAAAAAAAAABAgMA/8QAGBEBAQADAAAAAAAAAAAAAAAAAAECERL/2gAMAwEAAhEDEQA/AOvNsuckDmqiseTEZDNsmHqKNmuQTGGbONQnb2gFf49R2B+IC1zWlsELV0jABCWii4V/AAU3Wf/Z",
+      "srcset": null,
+      "alt": "",
+      "w": 19,
+      "h": 24
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgFCgoFBQwFBQUFBREJCgUMFxMZGBYTFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAGAMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAB//EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAv/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKyAlQAAAAAD/9k=",
+      "srcset": null,
+      "alt": "",
+      "w": 24,
+      "h": 24
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764618945-2025_fem_homepage-cashback_1x1.webp?ar64=MTox&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Illustration of a credit card with points creating a ripple effect above and below, suggesting automatic cash back.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764619012-2025_fem_homepage-net-yield_1x1.webp?ar64=MTox&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Stylized graph with an upward trajectory, suggesting growth over time.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgFCgoFBQwFBQUFBREJCgUMFxMZGBYTFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAB//EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAv/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AKyAlQAAAAAD/9k=",
+      "srcset": null,
+      "alt": "",
+      "w": 19,
+      "h": 24
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764618964-2025_fem_homepage-cashback_4x5.webp?ar64=NDo1&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Illustration of a credit card with points creating a ripple effect above and below, suggesting automatic cash back.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764085176-2025_fem_homepage-net-yield_4x5.webp?ar64=NDo1&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Stylized graph with an upward trajectory, suggesting growth over time.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764098544-2025_fem_homepage-total-visibility_3x2.webp?auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Abstract illustration of overlapping circles, suggesting a unified view of incoming and outgoing funds.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBxAICAYIBwcGCA0GDg4QBw0GBxENDREYFxUZGCIfIiEaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg0OFRAQEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAgcB/8QAFRABAQAAAAAAAAAAAAAAAAAAABH/xAAWAQEBAQAAAAAAAAAAAAAAAAADAQD/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEgH/2gAMAwEAAhEDEQA/ANSpUhBTiqODJGP/2Q==",
+      "srcset": null,
+      "alt": "",
+      "w": 24,
+      "h": 16
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICA8LChULDhgOGhEZFRYODg8NFx8ZIhYVIhUdHysjHR0oHRUaJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg0OHA8QEC8dIhw7Ly8vLy8vLy8vOy8vLy8vLy8vLy8vLy81Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAYAAEAAwEAAAAAAAAAAAAAAAAEAQIHAP/EABsQAAIDAQEBAAAAAAAAAAAAAAABAgQRAwUS/8QAFgEAAwAAAAAAAAAAAAAAAAAAAQID/8QAGBEBAAMBAAAAAAAAAAAAAAAAAQACESH/2gAMAwEAAhEDEQA/ANTpVoSWi1U5KWhaE8iN5z+psNnsFQyB9CtySTOLenmIkcXJNDZ//9k=",
+      "srcset": null,
+      "alt": "",
+      "w": 24,
+      "h": 16
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764018322-2025_fem_homepage-guidance_3x2.webp?auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Abstract illustration with three dots at the center, suggesting conversation, guidance, and support.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764621344-2025_fem_homepage-portfolio_4x5.webp?auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Illustration of a bar graph demonstrating how much more FDIC coverage Mercury offers compared to traditional banks.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgFCgoFBQwFBQUFBREJCgUMFxMZGBYTFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAB//EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAwH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCegKtAAAAAAf/Z",
+      "srcset": null,
+      "alt": "",
+      "w": 19,
+      "h": 24
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764621041-2025_fem_homepage-net-yield_4x5.webp?auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Illustration of three toggle switches, symbolizing controls for permissions, approvals, and access to funds.",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764097598-2025_fem_homepage_in-the-press-fortune_3x2.webp?ar64=Mzoy&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Fortune logo",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764097626-2025_fem_homepage_in-the-press-wsj_3x2-webp.webp?ar64=Mzoy&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Wall Street Journal logo",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://www.datocms-assets.com/115132/1764097664-2025_fem_homepage_in-the-press-fast-co_3x2-webp.webp?ar64=Mzoy&auto=format&fit=crop",
+      "srcset": null,
+      "alt": "Fast Company logo",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=211048328&Ver=2&mid=dd7c65b8-5642-4e90-bb19-8299a8c1df21&bo=2&sid=b4d72d00675211f1a13d85c27039ee7a&vid=b4d745a0675211f1ac0cb1e7a7d9d039&vids=1&msclkid=N&pi=918639831&lg=en-US&sw=1512&sh=982&sc=30&nwd=1&tl=Online%20Business%20Banking%20For%20Startups,%20Small%20Businesses%20%26%20Scaling%20Companies&p=https%3A%2F%2Fmercury.com%2F&r=&lt=1803&evt=pageLoad&sv=2&asc=G&cdb=ARoT&rn=614880",
+      "srcset": null,
+      "alt": "",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=148017306&Ver=2&mid=25f51f0e-902b-47d7-b8df-d3e5f5bd4420&bo=1&sid=b4d72d00675211f1a13d85c27039ee7a&vid=b4d745a0675211f1ac0cb1e7a7d9d039&vids=0&msclkid=N&pi=918639831&lg=en-US&sw=1512&sh=982&sc=30&nwd=1&tl=Online%20Business%20Banking%20For%20Startups,%20Small%20Businesses%20%26%20Scaling%20Companies&p=https%3A%2F%2Fmercury.com%2F&r=&lt=1803&evt=pageLoad&sv=2&cdb=ARoT&rn=417695",
+      "srcset": null,
+      "alt": "",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=148017306&Ver=2&mid=25f51f0e-902b-47d7-b8df-d3e5f5bd4420&bo=2&sid=b4d72d00675211f1a13d85c27039ee7a&vid=b4d745a0675211f1ac0cb1e7a7d9d039&vids=0&msclkid=N&tpp=1&ea=conversion&en=Y&p=https%3A%2F%2Fmercury.com%2F&sw=1512&sh=982&sc=30&nwd=1&evt=custom&cdb=ARoT&rn=629739",
+      "srcset": null,
+      "alt": "",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=148017306&Ver=2&mid=25f51f0e-902b-47d7-b8df-d3e5f5bd4420&bo=3&sid=b4d72d00675211f1a13d85c27039ee7a&vid=b4d745a0675211f1ac0cb1e7a7d9d039&vids=0&msclkid=N&tpp=1&ea=Loaded%20a%20Page&en=Y&p=https%3A%2F%2Fmercury.com%2F&sw=1512&sh=982&sc=30&nwd=1&evt=custom&cdb=ARoT&rn=416914",
+      "srcset": null,
+      "alt": "",
+      "w": 0,
+      "h": 0
+    }
+  ],
+  "sources": [
+    {
+      "srcset": "/_next/image?url=https%3A%2F%2Fcdn.mercury.com%2Ffem%2F_next%2Fstatic%2Fmedia%2Fhero_start_frame_xl.42d06f20.jpg&w=3840&q=75 1x",
+      "type": "",
+      "media": "(min-width: 64rem)"
+    },
+    {
+      "srcset": "/_next/image?url=https%3A%2F%2Fcdn.mercury.com%2Ffem%2F_next%2Fstatic%2Fmedia%2Fhero_start_frame_lg.fd56bb97.jpg&w=3840&q=75 1x",
+      "type": "",
+      "media": "(min-width: 48rem)"
+    },
+    {
+      "srcset": "/_next/image?url=https%3A%2F%2Fcdn.mercury.com%2Ffem%2F_next%2Fstatic%2Fmedia%2Fhero_start_frame_md.be58be18.jpg&w=1920&q=75 1x, /_next/image?url=https%3A%2F%2Fcdn.mercury.com%2Ffem%2F_next%2Fstatic%2Fmedia%2Fhero_start_frame_md.be58be18.jpg&w=3840&q=75 2x",
+      "type": "",
+      "media": "(min-width: 40rem)"
+    },
+    {
+      "srcset": "",
+      "type": "video/mp4",
+      "media": "(min-width: 64rem)"
+    },
+    {
+      "srcset": "",
+      "type": "video/mp4",
+      "media": "(min-width: 40rem)"
+    },
+    {
+      "srcset": "",
+      "type": "video/mp4",
+      "media": ""
+    },
+    {
+      "srcset": "https://cdn.mercury.com/fem/_next/static/media/hero_end_frame_xl.30ad39be.jpg",
+      "type": "",
+      "media": "(min-width: 64rem)"
+    },
+    {
+      "srcset": "https://cdn.mercury.com/fem/_next/static/media/hero_end_frame_lg.e6b536a9.jpg",
+      "type": "",
+      "media": "(min-width: 48rem)"
+    },
+    {
+      "srcset": "https://cdn.mercury.com/fem/_next/static/media/hero_end_frame_md.d4aad274.jpg",
+      "type": "",
+      "media": "(min-width: 40rem)"
+    },
+    {
+      "srcset": "https://cdn.mercury.com/fem/_next/static/media/hero_end_frame_xl.30ad39be.jpg",
+      "type": "",
+      "media": "(min-width: 64rem)"
+    },
+    {
+      "srcset": "https://cdn.mercury.com/fem/_next/static/media/hero_end_frame_lg.e6b536a9.jpg",
+      "type": "",
+      "media": "(min-width: 48rem)"
+    },
+    {
+      "srcset": "https://cdn.mercury.com/fem/_next/static/media/hero_end_frame_md.d4aad274.jpg",
+      "type": "",
+      "media": "(min-width: 40rem)"
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764095939-2025_fem_testimonial-linear_2x1.webp?ar64=Mjox&auto=format&dpr=0.25&fit=crop 600w,https://www.datocms-assets.com/115132/1764095939-2025_fem_testimonial-linear_2x1.webp?ar64=Mjox&auto=format&dpr=0.5&fit=crop 1200w,https://www.datocms-assets.com/115132/1764095939-2025_fem_testimonial-linear_2x1.webp?ar64=Mjox&auto=format&dpr=0.75&fit=crop 1800w,https://www.datocms-assets.com/115132/1764095939-2025_fem_testimonial-linear_2x1.webp?ar64=Mjox&auto=format&fit=crop 2400w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764095998-2025_fem_testimonial-linear_9x16.webp?ar64=OToxNg&auto=format&dpr=0.25&fit=crop 184w,https://www.datocms-assets.com/115132/1764095998-2025_fem_testimonial-linear_9x16.webp?ar64=OToxNg&auto=format&dpr=0.5&fit=crop 368w,https://www.datocms-assets.com/115132/1764095998-2025_fem_testimonial-linear_9x16.webp?ar64=OToxNg&auto=format&dpr=0.75&fit=crop 552w,https://www.datocms-assets.com/115132/1764095998-2025_fem_testimonial-linear_9x16.webp?ar64=OToxNg&auto=format&fit=crop 736w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764169450-2025_fem_homepage-testimonial-gainful_4x5.webp?ar64=Mjox&auto=format&dpr=0.25&fit=crop 1200w,https://www.datocms-assets.com/115132/1764169450-2025_fem_homepage-testimonial-gainful_4x5.webp?ar64=Mjox&auto=format&dpr=0.5&fit=crop 2400w,https://www.datocms-assets.com/115132/1764169450-2025_fem_homepage-testimonial-gainful_4x5.webp?ar64=Mjox&auto=format&dpr=0.75&fit=crop 3600w,https://www.datocms-assets.com/115132/1764169450-2025_fem_homepage-testimonial-gainful_4x5.webp?ar64=Mjox&auto=format&fit=crop 4800w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764173362-2025_fem_testimonial-gainful_9x16.webp?ar64=OToxNg&auto=format&dpr=0.25&fit=crop 368w,https://www.datocms-assets.com/115132/1764173362-2025_fem_testimonial-gainful_9x16.webp?ar64=OToxNg&auto=format&dpr=0.5&fit=crop 736w,https://www.datocms-assets.com/115132/1764173362-2025_fem_testimonial-gainful_9x16.webp?ar64=OToxNg&auto=format&dpr=0.75&fit=crop 1104w,https://www.datocms-assets.com/115132/1764173362-2025_fem_testimonial-gainful_9x16.webp?ar64=OToxNg&auto=format&fit=crop 1472w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764096101-2025_fem_testimonial-ways-and-means_2x1.webp?ar64=Mjox&auto=format&dpr=0.25&fit=crop 600w,https://www.datocms-assets.com/115132/1764096101-2025_fem_testimonial-ways-and-means_2x1.webp?ar64=Mjox&auto=format&dpr=0.5&fit=crop 1200w,https://www.datocms-assets.com/115132/1764096101-2025_fem_testimonial-ways-and-means_2x1.webp?ar64=Mjox&auto=format&dpr=0.75&fit=crop 1800w,https://www.datocms-assets.com/115132/1764096101-2025_fem_testimonial-ways-and-means_2x1.webp?ar64=Mjox&auto=format&fit=crop 2400w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764096181-2025_fem_testimonial-ways-and-means_9x16-webp.webp?ar64=OToxNg&auto=format&dpr=0.25&fit=crop 184w,https://www.datocms-assets.com/115132/1764096181-2025_fem_testimonial-ways-and-means_9x16-webp.webp?ar64=OToxNg&auto=format&dpr=0.5&fit=crop 368w,https://www.datocms-assets.com/115132/1764096181-2025_fem_testimonial-ways-and-means_9x16-webp.webp?ar64=OToxNg&auto=format&dpr=0.75&fit=crop 552w,https://www.datocms-assets.com/115132/1764096181-2025_fem_testimonial-ways-and-means_9x16-webp.webp?ar64=OToxNg&auto=format&fit=crop 736w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764181747-2025_fem_homepage-virtual-cards_3x2.webp?auto=format&dpr=0.25&fit=crop 330w,https://www.datocms-assets.com/115132/1764181747-2025_fem_homepage-virtual-cards_3x2.webp?auto=format&dpr=0.5&fit=crop 660w,https://www.datocms-assets.com/115132/1764181747-2025_fem_homepage-virtual-cards_3x2.webp?auto=format&dpr=0.75&fit=crop 990w,https://www.datocms-assets.com/115132/1764181747-2025_fem_homepage-virtual-cards_3x2.webp?auto=format&fit=crop 1320w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764016774-2025_fem_homepage-invoicing_3x2.webp?auto=format&dpr=0.25&fit=crop 330w,https://www.datocms-assets.com/115132/1764016774-2025_fem_homepage-invoicing_3x2.webp?auto=format&dpr=0.5&fit=crop 660w,https://www.datocms-assets.com/115132/1764016774-2025_fem_homepage-invoicing_3x2.webp?auto=format&dpr=0.75&fit=crop 990w,https://www.datocms-assets.com/115132/1764016774-2025_fem_homepage-invoicing_3x2.webp?auto=format&fit=crop 1320w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764189457-2025_fem_homepage-apply-online_1x1.webp?ar64=MTox&auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764189457-2025_fem_homepage-apply-online_1x1.webp?ar64=MTox&auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764189457-2025_fem_homepage-apply-online_1x1.webp?ar64=MTox&auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764189457-2025_fem_homepage-apply-online_1x1.webp?ar64=MTox&auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764189501-2025_fem_homepage-cards_1x1.webp?ar64=MTox&auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764189501-2025_fem_homepage-cards_1x1.webp?ar64=MTox&auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764189501-2025_fem_homepage-cards_1x1.webp?ar64=MTox&auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764189501-2025_fem_homepage-cards_1x1.webp?ar64=MTox&auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764029665-2025_fem_homepage-apply-online_4x5.webp?ar64=NDo1&auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764029665-2025_fem_homepage-apply-online_4x5.webp?ar64=NDo1&auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764029665-2025_fem_homepage-apply-online_4x5.webp?ar64=NDo1&auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764029665-2025_fem_homepage-apply-online_4x5.webp?ar64=NDo1&auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764029696-2025_fem_homepage-cards_4x5.webp?ar64=NDo1&auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764029696-2025_fem_homepage-cards_4x5.webp?ar64=NDo1&auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764029696-2025_fem_homepage-cards_4x5.webp?ar64=NDo1&auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764029696-2025_fem_homepage-cards_4x5.webp?ar64=NDo1&auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764618945-2025_fem_homepage-cashback_1x1.webp?ar64=MTox&auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764618945-2025_fem_homepage-cashback_1x1.webp?ar64=MTox&auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764618945-2025_fem_homepage-cashback_1x1.webp?ar64=MTox&auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764618945-2025_fem_homepage-cashback_1x1.webp?ar64=MTox&auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764619012-2025_fem_homepage-net-yield_1x1.webp?ar64=MTox&auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764619012-2025_fem_homepage-net-yield_1x1.webp?ar64=MTox&auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764619012-2025_fem_homepage-net-yield_1x1.webp?ar64=MTox&auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764619012-2025_fem_homepage-net-yield_1x1.webp?ar64=MTox&auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764618964-2025_fem_homepage-cashback_4x5.webp?ar64=NDo1&auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764618964-2025_fem_homepage-cashback_4x5.webp?ar64=NDo1&auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764618964-2025_fem_homepage-cashback_4x5.webp?ar64=NDo1&auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764618964-2025_fem_homepage-cashback_4x5.webp?ar64=NDo1&auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764085176-2025_fem_homepage-net-yield_4x5.webp?ar64=NDo1&auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764085176-2025_fem_homepage-net-yield_4x5.webp?ar64=NDo1&auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764085176-2025_fem_homepage-net-yield_4x5.webp?ar64=NDo1&auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764085176-2025_fem_homepage-net-yield_4x5.webp?ar64=NDo1&auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764098544-2025_fem_homepage-total-visibility_3x2.webp?auto=format&dpr=0.25&fit=crop 330w,https://www.datocms-assets.com/115132/1764098544-2025_fem_homepage-total-visibility_3x2.webp?auto=format&dpr=0.5&fit=crop 660w,https://www.datocms-assets.com/115132/1764098544-2025_fem_homepage-total-visibility_3x2.webp?auto=format&dpr=0.75&fit=crop 990w,https://www.datocms-assets.com/115132/1764098544-2025_fem_homepage-total-visibility_3x2.webp?auto=format&fit=crop 1320w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764018322-2025_fem_homepage-guidance_3x2.webp?auto=format&dpr=0.25&fit=crop 329w,https://www.datocms-assets.com/115132/1764018322-2025_fem_homepage-guidance_3x2.webp?auto=format&dpr=0.5&fit=crop 658w,https://www.datocms-assets.com/115132/1764018322-2025_fem_homepage-guidance_3x2.webp?auto=format&dpr=0.75&fit=crop 987w,https://www.datocms-assets.com/115132/1764018322-2025_fem_homepage-guidance_3x2.webp?auto=format&fit=crop 1316w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764621344-2025_fem_homepage-portfolio_4x5.webp?auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764621344-2025_fem_homepage-portfolio_4x5.webp?auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764621344-2025_fem_homepage-portfolio_4x5.webp?auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764621344-2025_fem_homepage-portfolio_4x5.webp?auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764621041-2025_fem_homepage-net-yield_4x5.webp?auto=format&dpr=0.25&fit=crop 344w,https://www.datocms-assets.com/115132/1764621041-2025_fem_homepage-net-yield_4x5.webp?auto=format&dpr=0.5&fit=crop 688w,https://www.datocms-assets.com/115132/1764621041-2025_fem_homepage-net-yield_4x5.webp?auto=format&dpr=0.75&fit=crop 1032w,https://www.datocms-assets.com/115132/1764621041-2025_fem_homepage-net-yield_4x5.webp?auto=format&fit=crop 1376w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764097598-2025_fem_homepage_in-the-press-fortune_3x2.webp?ar64=Mzoy&auto=format&dpr=0.25&fit=crop 330w,https://www.datocms-assets.com/115132/1764097598-2025_fem_homepage_in-the-press-fortune_3x2.webp?ar64=Mzoy&auto=format&dpr=0.5&fit=crop 660w,https://www.datocms-assets.com/115132/1764097598-2025_fem_homepage_in-the-press-fortune_3x2.webp?ar64=Mzoy&auto=format&dpr=0.75&fit=crop 990w,https://www.datocms-assets.com/115132/1764097598-2025_fem_homepage_in-the-press-fortune_3x2.webp?ar64=Mzoy&auto=format&fit=crop 1320w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764097626-2025_fem_homepage_in-the-press-wsj_3x2-webp.webp?ar64=Mzoy&auto=format&dpr=0.25&fit=crop 330w,https://www.datocms-assets.com/115132/1764097626-2025_fem_homepage_in-the-press-wsj_3x2-webp.webp?ar64=Mzoy&auto=format&dpr=0.5&fit=crop 660w,https://www.datocms-assets.com/115132/1764097626-2025_fem_homepage_in-the-press-wsj_3x2-webp.webp?ar64=Mzoy&auto=format&dpr=0.75&fit=crop 990w,https://www.datocms-assets.com/115132/1764097626-2025_fem_homepage_in-the-press-wsj_3x2-webp.webp?ar64=Mzoy&auto=format&fit=crop 1320w",
+      "type": "",
+      "media": ""
+    },
+    {
+      "srcset": "https://www.datocms-assets.com/115132/1764097664-2025_fem_homepage_in-the-press-fast-co_3x2-webp.webp?ar64=Mzoy&auto=format&dpr=0.25&fit=crop 330w,https://www.datocms-assets.com/115132/1764097664-2025_fem_homepage_in-the-press-fast-co_3x2-webp.webp?ar64=Mzoy&auto=format&dpr=0.5&fit=crop 660w,https://www.datocms-assets.com/115132/1764097664-2025_fem_homepage_in-the-press-fast-co_3x2-webp.webp?ar64=Mzoy&auto=format&dpr=0.75&fit=crop 990w,https://www.datocms-assets.com/115132/1764097664-2025_fem_homepage_in-the-press-fast-co_3x2-webp.webp?ar64=Mzoy&auto=format&fit=crop 1320w",
+      "type": "",
+      "media": ""
+    }
+  ],
+  "videos": [
+    {
+      "src": "https://mercury.com/videos/hero/hero-scrub-lg.mp4",
+      "poster": "",
+      "autoplay": false,
+      "loop": false,
+      "muted": true
+    },
+    {
+      "src": "https://mercury.com/videos/hero/flow_1.mp4",
+      "poster": "",
+      "autoplay": false,
+      "loop": false,
+      "muted": true
+    },
+    {
+      "src": "https://mercury.com/videos/hero/flow_1.mp4",
+      "poster": "",
+      "autoplay": false,
+      "loop": false,
+      "muted": true
+    },
+    {
+      "src": "https://mercury.com/videos/hero/flow_2.mp4",
+      "poster": "",
+      "autoplay": false,
+      "loop": false,
+      "muted": true
+    },
+    {
+      "src": "https://mercury.com/videos/hero/flow_3.mp4",
+      "poster": "",
+      "autoplay": false,
+      "loop": false,
+      "muted": true
+    },
+    {
+      "src": "https://mercury.com/videos/hero/flow_4.mp4",
+      "poster": "",
+      "autoplay": false,
+      "loop": false,
+      "muted": true
+    }
+  ],
+  "bgImages": [
+    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' %3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='1'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")",
+    "url(\"data:image/jpeg;base64,/9j/2wBDAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/2wBDAQoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/v/wgARCAAIAAgDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAP/xAAUAQEAAAAAAAAAAAAAAAAAAAAC/9oADAMBAAIQAxAAAACYY//EAB0QAAAFBQAAAAAAAAAAAAAAAAABAgMRBhITIlL/2gAIAQEAAT8AfrDK3NkK5Neo/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQIAEf/aAAgBAgEBPwCaZODv/8QAGBEAAgMAAAAAAAAAAAAAAAAAAAECESL/2gAIAQMBAT8Alp2z/9k=\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLCgoLDhUaFRUNDh0TFQ0NFyoZHSITFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg0OEA0PHC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIAAwAGAMBIgACEQEDEQH/xAAXAAADAQAAAAAAAAAAAAAAAAAABQYD/8QAIBAAAQMEAgMAAAAAAAAAAAAAAQACBAMFITEGIhESE//EABYBAQEBAAAAAAAAAAAAAAAAAAIDAP/EABcRAQADAAAAAAAAAAAAAAAAAAABAhL/2gAMAwEAAhEDEQA/AK2RKjF+0vlXWBQ6vcFgWg1MqY5AwCQBnalSCWtouVu+nt5QkvHYtJ1EEtQnln//2Q==\")",
+    "url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAZCAIAAACO+YilAAAB/klEQVR42kWT63LbIBBGuSxoPE76/s/XH83UdVq349gS7KXfgpQgzBjp+PBpwfT247v03tbH9nHf7neMfV2FuwVLOedavZeC76Sm6LjmYEDCGIJ/xnzMLJCKoo3BjmH/QXJ+Yn6DWByUL3ouMKy2SydL4k1FJjqMgxgt2j7GGCK5b+dMdqs78HByYwAZRwAPOzgL+vlSQ3Z0v7NnZT3i2mEd7JxOljqzMpp0FvyMPbcgR4zRItbKAVPOySKta1Nh3lrfGnvv2JGBhqyUQ5QQswXfgvvj4da28fPpfXtKaztKlJlz5323bn//ARWg67M/nwK0NxNBgEQZkG8slZgTXd9/e7qB8ieqA80DhbJQSpl+/rqaTOsKWrZVd9TzpYkSRUcvFxtWQAPdlFtQQa08AFHa0USX6zus2hpQ720zWE2nFSm/0D+3G7LisS8NZd+Me0AF0sy6Wz3r/eOBZEC1bTqVwtEsTdTMi6oWUeQuEo4TMM9UHFcYWn8z7+TFQvCg87CZgYFNNaH+eFYKVVSg7sU6nU7YmyAcuETuUSQFzThykJRSljq3AAvQy+trcFSigOOkOCAGCRUqtZS60OJ/Q6/ry+u3aG51n3JWpRjIa09QlmUBnWvxAOfzOaCKKmkqDWhEtuqrL3WBdUFit9ZaDzQDxTsOFAmhW8rojub8H8EsJjyozW7DAAAAAElFTkSuQmCC\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLCgoLDhgNDhIYDh0ODQ0YFxMZGBYTFhUmMisjGh0oHSEWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIAAwAGAMBIgACEQEDEQH/xAAXAAADAQAAAAAAAAAAAAAAAAAABAYH/8QAHBAAAgMBAQEBAAAAAAAAAAAAAQQAAgMSIREF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAgD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCgWtarvZMf1etpvzWw8kfo7vWxIvEkv0WrPkHUwk0BFzWjfzoQkjk+yHfNDCSf/9k=\")",
+    "url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAYCAMAAAAWLodmAAABNVBMVEWGgoCHg4GIhIKJhIKJhYOKhoSLh4WMh4WMiIaNiYeOiYeOioeOioiPi4mQjIqRjYuSjYuSjoyTj4yTj42UkI6VkY+Wko+WkpCXk5GYlJKZlZOalpSbl5WcmJadmZeempifm5mmoqCno6GopKKppaOqpqSxrauyrqyzr620r620sK61sa+2srC3s7G4tLK5tbK5tbO6trS7trS7t7W8uLa9ube+uri/u7nAu7nAvLrBvbvCvrzDv7zDv73EwL7FwL7Fwb/GwsDHw8HIxMLJxcLJxcPKxsTLxsTLx8XMx8XMyMbNycfOysjPysjPy8nQzMrRzcvSzcvSzszTz83U0M7V0c/W0tDX0tDX09HY1NLZ1dPa1tTc2Nbd2dfe2tjf29ng3Nri3tzk4N7p5ePs6Obu6ujx7eubW422AAAAwklEQVR42i2P7U5EMQhEGZhmTfQ5fX2jRrN7C4NUpfzo8Hngq+r7/fPC7fnliexWpYQqtajO69rbPXMbldd9XwlcF407H9eu9KqdYO6cFusxNWv+8PZwmNHgEXSstegcsQryo0jvWIJi3ehOMwStcfqaw9F2TIXmXZkq+fAR/Oiq1tQjAL7Z796R5sa7WR8/z/jARO2/gF+AY4aXUkcdIOusXWKiV4VpktVs4HDgb7vHgUWfUeJcExFHadWEGT65Dko/D8KTJBtoq+EAAAAASUVORK5CYII=\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLEwoNDhgNFhAODh0NFg4YFxMeGBYVFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg0OHA0NHC8cFh0vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIAAwAGAMBIgACEQEDEQH/xAAZAAACAwEAAAAAAAAAAAAAAAAFBgEDBwD/xAAcEAABBAMBAAAAAAAAAAAAAAABAAIEEQMFEyP/xAAWAQEBAQAAAAAAAAAAAAAAAAABAgD/xAAYEQEBAQEBAAAAAAAAAAAAAAABAAJREf/aAAwDAQACEQMRAD8A0Ps977QjeSMrWGirurwDRSxv5mcB1PVozjJEdFKknOaKhLeinyRIPouW8ey4L//Z\")",
+    "url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAZCAIAAACO+YilAAACHklEQVR42kWSCZbbMAxDSUnN9P5H7AG6zHiRxa2Anb4mjKJnf1EgyPFjrwyJFT53m7tfh6/LI1O02qv6hwyGtj5sSUYGXq/LuC63FXhSQKuGSKmmSBvjOI50D5vxznq6XcGsLds36V7Dtb+Ibp+/MzzWjGv3eVAAsmZmES1A47sQ7ePrz0+giayAgK4zHgHUCvSDch90+/xVRK9YB+n/aCsdSfT1Ruf+WfmgJ1CuboEPBYxqV5J7FVCII+pXMt/J+pg1ICBkZPPqns1EcS5X4XmYpOkTZVIpMEizqvBLnNI+ulThkWbTCoWHJQx0QLirwJ2KveYYTYTFQpn23mK0Vri1YP3zLcmSwD9QsFW9VXZEy67JmwglroMQ9I0HRtN234hcDLmjtIWmyv3JJ7GiLApjEUlFUCsMPkFFHA9cn4W6BkyUxE0pnuWoAQ0pZ6R54SW6bLeSMU9H6YIy4TqGD/ZjIiwu88tqel2g4RbQfV+3S0AN7t5T5oucT8sTqNdKaNCxbVNRanlLoGiHhZm5zfWgOR0aylPG13YBbRWt2CokDne7s55A78RAA+i2LRU4CRSJHaIxk0at8aC33Bs9ToM3QHt5R31wCLV5oqZlXC/sg36NOQPo0OjMTVfgtIe4i7nCNa6PVhxtwroG54aNg/kRipL/hXDyMOc41+5pwvigkxwINoTDVu9gW7GOvGeITW1yb9l5bh6Oc8hBwPoXWSmpLcJr5B0AAAAASUVORK5CYII=\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLCgoLDh8cDg0NDhYVFhEbLRodJSUiLiEmHysyJh8oHRUWJDUlNS0vMjUyGS44PT0wPCsxMi8BCgsLDg0OHAoQEDsoIhwvLy8vLzsvOy8vLy8vLy8vLy8vLzsvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAXAAEAAwAAAAAAAAAAAAAAAAAGAAMH/8QAHRAAAgIDAQEBAAAAAAAAAAAAAQIABgMEBRFREv/EABYBAQEBAAAAAAAAAAAAAAAAAAIBAP/EABcRAQEBAQAAAAAAAAAAAAAAAAARAgH/2gAMAwEAAhEDEQA/AHFpse3ysZVVC+wPtXrcx4/37E13r3S6ADY39X6IHz0XpvhAJjzFaBTrXs9XCFdQwklVJq+5ytYM5kg7Gf/Z\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgFCgoFBQwFBQUFBREJCgUMFxMZGBYTFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAAB//EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAVAQEBAAAAAAAAAAAAAAAAAAACAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AK4AJACT/9k=\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoIDggLEhYSGhMQDQ0NDhYNDg0NFxYZGBYfFhUaHysjHR0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg0NFRANGi8oFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAGAMBIgACEQEDEQH/xAAZAAEAAgMAAAAAAAAAAAAAAAAAAwQBBgf/xAAeEAACAQQDAQAAAAAAAAAAAAAAAQIDBAUSERORI//EABYBAQEBAAAAAAAAAAAAAAAAAAEDAP/EABYRAQEBAAAAAAAAAAAAAAAAAAARAf/aAAwDAQACEQMRAD8A0lKkmiWtGjomRdFWUl834X546pK2T0ZUVUnGhOhwBK2nCHGjBjXQYrFRXPWvCSpe4zq00XgAI7qWzx+NvIc6IwAYV//Z\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLEwoLDhgQFQ0WGRIODQ0VFx8ZGBYVFhUdHysjGh0oHSEWJDUlKC0vMjIyHSI4PTcwPCsxMi8BCgsLDw0OHA4NFS8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAGAMBIgACEQEDEQH/xAAXAAEAAwAAAAAAAAAAAAAAAAAABQYH/8QAHxAAAQUAAgMBAAAAAAAAAAAAAQACAwQRBhIhMVEF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwH/xAAWEQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhEDEQA/AI7j3JrMAHYK90uUGzG1pKyaC0C3GDypj82W02RpG5qTVVr0U5fXDtRQVOewaLd30iFWTUKTmTNB+q+UKDRAx3VESVFlhYW0wAEREav/2Q==\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBhEIDwgLChAWFA0MCA0NDh0NDg0NFxUZGCIVFiEaNysjGh0oHSEiJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg4OFQ0QHC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAaAAEAAQUAAAAAAAAAAAAAAAAABAECAwYH/8QAIBAAAQMEAgMAAAAAAAAAAAAAAAECBAMRE5EFEgYhI//EABYBAAMAAAAAAAAAAAAAAAAAAAABA//EABYRAQEBAAAAAAAAAAAAAAAAAAARAf/aAAwDAQACEQMRAD8A0Vq/SxfVc1FtYrRjyqki2F2iRJgSUW+F2ipVgRrbAt6SE9YnaKgddGoc/wABTqdsLdCn5HwcuTjxN0AJHdSldwirfE3QAAV//9k=\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLEgoLDhgZFQ4NDhEVFQ0VIx0ZGBYfFhUmHy0jGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg0OFRAQHC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAZAAEAAwEBAAAAAAAAAAAAAAAABQYHCAT/xAAhEAABAwMEAwAAAAAAAAAAAAABAAIDBAURBhUiMRITIf/EABYBAQEBAAAAAAAAAAAAAAAAAAMCAf/EABcRAQEBAQAAAAAAAAAAAAAAAAABAhH/2gAMAwEAAhEDEQA/APVY9cvDwx5V5tuoWVOOYyVz7FJUNqwI8q4aemuDqtjeWFWmSNqFW0jOQigIo6r1NyT0iJXGQW+mbuIBCv1ppo4ZA8NHxETaJInd48eOOkREbX//2Q==\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLFgoVFxIVDhUZDh0VERwRFxUZGBYTFh0dHysjLiwoHhUiJDUxKC0vMjIyHSU4PTcwPCsxNS8BCgsLDg0OHRANHTseIigvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAGAMBIgACEQEDEQH/xAAZAAACAwEAAAAAAAAAAAAAAAAABwQFBgH/xAAhEAABBAEEAwEAAAAAAAAAAAABAAIDBAUGERKREzNBFf/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/xAAXEQEBAQEAAAAAAAAAAAAAAAAAAQIR/9oADAMBAAIRAxEAPwBp3MrUhYQ9yz37mOjsFxeO1TawuOiJEYKX809uVx2D1pnMM8MPlaN2UiN45fELAaCbMLG8nJCm5gMbJYfH3XDysbyUBul8SHesdIQozaawx2KoUnnwsbuuoQpuqOP/2Q==\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgFCgoFBQwFBQUFBREJCgUMFxMZGBYTFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAGAMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAABv/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAwH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCJAVaAAAAAA//Z\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLCgoLDhgQFRgVDh0WDRoUIyIlGBYVFhUaHysjGh0oHSEWJDUlKDkvMjIyGSI4PTcwPCsxMi8BCgsLDg4OGA0NHC8dFh0vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAaAAACAgMAAAAAAAAAAAAAAAAABQYHAQME/8QAHxAAAgIDAAIDAAAAAAAAAAAAAQIAAwQREgUhBhNh/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQIA/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAEREgL/2gAMAwEAAhEDEQA/ALQz8xa6eXYCLavJY6sqfYNkyNfK7fJGzmoNI1jUeZObWWD63NPMwrsq4apSCPYhEOIM4YlQO98wkcwu7Px8d7AzoDNK0YjOuqxsfkIQluMbpyEAA9amYQkdU4//2Q==\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgFCgoFBQwFBQUFBREJCgUMFxMZGBYTFhUaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAVAAEBAAAAAAAAAAAAAAAAAAAABv/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAwH/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCJAVaAAAAAA//Z\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLEg4WFRUaDQ0ODhMODQ0NFx8ZGBYVFhUmHysjHR0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLDg4OEBAKEC8cFh0vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAXAAADAQAAAAAAAAAAAAAAAAAEBQYA/8QAHxAAAAUEAwAAAAAAAAAAAAAAAAECBAUDERIhBhMU/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIDAP/EABcRAQEBAQAAAAAAAAAAAAAAAAABEgL/2gAMAwEAAhEDEQA/AGa4OCVW2sgHVhOPocbWQQVJlt6bZmBXcg3OtfMxUs5q0aQvHu2+ZDCRZSjUqm1mMMGK/9k=\")",
+    "url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAARAQMAAAD9tv5zAAAAA1BMVEU+Qkw0qtV8AAAAD0lEQVR42mNhYGBgoRADAAnUAEUqeTZ3AAAAAElFTkSuQmCC\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLEhYLDhgQFRcVDhkNFRENIx8lJBcYJRUdHysjGh00ICEWJDUlKC0vMjI1GSI4PTcwPCsxMi8BCgsLDg0OHA0NEy8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAABwUEA//EACMQAAEDAwIHAAAAAAAAAAAAAAEAAwQCBQYRURIWITJBQnH/xAAVAQEBAAAAAAAAAAAAAAAAAAADAf/EABcRAQEBAQAAAAAAAAAAAAAAAAACEQH/2gAMAwEAAhEDEQA/AO3HsMjSsZcr2Cndzs8SFNcb2KtWGPDlF3Wk9KSo9fDS7eXuIHuKSeqzQzF0RehEcHRE2osWJ5PbasacpA9SpndLjAfurxpHkoiGVZFb0XjP1ERMj//Z\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAgLChYVDh8SFQ0NERkVFQ4NHRMZGBYVFhUdHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQsOEA0FFi8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABgAEwMBIgACEQEDEQH/xAAaAAACAgMAAAAAAAAAAAAAAAAABgMEAQIF/8QAHxAAAQQCAgMAAAAAAAAAAAAAAgABAwQFExESBgcx/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAMB/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AQqdawcHLqWSGfXwzqzjsZk5qj9BdbjgswIERASq1ytdpCkOvkhN26OsIGHEeYx1KruQMr4ewK88JhrZCEC/N5TE8xP0b6hCEH//Z\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBhYIEQgKCg0IDRgHBwYGCREJDQcYFxUZGBYTFhUaHysjGh0oHRUiJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAYAAACAwAAAAAAAAAAAAAAAAAAAwEEBv/EABkQAAMBAQEAAAAAAAAAAAAAAAADBAIBBf/EABYBAAMAAAAAAAAAAAAAAAAAAAACA//EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AMHPI9nR2fNo6wrKqpVsfn0aebKlKfHSlgEvspbsAD//2Q==\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoIEA8LDw0LDhMQDQ4JDhUJFg0YGBQZGBYVFhUdHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAXAAEAAwAAAAAAAAAAAAAAAAAFAAEH/8QAGxAAAQUBAQAAAAAAAAAAAAAAAwABAgQTYQX/xAAWAQADAAAAAAAAAAAAAAAAAAAAAgP/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDN4gO5miln8Uzg04h4msatJKR9mxjnxVKNJXNEjxUVksGcjyUQH//Z\")",
+    "url(\"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBhYICA8OCgoNDg4JDg0NDRENFg0YFxUZGBYVFiEaHysjGh0oHRUWJDUlKC0vMjIyGSI4PTcwPCsxMi8BCgsLBQUFEAUFEC8cFhwvLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vL//AABEIABAAGAMBIgACEQEDEQH/xAAYAAACAwAAAAAAAAAAAAAAAAABAwAEBv/EABoQAAIDAQEAAAAAAAAAAAAAAAAEAgMRAQX/xAAWAQADAAAAAAAAAAAAAAAAAAAAAgP/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDArpNSgN55zJXrcbr5g6L7eaVKSwo1UAN7bNnCAH//2Q==\")"
+  ],
+  "fonts": []
+}
