@@ -7,7 +7,7 @@
 Clone the repository and start building:
 
 ```bash
-git clone https://github.com/alivedesign/sonar.git
+git clone https://github.com/shkuratovdesigner/sonar.git
 cd sonar
 ```
 
