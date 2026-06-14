@@ -22,7 +22,7 @@
       <a href="#faq" data-scroll>FAQ</a>
     </nav>
     <div class="nav__cta">
-      <a href="#form" class="btn btn--primary" data-scroll>Get more users</a>
+      <a href="#form" class="btn btn--secondary" data-scroll>Get more users</a>
     </div>
   </div>
 </header>
@@ -40,10 +40,10 @@
   <div class="hero__content">
     <div class="container">
       <span class="eyebrow reveal-hero">Demand &amp; distribution agent for founders</span>
-      <h1 class="h1 reveal-hero">Find your first paying users today. <em>We'll show you where they are and how to reach them.</em></h1>
-      <form class="hero__form reveal-hero" onsubmit="return false" aria-label="Get your demand report">
+      <h1 class="h1 reveal-hero">Find your first paying users today. We'll hand you real profiles to message now, plus where to reach more.</h1>
+      <form class="hero__form reveal-hero" novalidate onsubmit="return false" aria-label="Get your demand report">
         <input type="email" name="email" autocomplete="email" placeholder="Your email" aria-label="Your email">
-        <button class="btn btn--primary" type="submit" data-scroll-to="#form">Get more users</button>
+        <button class="btn btn--primary" type="submit">Get more users</button>
       </form>
       <p class="microtrust reveal-hero">No credit card · Report sent straight to your inbox</p>
     </div>
@@ -253,7 +253,7 @@
   <div class="container center">
     <h2 class="h2 reveal">Drop your product. <em>We'll show you your users.</em></h2>
     <p class="lead measure-sm center reveal">We read every submission and send your report by email.</p>
-    <form class="form reveal" id="demand-form" novalidate>
+    <form class="form reveal" id="demand-form" data-demand novalidate>
       <div class="field">
         <label for="f-link">Your product link <span class="opt">optional</span></label>
         <input id="f-link" name="product_link" class="input" type="url" inputmode="url" autocomplete="url"
@@ -343,6 +343,45 @@
     <p class="footer__legal">© 2026 Sonar. Demand &amp; distribution agent for founders. Report figures shown on this page are illustrative.</p>
   </div>
 </footer>
+
+<!-- ===================== DEMAND MODAL (opens from the hero email button) ===================== -->
+<div class="modal" id="demand-modal" aria-hidden="true">
+  <div class="modal__overlay" data-modal-close></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="demand-modal-title">
+    <button class="modal__close" type="button" aria-label="Close" data-modal-close>&times;</button>
+    <span class="eyebrow">One more step</span>
+    <h2 class="modal__title" id="demand-modal-title">Tell us about your product.</h2>
+    <p class="modal__lead">We've got your email — add a line about what you're building and we'll start your report.</p>
+    <form class="form" id="hero-demand-form" data-demand novalidate>
+      <!-- email captured on the hero; carried here for submission (backend wiring TODO) -->
+      <input type="hidden" name="email" value="">
+      <div class="field">
+        <label for="m-link">Your product link <span class="opt">optional</span></label>
+        <input id="m-link" name="product_link" class="input" type="url" inputmode="url" autocomplete="url"
+               placeholder="yourproduct.com" aria-describedby="em-link">
+        <p class="field__error" id="em-link">Enter a valid link, like yourproduct.com</p>
+      </div>
+      <div class="field">
+        <label for="m-store">App Store / Google Play link <span class="opt">optional</span></label>
+        <input id="m-store" name="store_link" class="input" type="url" inputmode="url"
+               placeholder="apps.apple.com/… or play.google.com/…" aria-describedby="em-store">
+        <p class="field__error" id="em-store">Enter a valid link to your app.</p>
+      </div>
+      <div class="field">
+        <label for="m-about">Tell us about it <span class="req">*</span></label>
+        <textarea id="m-about" name="about" class="input" required minlength="12"
+                  placeholder="What does it do, and who is it for? One or two lines." aria-describedby="em-about"></textarea>
+        <p class="field__error" id="em-about">Tell us a little about it — a sentence or two is plenty.</p>
+      </div>
+      <button class="btn btn--primary btn--block btn--lg form__submit" type="submit">Get more users</button>
+      <p class="microtrust center">No spam · No credit card · We only email you about your report</p>
+      <div class="form__success" role="status" aria-live="polite" hidden>
+        <strong>Got it — your product is in.</strong>
+        We read every submission ourselves. Your demand report will land in your inbox shortly.
+      </div>
+    </form>
+  </div>
+</div>
 
 <!-- GSAP + ScrollTrigger + Lenis (all vendored locally) + app -->
 <script src="js/vendor/gsap.min.js"></script>

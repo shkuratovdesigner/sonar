@@ -25,13 +25,16 @@
     });
   });
 
-  /* ---------- Demand form: input masks + inline validation (no GSAP needed) ---------- */
-  (function initDemandForm() {
-    var form = document.getElementById("demand-form");
-    if (!form) return;
+  var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  /* ---------- Demand forms: input masks + inline validation (no GSAP needed) ----------
+     Generic so the same logic drives the page form AND the hero modal form. Fields are
+     found by name, errors by the surrounding .field — no per-form IDs required. */
+  function wireDemandForm(form) {
+    if (!form || form.__wired) return;
+    form.__wired = true;
 
     var success = form.querySelector(".form__success");
-    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var fieldOf = function (el) { return el.closest(".field"); };
 
     function setError(el, on) {
@@ -59,28 +62,26 @@
     function validAbout(el) { return el.value.trim().length >= 12; }
     function validEmail(el) { return emailRe.test(maskEmail(el)); }
 
+    var byName = function (n) { return form.querySelector("[name=" + n + "]"); };
     var checks = [
-      { el: form.querySelector("#f-link"),  fn: validUrl,   mask: maskUrl },
-      { el: form.querySelector("#f-store"), fn: validUrl,   mask: maskUrl },
-      { el: form.querySelector("#f-about"), fn: validAbout },
-      { el: form.querySelector("#f-email"), fn: validEmail, mask: maskEmail }
-    ].filter(function (c) { return c.el; });
-
-    /* live masking: strip whitespace from url/email as it's typed */
-    ["#f-link", "#f-store", "#f-email"].forEach(function (sel) {
-      var el = form.querySelector(sel);
-      if (!el) return;
-      el.addEventListener("input", function () {
-        if (/\s/.test(el.value)) {
-          var pos = el.selectionStart;
-          el.value = el.value.replace(/\s+/g, "");
-          try { el.setSelectionRange(pos - 1, pos - 1); } catch (e) {}
-        }
-        if (fieldOf(el).classList.contains("is-invalid")) setError(el, false);
-      });
-    });
+      { el: byName("product_link"), fn: validUrl,   mask: maskUrl },
+      { el: byName("store_link"),   fn: validUrl,   mask: maskUrl },
+      { el: byName("about"),        fn: validAbout },
+      { el: byName("email"),        fn: validEmail, mask: maskEmail }
+    ].filter(function (c) { return c.el && c.el.type !== "hidden"; });
 
     checks.forEach(function (c) {
+      /* live masking: strip whitespace from url/email as it's typed */
+      if (c.mask) {
+        c.el.addEventListener("input", function () {
+          if (/\s/.test(c.el.value)) {
+            var pos = c.el.selectionStart;
+            c.el.value = c.el.value.replace(/\s+/g, "");
+            try { c.el.setSelectionRange(pos - 1, pos - 1); } catch (e) {}
+          }
+          if (fieldOf(c.el).classList.contains("is-invalid")) setError(c.el, false);
+        });
+      }
       c.el.addEventListener("blur", function () {
         if (c.mask) c.mask(c.el);
         setError(c.el, !c.fn(c.el));
@@ -100,14 +101,84 @@
         setError(c.el, !ok);
         if (!ok && !firstBad) firstBad = c.el;
       });
-      if (firstBad) { firstBad.focus(); return; }
+      if (firstBad) { if (firstBad.offsetParent !== null) firstBad.focus(); return; }
 
+      // TODO(backend): POST the form data (incl. the hero email) to the leads endpoint.
       form.classList.add("is-sent");
       if (success) success.hidden = false;
       [].forEach.call(form.querySelectorAll(".field, .form__submit, .microtrust"), function (el) {
         el.style.display = "none";
       });
     });
+  }
+  document.querySelectorAll("form[data-demand]").forEach(wireDemandForm);
+
+  /* ---------- Hero email → modal with the rest of the fields ----------
+     Capture the email up front (backend send is a TODO), then open the modal
+     pre-filled so the visitor only fills in what's left. */
+  (function initHeroModal() {
+    var modal = document.getElementById("demand-modal");
+    var heroForm = document.querySelector(".hero__form");
+    if (!modal) return;
+
+    var lastFocus = null;
+    function focusables() {
+      return [].filter.call(
+        modal.querySelectorAll("a[href],button:not([disabled]),input:not([type=hidden]),textarea,select"),
+        function (el) { return el.offsetParent !== null; }
+      );
+    }
+    function openModal() {
+      lastFocus = document.activeElement;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      root.classList.add("modal-open");
+      if (window.__lenis) window.__lenis.stop();
+      var f = focusables();
+      if (f.length) setTimeout(function () { f[0].focus(); }, 60);
+    }
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      root.classList.remove("modal-open");
+      if (window.__lenis) window.__lenis.start();
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    modal.addEventListener("click", function (e) {
+      if (e.target.hasAttribute("data-modal-close")) closeModal();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+    });
+    // simple focus trap
+    modal.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    if (heroForm) {
+      var heroEmail = heroForm.querySelector("[name=email]");
+      var modalEmail = modal.querySelector("[name=email]");
+      heroForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var v = (heroEmail.value || "").trim().toLowerCase();
+        var ok = emailRe.test(v);
+        heroForm.classList.toggle("is-invalid", !ok);
+        if (!ok) { heroEmail.focus(); return; }
+        heroEmail.value = v;
+        if (modalEmail) modalEmail.value = v;            // carry the email into the modal
+        // TODO(backend): send `v` to the leads database here (up-front email capture).
+        openModal();
+      });
+      heroEmail.addEventListener("input", function () {
+        if (heroForm.classList.contains("is-invalid")) heroForm.classList.remove("is-invalid");
+      });
+    }
   })();
 
   /* ---------- Hero sonar — canvas radar sweep that reveals blips ----------
