@@ -28,35 +28,35 @@
   </div>
 </header>
 
-<!-- ===================== 1 · HERO (dark) ===================== -->
+<!-- ===================== 1 · HERO ===================== -->
 <section class="hero" id="hero">
   <div class="hero__stage">
     <!-- SWAP LATER: replace this SVG with <img class="hero__img" src="assets/img/hero.jpg" alt=""> -->
     <svg class="sonar" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <defs>
         <radialGradient id="vig" cx="50%" cy="42%" r="60%">
-          <stop offset="0%" stop-color="#0e1a2b"/>
-          <stop offset="55%" stop-color="#0a0f18"/>
-          <stop offset="100%" stop-color="#06080d"/>
+          <stop offset="0%" stop-color="#13142a"/>
+          <stop offset="55%" stop-color="#0c0d18"/>
+          <stop offset="100%" stop-color="#070810"/>
         </radialGradient>
         <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
         <radialGradient id="dot" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#9cd4ff"/><stop offset="100%" stop-color="#2ba7ff"/>
+          <stop offset="0%" stop-color="#b3c0ff"/><stop offset="100%" stop-color="#5266eb"/>
         </radialGradient>
       </defs>
       <rect width="1000" height="600" fill="url(#vig)"/>
       <!-- concentric sonar rings -->
-      <g fill="none" stroke="#2ba7ff" stroke-opacity=".16">
+      <g fill="none" stroke="#5266eb" stroke-opacity=".18">
         <circle cx="500" cy="252" r="90"/><circle cx="500" cy="252" r="170"/>
-        <circle cx="500" cy="252" r="255" stroke-opacity=".12"/><circle cx="500" cy="252" r="350" stroke-opacity=".08"/>
+        <circle cx="500" cy="252" r="255" stroke-opacity=".13"/><circle cx="500" cy="252" r="350" stroke-opacity=".09"/>
         <circle cx="500" cy="252" r="450" stroke-opacity=".05"/>
       </g>
-      <!-- faint lat/long map graticule -->
-      <g stroke="#2ba7ff" stroke-opacity=".05">
+      <!-- faint lat/long graticule -->
+      <g stroke="#5266eb" stroke-opacity=".06">
         <path d="M120 252h760M180 160h640M180 344h640M500 40v430" fill="none"/>
       </g>
       <!-- user dots -->
-      <g fill="#2ba7ff" fill-opacity=".75">
+      <g fill="#5266eb" fill-opacity=".75">
         <circle cx="360" cy="190" r="3"/><circle cx="612" cy="150" r="2.5"/><circle cx="430" cy="300" r="2.5"/>
         <circle cx="560" cy="330" r="3"/><circle cx="300" cy="280" r="2"/><circle cx="700" cy="250" r="2.5"/>
         <circle cx="660" cy="360" r="2"/><circle cx="380" cy="380" r="2.5"/><circle cx="520" cy="210" r="2"/>
@@ -65,12 +65,12 @@
       </g>
       <!-- warm leads (bright, glowing) -->
       <g>
-        <circle cx="455" cy="248" r="13" fill="#2ba7ff" fill-opacity=".18" filter="url(#soft)"/>
+        <circle cx="455" cy="248" r="13" fill="#5266eb" fill-opacity=".20" filter="url(#soft)"/>
         <circle cx="455" cy="248" r="5" fill="url(#dot)"/>
-        <circle cx="585" cy="285" r="12" fill="#2ba7ff" fill-opacity=".18" filter="url(#soft)"/>
+        <circle cx="585" cy="285" r="12" fill="#5266eb" fill-opacity=".20" filter="url(#soft)"/>
         <circle cx="585" cy="285" r="4.5" fill="url(#dot)"/>
-        <circle cx="520" cy="360" r="11" fill="#2ba7ff" fill-opacity=".16" filter="url(#soft)"/>
-        <circle cx="520" cy="360" r="4" fill="url(#dot)"/>
+        <circle cx="520" cy="360" r="11" fill="#fc92b4" fill-opacity=".18" filter="url(#soft)"/>
+        <circle cx="520" cy="360" r="4" fill="#fc92b4"/>
       </g>
     </svg>
     <div class="sonar__sweep"></div>
@@ -78,25 +78,28 @@
   <div class="hero__overlay"></div>
 
   <div class="hero__content">
-    <div class="container center">
+    <div class="container">
       <span class="eyebrow reveal-hero">Demand &amp; distribution agent for founders</span>
-      <h1 class="h1 reveal-hero">Find your <em>users</em>.<br>We'll show you where they are<br>and how to reach them.</h1>
+      <h1 class="h1 reveal-hero">Find your <em>users</em>.<br>We'll show you where<br>they are.</h1>
       <p class="lead reveal-hero">Sonar reads your live market and hands you the people who already want it — real profiles you can message today, plus where to reach more. Data, not guesses.</p>
-      <div class="hero__cta reveal-hero">
-        <a href="#form" class="btn btn--primary btn--lg" data-scroll>Show me my users</a>
-        <p class="microtrust">No credit card · Report sent straight to your inbox</p>
-      </div>
+      <form class="hero__form reveal-hero" onsubmit="return false" aria-label="Get your demand report">
+        <input type="email" name="email" autocomplete="email" placeholder="Your email" aria-label="Your email">
+        <button class="btn btn--primary" type="submit" data-scroll-to="#form">Show me my users</button>
+      </form>
+      <p class="microtrust reveal-hero">No credit card · Report sent straight to your inbox</p>
     </div>
   </div>
+
+  <p class="hero__fineprint reveal-hero">Pre-launch — we onboard founders in small batches and read every submission ourselves. Report figures shown on this page are illustrative.</p>
 </section>
 
 <main>
 
-<!-- ===================== 2 · PROBLEM (dark) ===================== -->
+<!-- ===================== 2 · PROBLEM ===================== -->
 <section class="section" id="problem">
   <div class="container">
-    <h2 class="h2 measure reveal">Building the product was never the hard part. Finding the people who want it <em>is</em>.</h2>
-    <div class="grid g2 reveal" style="margin-top:2.6rem">
+    <h2 class="h2 measure-lg center reveal">Building the product was never the hard part. Finding the people who want it <em>is</em>.</h2>
+    <div class="grid g2 reveal">
       <div class="card">
         <span class="tag">Before you build</span>
         <p>You've got the idea and the fear that comes with it. What if you pour in several months and nobody shows up?</p>
@@ -106,124 +109,144 @@
         <p>Crickets. No signups, no idea why, and every piece of advice boils down to "just post more."</p>
       </div>
     </div>
-    <p class="lead measure reveal" style="margin-top:2rem">Either way you're guessing. And guessing with months of your life is the most expensive thing you can do.</p>
+    <p class="lead measure-lg center reveal" style="margin-inline:auto">Either way you're guessing. And guessing with months of your life is the most expensive thing you can do.</p>
   </div>
 </section>
 
-<!-- ===================== 3 · WHAT YOU GET (light) — SEAM 1 ===================== -->
+<!-- ===================== 3 · WHAT YOU GET + REPORT (bento) ===================== -->
 <section class="section" id="what">
-  <div class="container">
-    <span class="eyebrow reveal">What you get</span>
-    <h2 class="h2 measure reveal">Three answers, pulled from your real market. <em>Not an opinion.</em></h2>
-    <div class="grid g3" style="margin-top:3rem">
-      <div class="card card--hover reveal">
-        <div class="chip"><svg viewBox="0 0 24 24"><path d="M3 17l4-6 4 3 5-8 5 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3 class="card__title">Is the demand real?</h3>
-        <p>Proof the demand is real, in live numbers — search volume, communities, competitor momentum.</p>
+  <div class="container container--wide">
+    <div class="bento">
+      <div class="bento__head reveal">
+        <span class="eyebrow">What you get</span>
+        <h2 class="h2">Three answers, pulled from your real market. <em>Not an opinion.</em></h2>
+        <div class="accordion" data-accordion>
+          <div class="acc is-open">
+            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Is the demand real?</span></button>
+            <div class="acc__body"><div class="acc__inner"><p>Proof in live numbers — search volume, active communities, and competitor momentum. A clear verdict, not a vibe.</p></div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Who wants it?</span></button>
+            <div class="acc__body"><div class="acc__inner"><p>The exact people who described wanting it, with links to their posts so you can read the context and message them today.</p></div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Where are more?</span></button>
+            <div class="acc__body"><div class="acc__inner"><p>The channels and communities where more of them gather — ranked by where you'll actually win, with the first moves to make.</p></div></div>
+          </div>
+        </div>
+        <a href="#form" class="bento__link" data-scroll>Get your report →</a>
       </div>
-      <div class="card card--hover reveal">
-        <div class="chip"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M17 11l2 2 3-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3 class="card__title">Who wants it?</h3>
-        <p>The exact people who want it, with links to their posts so you can message them today.</p>
-      </div>
-      <div class="card card--hover reveal">
-        <div class="chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="6" cy="19" r="2"/><path d="M10.3 10.6 6.6 7.2M13.7 10.6l3.6-3.4M10.6 13.5 7.4 17.4" stroke-linecap="round"/></svg></div>
-        <h3 class="card__title">Where are more?</h3>
-        <p>The channels and communities where to find more of them — ranked by where you'll win.</p>
+
+      <div class="demo reveal">
+        <div class="demo__peek"></div>
+        <div class="demo__card">
+          <div class="report">
+            <div class="report__head"><b>Your demand report</b><span class="ill">Illustrative</span></div>
+            <div class="report__row"><span class="report__lab">Demand verdict</span><span class="report__val"><span class="pill">Real</span>Search demand up <span class="tnum">34%</span> in 6 months, active in 4 communities</span></div>
+            <div class="report__row"><span class="report__lab">Keyword volume</span><span class="report__val tnum">12 buying-intent terms · ~28,000 searches / month combined</span></div>
+            <div class="report__row"><span class="report__lab">Competitors</span><span class="report__val">3 rivals + their traffic trend — one up <span class="tnum">2×</span> this quarter, two flat</span></div>
+            <div class="report__row"><span class="report__lab">People asking</span><span class="report__val"><span class="tnum">47</span> real people asked for this in the last 30 days, across Reddit, X &amp; YouTube</span></div>
+            <div class="report__row"><span class="report__lab">Warm leads</span><span class="report__val">Their profiles, with links, ranked by intent — message them and land your first users</span></div>
+            <div class="report__row"><span class="report__lab">Do this first</span><span class="report__val">3 concrete moves to reach them this week</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== 4 · HOW IT WORKS (light) ===================== -->
-<section class="section section--tight" id="how">
+<!-- ===================== 4 · HOW IT WORKS (split) ===================== -->
+<section class="section" id="how">
   <div class="container">
-    <span class="eyebrow reveal">How it works</span>
-    <h2 class="h2 measure reveal">Drop a link. Get a market.</h2>
-    <div class="grid g3 steps" style="margin-top:3rem">
-      <div class="step reveal">
-        <div class="step__line"></div>
-        <h3 class="h3">You drop your link.</h3>
-        <p class="muted">A website, an app, or one clear sentence about the idea. That's all we need to start.</p>
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">How it works</span>
+        <h2 class="h2">Drop a link. <em>Get a market.</em></h2>
+        <div class="steps">
+          <div class="step">
+            <h3>You drop your link.</h3>
+            <p>A website, an app, or one clear sentence about the idea. That's all we need to start.</p>
+          </div>
+          <div class="step">
+            <h3>Sonar reads your live market.</h3>
+            <p>We scan public conversations, search behavior and competitor signals — fresh, not last year's.</p>
+          </div>
+          <div class="step">
+            <h3>You get real users + a plan.</h3>
+            <p>Named people you can message, and the concrete moves to reach more this week.</p>
+          </div>
+        </div>
       </div>
-      <div class="step reveal">
-        <div class="step__line"></div>
-        <h3 class="h3">Sonar reads your live market.</h3>
-        <p class="muted">We scan public conversations, search behavior and competitor signals — fresh, not last year's.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step__line"></div>
-        <h3 class="h3">You get real users + a plan.</h3>
-        <p class="muted">Named people you can message, and the concrete moves to reach more this week.</p>
+      <div class="split__visual reveal">
+        <div class="visual" aria-hidden="true">
+          <div class="visual__inner">
+            <div class="vbar"><span class="dot"></span>yourproduct.com</div>
+            <div class="vchip">Reading live market…</div>
+            <div class="vline"></div>
+            <div class="vline"></div>
+            <div class="vline"></div>
+            <div class="vrows">
+              <div class="vrow"><span>Demand</span><b>Real</b></div>
+              <div class="vrow"><span>People asking</span><b>47</b></div>
+              <div class="vrow"><span>Best channel</span><b>r/SaaS</b></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== 5 · WHY DIFFERENT (light) ===================== -->
+<!-- ===================== 5 · WHY SONAR (split) ===================== -->
 <section class="section" id="why">
   <div class="container">
-    <div class="measure">
-      <span class="eyebrow reveal">Why Sonar</span>
-      <h2 class="h2 reveal">Data, <em>not guesses.</em></h2>
-      <p class="lead reveal">ChatGPT agrees with you. Friends are polite. Gut feel is hope. Sonar reads your real, live market right now and shows you the evidence.</p>
-    </div>
-    <div class="vs reveal" style="margin-top:2.4rem;max-width:760px">
-      <div class="vs__row"><span class="label">Gut feel / asking friends</span><span class="tail">opinion</span></div>
-      <div class="vs__row"><span class="label">Generic AI chat</span><span class="tail">agrees with you</span></div>
-      <div class="vs__row"><span class="label">Spray-and-pray posting</span><span class="tail">hope</span></div>
-      <div class="vs__row vs__row--win"><span class="label">Sonar</span><span class="tail">your real, live market</span></div>
-    </div>
-    <div class="note reveal" style="max-width:760px">
-      <b>And it's today's data, not last year's.</b> Yesterday, someone on X or in a buried Reddit comment asked for exactly what you're building. In a week that thread is gone. We catch demand while it's still warm, so you reach those people first.
-    </div>
-  </div>
-</section>
-
-<!-- ===================== 6 · THE OUTPUT (light) ===================== -->
-<section class="section" id="output">
-  <div class="container">
-    <div class="measure">
-      <span class="eyebrow reveal">The output</span>
-      <h2 class="h2 reveal">A report you can act on <em>this week.</em></h2>
-      <p class="lead reveal">Real demand, real numbers, and real people you can message in a minute. Not vague personas.</p>
-    </div>
-    <div class="report reveal" style="margin-top:2.6rem;max-width:880px">
-      <div class="report__head"><b>Your demand report</b><span class="ill">Illustrative</span></div>
-      <div class="report__row"><span class="report__lab">Demand verdict</span><span class="report__val"><span class="pill">Real</span>Search demand up <span class="tnum">34%</span> in 6 months, active in 4 communities</span></div>
-      <div class="report__row"><span class="report__lab">Keyword volume</span><span class="report__val tnum">12 buying-intent terms · ~28,000 searches / month combined</span></div>
-      <div class="report__row"><span class="report__lab">Competitors</span><span class="report__val">3 rivals + their traffic trend — one up <span class="tnum">2×</span> this quarter, two flat</span></div>
-      <div class="report__row"><span class="report__lab">People asking</span><span class="report__val"><span class="tnum">47</span> real people asked for this in the last 30 days, across Reddit, X &amp; YouTube</span></div>
-      <div class="report__row"><span class="report__lab">Warm leads</span><span class="report__val">Their profiles, with links, ranked by intent — message them and land your first users</span></div>
-      <div class="report__row"><span class="report__lab">Do this first</span><span class="report__val">3 concrete moves to reach them this week</span></div>
+    <div class="split">
+      <div class="reveal">
+        <span class="eyebrow">Why Sonar</span>
+        <h2 class="h2">Data, <em>not guesses.</em></h2>
+        <p class="lead">ChatGPT agrees with you. Friends are polite. Gut feel is hope. Sonar reads your real, live market right now and shows you the evidence.</p>
+        <div class="note">
+          <b>And it's today's data, not last year's.</b> Yesterday, someone on X or in a buried Reddit comment asked for exactly what you're building. In a week that thread is gone. We catch demand while it's still warm, so you reach those people first.
+        </div>
+      </div>
+      <div class="split__visual reveal">
+        <div class="vs">
+          <div class="vs__row"><span class="label">Gut feel / asking friends</span><span class="tail">opinion</span></div>
+          <div class="vs__row"><span class="label">Generic AI chat</span><span class="tail">agrees with you</span></div>
+          <div class="vs__row"><span class="label">Spray-and-pray posting</span><span class="tail">hope</span></div>
+          <div class="vs__row vs__row--win"><span class="label">Sonar</span><span class="tail">your real, live market</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== 7 · WHO IT'S FOR (light) ===================== -->
+<!-- ===================== 6 · WHO IT'S FOR ===================== -->
 <section class="section" id="who">
   <div class="container">
-    <h2 class="h2 measure reveal">If this is you, <em>drop your link.</em></h2>
-    <div class="grid g2" style="margin-top:2.4rem">
-      <div class="card reveal">
+    <h2 class="h2 measure center reveal">If this is you, <em>drop your link.</em></h2>
+    <div class="grid g2 reveal">
+      <div class="card">
         <span class="tag">You already shipped</span>
         <p>You have few or no users, and you need to know where the real ones are hiding.</p>
       </div>
-      <div class="card reveal">
+      <div class="card">
         <span class="tag">You want proof first</span>
         <p>You're about to build, and you want evidence someone wants this before you spend months on it.</p>
       </div>
     </div>
-    <blockquote class="founder reveal measure">"Built by founders who got tired of guessing. We're onboarding the first batch now — and reading every submission ourselves."</blockquote>
+    <figure class="founder reveal">
+      <blockquote>"Built by founders who got tired of guessing. We're onboarding the first batch now — and reading every submission ourselves."</blockquote>
+      <figcaption>The Sonar team</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ===================== 8 · THE FORM (dark) — SEAM 2 ===================== -->
-<section class="section" id="form">
-  <div class="glow" style="width:560px;height:560px;left:50%;top:-120px;transform:translateX(-50%)"></div>
-  <div class="container center" style="position:relative">
+<!-- ===================== 7 · THE FORM (atmosphere) ===================== -->
+<section class="section section--lg atmos" id="form">
+  <div class="container center">
     <h2 class="h2 reveal">Drop your product. <em>We'll show you your users.</em></h2>
-    <p class="lead measure-sm reveal">We read every submission and send your report by email.</p>
+    <p class="lead measure-sm center reveal">We read every submission and send your report by email.</p>
     <form class="form reveal" onsubmit="return false">
       <div class="field">
         <label for="f-link">Your product link <span class="opt">optional</span></label>
@@ -247,10 +270,10 @@
   </div>
 </section>
 
-<!-- ===================== 9 · FAQ + FINAL CTA (dark) ===================== -->
+<!-- ===================== 8 · FAQ + FINAL CTA ===================== -->
 <section class="section" id="faq">
   <div class="container">
-    <h2 class="h2 center reveal" style="margin-bottom:2.6rem">Questions, answered.</h2>
+    <h2 class="h2 center reveal" style="margin-bottom:clamp(40px,5vw,56px)">Questions, answered.</h2>
     <div class="faq reveal">
       <details><summary>Do I need a finished product?</summary><p>No. A live app, a website, or a clear sentence about the idea all work.</p></details>
       <details><summary>How do you actually find the people who want it?</summary><p>We read public conversations and search behavior — X, Reddit, YouTube comments, niche communities — alongside search demand and competitor signals, and match them to what your product does.</p></details>
@@ -260,9 +283,9 @@
       <details><summary>Is my idea safe?</summary><p>We only use what you send to build your report. We don't share it.</p></details>
     </div>
 
-    <div class="center" style="margin-top:4rem">
-      <h2 class="h2 reveal">Stop guessing who your users are.</h2>
-      <div class="reveal" style="margin-top:1.8rem">
+    <div class="center" style="margin-top:clamp(56px,7vw,88px)">
+      <h2 class="display-xl reveal">Stop guessing who<br>your users are.</h2>
+      <div class="reveal" style="margin-top:2rem">
         <a href="#form" class="btn btn--primary btn--lg" data-scroll>Show me my users</a>
       </div>
     </div>
@@ -271,20 +294,20 @@
 
 </main>
 
-<!-- ===================== FOOTER (dark) ===================== -->
+<!-- ===================== FOOTER ===================== -->
 <footer class="footer">
   <div class="container">
     <div class="footer__top">
-      <div>
+      <div class="footer__brand">
         <img class="footer__logo" src="assets/img/sonar-logo-white.png" alt="Sonar">
-        <p class="muted" style="margin-top:1rem;max-width:30ch;font-size:.95rem">Find your users. We'll show you where they are and how to reach them.</p>
+        <p>Find your users. We'll show you where they are and how to reach them.</p>
       </div>
       <div class="footer__cols">
         <div class="footer__col">
           <h4>Product</h4>
           <a href="#what" data-scroll>What you get</a>
           <a href="#how" data-scroll>How it works</a>
-          <a href="#output" data-scroll>The report</a>
+          <a href="#why" data-scroll>Why Sonar</a>
         </div>
         <div class="footer__col">
           <h4>Company</h4>

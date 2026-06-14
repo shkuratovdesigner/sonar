@@ -1,11 +1,13 @@
 /* ============================================================
-   SONAR — prototype stylesheet
-   Foundation: Mercury (dark shell, section architecture, dark→light→dark)
-   Type + scroll feel: Daylight (ABC Arizona Flare + ABC Room, Lenis)
-   Accent: Sonar logo blue (#2BA7FF)
+   SONAR — stylesheet
+   Colors  : Mercury, exact values, all-dark shell (mercury.com)
+   Type    : Daylight, exact scale (ABC Arizona Flare + ABC Room),
+             recolored into Mercury's white tiers
+   Layout  : Mercury — container/rhythm/grids/cards/bento/lists
+   Accent  : Mercury indigo #5266eb (+ pink #fc92b4 secondary)
    ============================================================ */
 
-/* ---------- Fonts (real ABC files copied from the Daylight clone) ---------- */
+/* ---------- Fonts (real ABC files, from the Daylight clone) ---------- */
 @font-face{font-family:"ABC Arizona Flare";src:url("../assets/fonts/ABCArizonaFlare-Light.woff") format("woff");font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:"ABC Arizona Flare";src:url("../assets/fonts/ABCArizonaFlare-LightItalic.woff") format("woff");font-weight:300;font-style:italic;font-display:swap}
 @font-face{font-family:"ABC Arizona Flare";src:url("../assets/fonts/ABCArizonaFlare-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
@@ -16,43 +18,63 @@
 @font-face{font-family:"ABC Room";src:url("../assets/fonts/ABCRoom-Extrabold.woff") format("woff");font-weight:800;font-style:normal;font-display:swap}
 @font-face{font-family:"ABC Room Extended";src:url("../assets/fonts/ABCRoomExtended-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
 
-/* ---------- Tokens ---------- */
+/* ============================================================
+   Tokens
+   ============================================================ */
 :root{
-  /* type */
+  /* type families (Daylight) */
   --serif:"ABC Arizona Flare",Georgia,"Times New Roman",serif;
   --sans:"ABC Room",-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
   --ext:"ABC Room Extended","ABC Room",sans-serif;
 
-  /* accent (the logo blue) — constant across both bands */
-  --accent:#2ba7ff;
-  --accent-press:#0e8ff5;
-  --accent-ink:#0a6fcb;        /* small accent text on light */
-  --accent-soft:rgba(43,167,255,.12);
-  --accent-glow:rgba(43,167,255,.30);
+  /* ---- Mercury palette, exact values, dark shell ---- */
+  --page-bg:#171721;        /* surface-dark — body */
+  --page-bg-2:#272735;      /* surface-dark-2 */
+  --card:#1e1e2a;           /* card / ink */
+  --card-2:#21212e;         /* bento demo card */
+  --card-3:#2b2c3c;         /* inner mockup panel */
+  --ink-soft:#2b2b3a;       /* press-card hover */
 
-  /* fixed brand darks for the hero void */
-  --void:#0a0c12;
+  --fg:#ffffff;                       /* headings, primary */
+  --fg-strong:#ededf3;                /* Mercury foreground */
+  --fg-soft:rgba(255,255,255,.72);    /* body / lead  (Daylight ink/70-80) */
+  --fg-dim:rgba(255,255,255,.65);     /* secondary labels */
+  --fg-muted:rgba(255,255,255,.55);   /* captions / eyebrow (Daylight /55) */
+  --fg-faint:rgba(255,255,255,.40);   /* legal, footer titles (Mercury /40) */
 
-  /* THEMEABLE — defaults = DARK band (hero paints dark first, no flash).
-     main.js scrubs these dark→light→dark on scroll. */
-  --page-bg:#11131c;
-  --page-fg:#ffffff;
-  --page-fg-soft:rgba(255,255,255,.72);
-  --page-fg-muted:rgba(255,255,255,.52);
-  --card-bg:#1a1d28;
-  --card-line:rgba(255,255,255,.10);
-  --hairline:rgba(255,255,255,.10);
-  --eyebrow:#2ba7ff;
-  --shadow:0 1px 0 rgba(255,255,255,.04), 0 24px 60px -28px rgba(0,0,0,.7);
+  --line:rgba(237,237,243,.10);       /* hairline — Mercury white/10 */
+  --line-2:rgba(255,255,255,.15);
+  --line-3:rgba(255,255,255,.25);
 
+  --brand:#5266eb;
+  --brand-hover:#4354c8;
+  --brand-active:#3442a6;
+  --brand-fg:#ffffff;
+  --brand-soft:rgba(82,102,235,.14);
+  --brand-glow:rgba(82,102,235,.45);
+  --pink:#fc92b4;
+  --frost:rgba(112,115,147,.10);
+
+  /* radius — Mercury --radius .75rem scale */
+  --radius-sm:6px;
+  --radius:12px;       /* rounded-xl */
+  --radius-2xl:16px;   /* rounded-2xl */
+  --radius-3xl:24px;   /* rounded-3xl */
+  --radius-card:28px;  /* bento demo card */
+
+  /* layout — Mercury */
   --maxw:1200px;
-  --gutter:clamp(20px,5vw,40px);
-  --radius:16px;
-  --radius-sm:10px;
-  --radius-lg:22px;
+  --maxw-wide:1320px;
+  --maxw-narrow:1040px;
+  --gutter:clamp(24px,5vw,40px);   /* px-6 → px-10 */
+
+  --shadow-card:0 30px 60px -20px rgba(0,0,0,.6);
+  --shadow-float:0 40px 80px -30px rgba(0,0,0,.7);
 }
 
-/* ---------- Reset / base ---------- */
+/* ============================================================
+   Reset / base
+   ============================================================ */
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 html.lenis,html.lenis body{height:auto}
@@ -63,7 +85,7 @@ body{
   margin:0;
   font-family:var(--sans);
   font-weight:300;
-  color:var(--page-fg);
+  color:var(--fg-soft);
   background:var(--page-bg);
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
@@ -76,230 +98,329 @@ body{
 body::after{
   content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;
   background-image:url("../assets/img/noise.png");
-  background-size:260px;opacity:.025;mix-blend-mode:overlay;
+  background-size:260px;opacity:.022;mix-blend-mode:overlay;
 }
-img{max-width:100%;display:block}
+img,svg{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit}
-::selection{background:var(--accent);color:#04101b}
+::selection{background:var(--brand);color:#fff}
 
-/* ---------- Typography ---------- */
+/* ============================================================
+   Typography — Daylight scale, Mercury colors
+   ============================================================ */
 .eyebrow{
-  font-family:var(--ext);font-weight:400;font-size:.7rem;
-  text-transform:uppercase;letter-spacing:.2em;color:var(--eyebrow);
-  display:inline-block;margin:0 0 1.1rem;
+  font-family:var(--ext);font-weight:400;font-size:11px;
+  text-transform:uppercase;letter-spacing:.2em;color:var(--fg-muted);
+  display:inline-block;margin:0 0 1.15rem;
 }
-h1,h2,h3{font-family:var(--serif);font-weight:300;margin:0;text-wrap:balance}
-.h1{font-size:clamp(2.6rem,6.2vw,4.7rem);line-height:1.0;letter-spacing:-.035em}
-.h2{font-size:clamp(2rem,4.8vw,3.5rem);line-height:1.04;letter-spacing:-.03em}
-.h3{font-size:clamp(1.45rem,2.6vw,2.15rem);line-height:1.08;letter-spacing:-.02em}
-h1 em,h2 em,h3 em,.em{font-style:italic;font-weight:300}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:300;margin:0;color:var(--fg);text-wrap:balance}
+
+/* hero headline — Daylight hero (clamp 36→68), leading 1.02 */
+.h1{font-size:clamp(2.5rem,6.2vw,4.5rem);line-height:1.02;letter-spacing:-.03em}
+/* section display — Daylight manifesto/dark-h2 (leading ~1.0, tracking -.04) */
+.h2{font-size:clamp(2.25rem,5.2vw,3.75rem);line-height:1.0;letter-spacing:-.04em}
+/* feature subhead — Daylight feature h3 idiom, sized to fit */
+.h3{font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.06;letter-spacing:-.03em}
+/* closing display — Daylight OrderFooter (48→92), leading .97, tracking -.06 */
+.display-xl{font-size:clamp(3rem,6.4vw,5.5rem);line-height:.97;letter-spacing:-.06em}
+
+/* Daylight signature: italic serif emphasis inside light-weight headings */
+.h1 em,.h2 em,.h3 em,.display-xl em,.em{font-style:italic;font-weight:300}
+
+/* lead / intro — Daylight intro body */
 .lead{
   font-family:var(--sans);font-weight:300;
-  font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.5;
-  color:var(--page-fg-soft);text-wrap:pretty;margin:1.4rem 0 0;
+  font-size:clamp(1.1rem,1.5vw,1.35rem);line-height:1.5;
+  color:var(--fg-soft);text-wrap:pretty;margin:1.5rem 0 0;
 }
 p{margin:0 0 1rem;text-wrap:pretty}
-.muted{color:var(--page-fg-muted)}
+.muted{color:var(--fg-muted)}
 .tnum{font-variant-numeric:tabular-nums}
 
-/* ---------- Layout ---------- */
+/* ============================================================
+   Layout — Mercury
+   ============================================================ */
 .container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
-.section{position:relative;padding-block:clamp(84px,13vh,170px)}
-.section--tight{padding-block:clamp(60px,9vh,110px)}
+.container--wide{max-width:var(--maxw-wide)}
+.container--narrow{max-width:var(--maxw-narrow)}
+
+.section{position:relative;padding-block:clamp(80px,12vh,140px)}
+.section--tight{padding-block:clamp(56px,8vh,100px)}
+.section--lg{padding-block:clamp(112px,16vh,176px)}
+
 .center{text-align:center}
 .measure{max-width:680px}
 .measure-sm{max-width:560px}
-.center .measure,.center .measure-sm{margin-inline:auto}
-.stack-sm>*+*{margin-top:.6rem}
+.measure-lg{max-width:760px}
+.center .measure,.center .measure-sm,.center .measure-lg{margin-inline:auto}
 
-/* grids */
-.grid{display:grid;gap:clamp(16px,2vw,26px)}
-@media(min-width:720px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1000px){.g4{grid-template-columns:repeat(4,1fr)}}
+/* Mercury hairline above a section header: border-t + pt-6 */
+.rule-head{border-top:1px solid var(--line);padding-top:clamp(24px,3vw,40px)}
 
-/* ---------- Buttons ---------- */
+/* grids — Mercury gap-x-8 / gap-y-12 */
+.grid{display:grid;gap:clamp(32px,3vw,48px) clamp(24px,2.4vw,32px)}
+.heading-block + .grid,.heading-block + .grid-2,.heading-block + .steps{margin-top:clamp(40px,5vw,56px)}
+@media(min-width:760px){
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+}
+
+.heading-block{max-width:680px}
+.heading-block .lead{margin-top:1.25rem}
+
+/* ============================================================
+   Buttons — Mercury pill, Daylight label treatment
+   ============================================================ */
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
-  font-family:var(--sans);font-weight:500;font-size:1rem;letter-spacing:-.01em;
-  padding:.85em 1.5em;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+  height:44px;padding:0 22px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  font-family:var(--sans);font-weight:500;font-size:13px;letter-spacing:.05em;text-transform:uppercase;
+  white-space:nowrap;
   transition:transform .18s ease,background-color .2s ease,border-color .2s ease,box-shadow .25s ease;
   will-change:transform;
 }
 .btn:active{transform:scale(.96)}
-.btn--primary{
-  background:var(--accent);color:#04101b;
-  box-shadow:0 0 0 0 var(--accent-glow),0 10px 30px -10px var(--accent-glow);
-}
-.btn--primary:hover{background:var(--accent-press);box-shadow:0 0 36px -4px var(--accent-glow),0 10px 30px -8px var(--accent-glow)}
-.btn--ghost{background:transparent;color:var(--page-fg);border-color:var(--hairline)}
-.btn--ghost:hover{border-color:var(--page-fg-soft)}
+.btn--primary{background:var(--brand);color:var(--brand-fg)}
+.btn--primary:hover{background:var(--brand-hover)}
+.btn--ghost{background:rgba(255,255,255,.05);color:#fff;border-color:var(--line-3);backdrop-filter:blur(6px)}
+.btn--ghost:hover{background:rgba(255,255,255,.13)}
 .btn--block{width:100%}
-.btn--lg{font-size:1.05rem;padding:.95em 1.7em}
+.btn--lg{height:50px;padding:0 28px;font-size:14px}
 
-.microtrust{font-size:.82rem;color:var(--page-fg-muted);margin-top:.9rem}
-
-/* ---------- Nav ---------- */
-.nav{
-  position:fixed;top:0;left:0;width:100%;z-index:100;height:72px;
-  display:flex;align-items:center;
-  transition:background-color .35s ease,backdrop-filter .35s ease,border-color .35s ease;
-  border-bottom:1px solid transparent;
-}
-.nav.scrolled{background:rgba(12,14,20,.72);backdrop-filter:blur(14px);border-bottom-color:rgba(255,255,255,.08)}
-.nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
-.nav__logo{height:22px;width:auto;opacity:.96}
-.nav__links{display:none;gap:2rem;align-items:center}
-.nav__links a{font-size:.95rem;color:rgba(255,255,255,.75);transition:color .2s}
-.nav__links a:hover{color:#fff}
-.nav__cta{display:flex;align-items:center;gap:.75rem}
-@media(min-width:880px){.nav__links{display:flex}}
-.nav .btn{padding:.6em 1.15em;font-size:.92rem}
-.nav__login{display:none;font-size:.95rem;color:rgba(255,255,255,.8)}
-@media(min-width:560px){.nav__login{display:inline}}
+.microtrust{font-size:13px;color:var(--fg-muted);margin-top:1rem;letter-spacing:0;text-transform:none}
 
 /* ============================================================
-   HERO
+   Nav — Mercury (h-72, sticky, frost on scroll)
    ============================================================ */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--void)}
+.nav{
+  position:fixed;top:0;left:0;width:100%;z-index:100;height:72px;display:flex;align-items:center;
+  transition:background-color .3s ease,backdrop-filter .3s ease,border-color .3s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{background:rgba(23,23,33,.96);backdrop-filter:blur(10px);border-bottom-color:var(--line)}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+.nav__logo{height:30px;width:auto;opacity:.96}
+.nav__links{display:none;gap:1.75rem;align-items:center}
+.nav__links a{font-family:var(--sans);font-size:16px;font-weight:300;letter-spacing:-.02em;color:var(--fg-soft);transition:color .2s}
+.nav__links a:hover{color:#fff}
+.nav__cta{display:flex;align-items:center;gap:1rem}
+.nav__login{display:none;font-size:16px;font-weight:300;letter-spacing:-.02em;color:var(--fg-soft);transition:color .2s}
+.nav__login:hover{color:#fff}
+.nav .btn{height:38px;padding:0 18px}
+@media(min-width:560px){.nav__login{display:inline}}
+@media(min-width:1000px){.nav__links{display:flex}}
+
+/* ============================================================
+   HERO — Mercury (full-height, centered, bg visual, overlays)
+   ============================================================ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--page-bg)}
 .hero__stage{position:absolute;inset:0;z-index:0;will-change:transform;transform-origin:50% 42%}
-.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}      /* drop a generated <img> here later */
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}   /* drop a generated <img> here later */
 .hero__overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
    radial-gradient(120% 90% at 50% 30%,transparent 30%,rgba(8,10,16,.55) 78%,rgba(8,10,16,.92) 100%),
-   linear-gradient(to bottom,rgba(8,10,16,.55) 0%,transparent 26%,transparent 60%,rgba(8,10,16,.85) 100%);
+   linear-gradient(to bottom,rgba(8,10,16,.6) 0%,transparent 26%,transparent 58%,rgba(8,10,16,.9) 100%);
 }
 .hero__content{position:relative;z-index:2;width:100%}
-.hero__content .container{max-width:980px}
+.hero__content .container{max-width:980px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .hero .h1{margin-top:.4rem}
-.hero .lead{margin-inline:auto;max-width:600px}
-.hero__cta{margin-top:2rem;display:flex;flex-direction:column;align-items:center;gap:.2rem}
+.hero .lead{max-width:560px}
+
+/* inline email pill — Mercury hero form */
+.hero__form{margin-top:2.2rem;width:100%;max-width:460px;display:flex;gap:.5rem;
+  padding:6px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.hero__form input{flex:1;min-width:0;height:44px;background:transparent;border:0;color:#fff;
+  padding:0 .4rem 0 1.1rem;font-family:var(--sans);font-size:15px}
+.hero__form input::placeholder{color:rgba(255,255,255,.65)}
+.hero__form input:focus{outline:none}
+.hero__form .btn{flex-shrink:0}
+.hero__cta{margin-top:1.9rem;display:flex;flex-direction:column;align-items:center;gap:.2rem}
+
+/* fine-print panel pinned to the hero floor — Mercury.
+   Centered without transform so the reveal-hero / GSAP translateY can't break it. */
+.hero__fineprint{position:absolute;left:0;right:0;bottom:clamp(16px,4vh,28px);z-index:3;
+  margin-inline:auto;width:fit-content;max-width:min(1060px,92vw);text-align:center;
+  border-radius:12px;background:rgba(23,23,33,.55);backdrop-filter:blur(8px);
+  padding:.7rem 1.2rem;font-size:13px;line-height:1.4;color:var(--fg-soft)}
 
 /* SVG sonar placeholder scene (swap for a generated raster anytime) */
 .sonar{position:absolute;inset:0;width:100%;height:100%}
 .sonar__sweep{
-  position:absolute;left:50%;top:42%;width:160vmax;height:160vmax;transform:translate(-50%,-50%);
-  border-radius:50%;
-  background:conic-gradient(from 0deg,rgba(43,167,255,.22),transparent 22%,transparent 100%);
-  -webkit-mask:radial-gradient(closest-side,transparent 0,#000 0);
+  position:absolute;left:50%;top:42%;width:160vmax;height:160vmax;transform:translate(-50%,-50%);border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(82,102,235,.22),transparent 22%,transparent 100%);
   animation:sweep 7s linear infinite;opacity:.8;
 }
 @keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
 
-/* hero intro states (only when JS is on; GSAP animates to final) */
+/* hero intro states (JS on; GSAP animates to final) */
 html.js .hero__stage{transform:scale(1.12)}
 html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 
 /* ============================================================
-   Shared section pieces
+   BENTO — Mercury EverythingBento (heading + accordion / demo card)
    ============================================================ */
-.card{
-  background:var(--card-bg);border:1px solid var(--card-line);border-radius:var(--radius);
-  padding:clamp(20px,2.4vw,30px);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
-}
-.card--hover:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.card__num{font-family:var(--ext);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--page-fg-muted);display:block;margin-bottom:1rem}
-.card__title{font-family:var(--sans);font-weight:500;font-size:1.1rem;margin:0 0 .4rem;letter-spacing:-.01em}
-.card p{color:var(--page-fg-soft);margin:0;font-size:.98rem}
-.tag{font-family:var(--ext);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.7rem}
+.bento{display:grid;gap:clamp(40px,5vw,64px);grid-template-columns:1fr;align-items:center}
+@media(min-width:1000px){.bento{grid-template-columns:minmax(0,440px) 1fr;gap:clamp(48px,5vw,72px)}}
+.bento__head{max-width:460px}
+
+/* accordion (interactive) */
+.accordion{margin-top:clamp(28px,3vw,48px)}
+.acc{border-top:1px solid var(--line)}
+.acc__btn{width:100%;display:flex;align-items:flex-start;gap:.85rem;padding:18px 0;
+  background:none;border:0;cursor:pointer;text-align:left;color:var(--fg)}
+.acc__dot{flex-shrink:0;width:7px;height:7px;border-radius:50%;margin-top:.55rem;background:var(--line-3);transition:background .25s}
+.acc.is-open .acc__dot{background:var(--brand)}
+.acc__title{flex:1;font-family:var(--sans);font-weight:500;font-size:1.0625rem;letter-spacing:-.01em;color:var(--fg)}
+.acc__body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s ease}
+.acc.is-open .acc__body{grid-template-rows:1fr}
+.acc__inner{overflow:hidden}
+.acc__inner p{margin:0 0 18px;padding-left:calc(7px + .85rem);font-size:.95rem;color:var(--fg-soft)}
+.bento__link{display:inline-block;margin-top:1.6rem;font-size:15px;font-weight:500;color:var(--fg);
+  text-decoration:underline;text-decoration-color:var(--line-3);text-underline-offset:5px;transition:text-decoration-color .2s}
+.bento__link:hover{text-decoration-color:var(--brand)}
+
+/* floating demo card holder */
+.demo{position:relative}
+.demo__peek{position:absolute;inset:auto -4% -22px 8%;height:60px;border-radius:var(--radius-2xl);
+  background:var(--card);border:1px solid var(--line);opacity:.5;z-index:0}
+.demo__card{position:relative;z-index:1;background:var(--card-2);border:1px solid var(--line);
+  border-radius:var(--radius-card);padding:clamp(20px,2.5vw,30px);box-shadow:var(--shadow-float)}
+
+/* ============================================================
+   STEPS — Mercury GetStarted (2-col: list + visual)
+   ============================================================ */
+.split{display:grid;gap:clamp(40px,5vw,72px);grid-template-columns:1fr;align-items:center}
+@media(min-width:1000px){.split{grid-template-columns:1fr 1.06fr}.split--rev .split__visual{order:-1}}
+.steps{counter-reset:step;margin-top:clamp(28px,3vw,40px)}
+.step{position:relative;border-top:1px solid var(--line);padding:20px 0 20px 2.6rem}
+.step::before{counter-increment:step;content:"0" counter(step);position:absolute;left:0;top:22px;
+  font-family:var(--ext);font-size:11px;letter-spacing:.14em;color:var(--brand)}
+.step h3{font-family:var(--sans);font-weight:500;font-size:1.0625rem;letter-spacing:-.01em;color:var(--fg);margin-bottom:.35rem}
+.step p{margin:0;font-size:.95rem;color:var(--fg-soft)}
+
+/* code-built visual frame (aspect 4/5) */
+.visual{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--radius-3xl);overflow:hidden;
+  background:linear-gradient(160deg,var(--card-2),var(--page-bg-2));border:1px solid var(--line);box-shadow:var(--shadow-card)}
+.visual__inner{position:absolute;inset:clamp(20px,3vw,34px);display:flex;flex-direction:column;gap:14px}
+.vbar{display:flex;align-items:center;gap:.6rem;background:var(--card-3);border:1px solid var(--line);border-radius:10px;padding:.7rem .85rem;font-size:.85rem;color:var(--fg-soft)}
+.vbar .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px var(--brand-glow)}
+.vline{height:1px;background:var(--line)}
+.vchip{display:inline-flex;align-items:center;gap:.45rem;align-self:flex-start;background:var(--brand-soft);
+  border:1px solid color-mix(in srgb,var(--brand) 35%,transparent);border-radius:999px;padding:.3rem .8rem;font-size:.78rem;color:#cdd4ff}
+.vrows{margin-top:auto;display:flex;flex-direction:column;gap:.5rem}
+.vrow{display:flex;justify-content:space-between;font-size:.82rem;color:var(--fg-soft)}
+.vrow b{font-family:var(--serif);font-weight:300;color:#fff}
+
+/* ============================================================
+   CARDS / blocks — Mercury
+   ============================================================ */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-2xl);
+  padding:clamp(22px,2.6vw,32px);transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.card--hover:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
+.card .tag{font-family:var(--ext);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-muted);display:block;margin-bottom:.85rem}
+.card__title{font-family:var(--sans);font-weight:500;font-size:1.125rem;letter-spacing:-.01em;color:var(--fg);margin:0 0 .45rem}
+.card p{color:var(--fg-soft);margin:0;font-size:.98rem}
 
 /* icon chip */
-.chip{
-  width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:1.1rem;
-  background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
-}
-.chip svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.6}
+.chip{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:1.2rem;
+  background:var(--brand-soft);border:1px solid color-mix(in srgb,var(--brand) 32%,transparent)}
+.chip svg{width:22px;height:22px;stroke:#aeb8ff;fill:none;stroke-width:1.6}
 
-/* steps */
-.steps{counter-reset:step}
-.step{position:relative;padding-top:1.6rem}
-.step::before{
-  counter-increment:step;content:"0" counter(step);
-  font-family:var(--ext);font-size:.72rem;letter-spacing:.16em;color:var(--accent);
-  position:absolute;top:0;left:0;
-}
-.step__line{height:1px;background:var(--hairline);margin-bottom:1.4rem}
-.step h3{margin-bottom:.4rem}
-
-/* comparison */
-.vs{border:1px solid var(--card-line);border-radius:var(--radius);overflow:hidden;background:var(--card-bg)}
-.vs__row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 1.4rem;border-bottom:1px solid var(--card-line);font-size:1.02rem}
+/* ============================================================
+   COMPARISON — "vs" table card
+   ============================================================ */
+.vs{border:1px solid var(--line);border-radius:var(--radius-2xl);overflow:hidden;background:var(--card)}
+.vs__row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 1.4rem;border-bottom:1px solid var(--line);font-size:1.02rem;color:var(--fg-strong)}
 .vs__row:last-child{border-bottom:none}
-.vs__row .tail{color:var(--page-fg-muted);font-family:var(--ext);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
-.vs__row--win{background:var(--accent-soft)}
-.vs__row--win .label{font-weight:500}
-.vs__row--win .tail{color:var(--accent)}
-.vs__row--win .label::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:.6rem;box-shadow:0 0 12px var(--accent-glow)}
-.note{margin-top:1.4rem;border:1px solid var(--card-line);border-left:2px solid var(--accent);border-radius:var(--radius-sm);padding:1.1rem 1.3rem;background:var(--card-bg);color:var(--page-fg-soft);font-size:1rem}
+.vs__row .tail{color:var(--fg-muted);font-family:var(--ext);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.vs__row--win{background:var(--brand-soft)}
+.vs__row--win .label{font-weight:500;color:#fff}
+.vs__row--win .tail{color:#aeb8ff}
+.vs__row--win .label::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--brand);margin-right:.6rem;box-shadow:0 0 12px var(--brand-glow)}
+.note{margin-top:1.5rem;border:1px solid var(--line);border-left:2px solid var(--brand);border-radius:var(--radius-sm);
+  padding:1.1rem 1.3rem;background:var(--card);color:var(--fg-soft);font-size:1rem}
+.note b{color:var(--fg)}
 
-/* ---------- The Demand Report mockup ---------- */
-.report{border:1px solid var(--card-line);border-radius:var(--radius);overflow:hidden;background:var(--card-bg);box-shadow:var(--shadow)}
-.report__head{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.3rem;background:linear-gradient(90deg,var(--accent),#0e7fe0);color:#04101b}
-.report__head b{font-family:var(--ext);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:400}
-.report__head .ill{font-size:.72rem;opacity:.75;font-family:var(--ext);letter-spacing:.1em;text-transform:uppercase}
-.report__row{display:grid;grid-template-columns:130px 1fr;gap:1rem;padding:1.05rem 1.3rem;border-bottom:1px solid var(--card-line)}
+/* ============================================================
+   Demand Report mockup (inside bento demo card)
+   ============================================================ */
+.report{border:1px solid var(--line);border-radius:var(--radius-2xl);overflow:hidden;background:var(--card)}
+.report__head{display:flex;justify-content:space-between;align-items:center;padding:.95rem 1.3rem;
+  background:linear-gradient(90deg,var(--brand),var(--brand-active));color:#fff}
+.report__head b{font-family:var(--ext);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:400}
+.report__head .ill{font-family:var(--ext);font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+.report__row{display:grid;grid-template-columns:130px 1fr;gap:1rem;padding:1rem 1.3rem;border-bottom:1px solid var(--line)}
 .report__row:last-child{border-bottom:none}
-.report__lab{font-family:var(--ext);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--page-fg-muted);padding-top:.2rem}
-.report__val{font-size:1rem;color:var(--page-fg)}
-.pill{display:inline-block;font-family:var(--ext);font-size:.7rem;letter-spacing:.06em;padding:.18em .7em;border-radius:999px;background:var(--accent);color:#04101b;margin-right:.5rem;text-transform:uppercase}
+.report__lab{font-family:var(--ext);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);padding-top:.2rem}
+.report__val{font-size:.95rem;color:var(--fg-strong)}
+.pill{display:inline-block;font-family:var(--ext);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  padding:.2em .7em;border-radius:999px;background:var(--brand);color:#fff;margin-right:.5rem}
 @media(max-width:560px){.report__row{grid-template-columns:1fr;gap:.35rem}}
 
-/* ---------- Form ---------- */
-.form{max-width:520px;margin:2rem auto 0;text-align:left}
+/* ============================================================
+   Founder quote — Mercury TestimonialLinear (centered)
+   ============================================================ */
+.founder{max-width:760px;margin:clamp(48px,7vw,80px) auto 0;text-align:center}
+.founder blockquote{margin:0;font-family:var(--serif);font-weight:300;font-style:italic;
+  font-size:clamp(1.5rem,2.6vw,1.9rem);line-height:1.28;letter-spacing:-.02em;color:var(--fg-strong);text-wrap:balance}
+.founder figcaption{margin-top:1.6rem;font-family:var(--ext);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-muted)}
+
+/* ============================================================
+   FORM — inside FinalCta atmosphere
+   ============================================================ */
+.atmos{position:relative;overflow:hidden}
+.atmos::before,.atmos::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.atmos::before{width:560px;height:560px;left:50%;top:-160px;transform:translateX(-50%);background:var(--brand);opacity:.18}
+.atmos::after{width:420px;height:420px;right:-120px;bottom:-120px;background:var(--pink);opacity:.10}
+.atmos .container{position:relative;z-index:1}
+
+.form{max-width:520px;margin:2.2rem auto 0;text-align:left}
 .field{margin-bottom:1.1rem}
-.field label{display:block;font-size:.9rem;font-weight:400;margin-bottom:.45rem;color:var(--page-fg)}
-.field .opt{font-family:var(--ext);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--page-fg-muted);margin-left:.4rem}
-.field .req{color:var(--accent)}
-.input{
-  width:100%;font-family:var(--sans);font-size:1rem;color:var(--page-fg);
-  background:rgba(255,255,255,.04);border:1px solid var(--card-line);border-radius:var(--radius-sm);
-  padding:.85rem 1rem;transition:border-color .2s,box-shadow .2s;
-}
-.input::placeholder{color:var(--page-fg-muted)}
-.input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
-textarea.input{min-height:90px;resize:vertical}
+.field label{display:block;font-size:.9rem;font-weight:400;margin-bottom:.45rem;color:var(--fg-strong)}
+.field .opt{font-family:var(--ext);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);margin-left:.4rem}
+.field .req{color:var(--brand)}
+.input{width:100%;font-family:var(--sans);font-size:1rem;color:#fff;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;
+  padding:.85rem 1rem;transition:border-color .2s,box-shadow .2s}
+.input::placeholder{color:var(--fg-muted)}
+.input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
+textarea.input{min-height:92px;resize:vertical}
 
-/* ---------- FAQ ---------- */
+/* ============================================================
+   FAQ — Mercury accordion (native details)
+   ============================================================ */
 .faq{max-width:760px;margin-inline:auto}
-.faq details{border-bottom:1px solid var(--hairline);padding:1.15rem 0}
-.faq summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;list-style:none;font-size:1.1rem;font-weight:400}
+.faq details{border-bottom:1px solid var(--line);padding:1.2rem 0}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;list-style:none;
+  font-family:var(--sans);font-size:1.1rem;font-weight:400;color:var(--fg)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font-family:var(--sans);font-size:1.4rem;color:var(--accent);transition:transform .25s;line-height:1}
+.faq summary::after{content:"+";font-family:var(--sans);font-size:1.4rem;line-height:1;color:var(--brand);transition:transform .25s}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{margin:.9rem 0 0;color:var(--page-fg-soft);max-width:64ch}
+.faq details p{margin:.9rem 0 0;color:var(--fg-soft);max-width:64ch}
 
-/* ---------- Founder note ---------- */
-.founder{margin-top:1.6rem;border:1px solid var(--card-line);border-radius:var(--radius);padding:1.4rem 1.5rem;background:var(--card-bg);color:var(--page-fg-soft);font-style:italic;font-family:var(--serif);font-size:1.15rem;line-height:1.5}
+/* ============================================================
+   Footer — Mercury (4-col)
+   ============================================================ */
+.footer{background:var(--page-bg);padding:clamp(60px,8vh,96px) 0 56px}
+.footer__top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2.5rem;align-items:flex-start;
+  border-top:1px solid var(--line);padding-top:clamp(40px,5vw,64px)}
+.footer__logo{height:34px;opacity:.92}
+.footer__brand p{margin-top:1rem;max-width:30ch;font-size:.95rem;color:var(--fg-muted)}
+.footer__cols{display:flex;flex-wrap:wrap;gap:2.5rem 3rem}
+.footer__col h4{font-family:var(--ext);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-faint);margin:0 0 1rem;font-weight:400}
+.footer__col a{display:block;font-size:15px;color:var(--fg-soft);margin-bottom:.6rem;transition:color .2s}
+.footer__col a:hover{color:#fff}
+.footer__legal{margin-top:clamp(48px,6vw,72px);border-top:1px solid var(--line);padding-top:2rem;
+  font-size:12px;line-height:1.6;color:var(--fg-faint);max-width:80ch}
 
-/* ---------- Footer ---------- */
-.footer{padding:clamp(60px,8vh,110px) 0 60px}
-.footer__top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;align-items:start;border-top:1px solid var(--hairline);padding-top:3rem}
-.footer__logo{height:24px;opacity:.9}
-.footer__cols{display:flex;flex-wrap:wrap;gap:3rem}
-.footer__col h4{font-family:var(--ext);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--page-fg-muted);margin:0 0 .9rem;font-weight:400}
-.footer__col a{display:block;font-size:.95rem;color:var(--page-fg-soft);margin-bottom:.55rem;transition:color .2s}
-.footer__col a:hover{color:var(--page-fg)}
-.footer__legal{margin-top:3rem;font-size:.8rem;color:var(--page-fg-muted);max-width:70ch}
-
-/* ---------- Reveal (GSAP batch adds .is-in) — only hidden when JS is on ----------
-   Note: the .is-in rule is scoped under html.js so it out-specifies the hiding rule. */
+/* ============================================================
+   Reveal on scroll (GSAP adds .is-in) — only hidden when JS on
+   ============================================================ */
 html.js .reveal{opacity:0;transform:translateY(26px);will-change:opacity,transform}
 html.js .reveal.is-in{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
 
-/* glow accent backdrop helper */
-.glow{position:absolute;border-radius:50%;filter:blur(90px);background:var(--accent);opacity:.16;pointer-events:none;z-index:0}
-
-/* divider rule above split-headline sections */
-.rule{height:1px;background:var(--hairline);margin-bottom:2.6rem}
-
-/* big stat row */
-.stats{display:flex;flex-wrap:wrap;gap:clamp(24px,5vw,72px);justify-content:center}
-.stat{text-align:center}
-.stat b{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,2.9rem);line-height:1;letter-spacing:-.02em;color:var(--accent)}
-.stat span{font-size:.85rem;color:var(--page-fg-muted);margin-top:.5rem;display:block}
-
 @media(prefers-reduced-motion:reduce){
-  .reveal{opacity:1!important;transform:none!important}
+  .reveal,.reveal-hero{opacity:1!important;transform:none!important}
   .sonar__sweep{animation:none}
   *{scroll-behavior:auto!important}
 }

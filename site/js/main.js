@@ -1,8 +1,8 @@
 /* ============================================================
    SONAR — motion
    Lenis smooth scroll (Daylight) + GSAP ScrollTrigger:
-   hero zoom (intro + scroll-scrub), dark→light→dark theme scrub,
-   reveal-on-scroll, nav frost.
+   hero zoom (intro + scroll-scrub), reveal-on-scroll, nav frost,
+   bento accordion. (All-dark — no theme scrubbing.)
    ============================================================ */
 (function () {
   "use strict";
@@ -11,42 +11,26 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var nav = document.getElementById("nav");
 
+  /* ---------- Bento accordion (works with or without GSAP) ---------- */
+  document.querySelectorAll("[data-accordion]").forEach(function (group) {
+    var items = group.querySelectorAll(".acc");
+    items.forEach(function (item) {
+      var btn = item.querySelector(".acc__btn");
+      if (!btn) return;
+      btn.addEventListener("click", function () {
+        var open = item.classList.contains("is-open");
+        items.forEach(function (i) { i.classList.remove("is-open"); });
+        if (!open) item.classList.add("is-open");
+      });
+    });
+  });
+
   // If GSAP failed to load, un-hide everything and bail to native scroll.
   if (!window.gsap) {
     root.classList.remove("js");
     return;
   }
   gsap.registerPlugin(ScrollTrigger);
-
-  /* ---------- Themeable vars scrubbed dark → light → dark ---------- */
-  var DARK = {
-    "--page-bg":[17,19,28,1], "--page-fg":[255,255,255,1],
-    "--page-fg-soft":[255,255,255,.72], "--page-fg-muted":[255,255,255,.52],
-    "--card-bg":[26,29,40,1], "--card-line":[255,255,255,.10],
-    "--hairline":[255,255,255,.10], "--eyebrow":[43,167,255,1]
-  };
-  var LIGHT = {
-    "--page-bg":[251,252,253,1], "--page-fg":[21,22,29,1],
-    "--page-fg-soft":[21,22,29,.74], "--page-fg-muted":[112,112,125,1],
-    "--card-bg":[255,255,255,1], "--card-line":[21,22,29,.10],
-    "--hairline":[21,22,29,.10], "--eyebrow":[10,111,203,1]
-  };
-  var DARK_SHADOW  = "0 1px 0 rgba(255,255,255,.04),0 24px 60px -28px rgba(0,0,0,.7)";
-  var LIGHT_SHADOW = "0 1px 2px rgba(21,22,29,.05),0 22px 50px -30px rgba(21,22,29,.28)";
-
-  function mix(a, b, t) {
-    return "rgba(" +
-      Math.round(a[0] + (b[0] - a[0]) * t) + "," +
-      Math.round(a[1] + (b[1] - a[1]) * t) + "," +
-      Math.round(a[2] + (b[2] - a[2]) * t) + "," +
-      (a[3] + (b[3] - a[3]) * t).toFixed(3) + ")";
-  }
-  function setTheme(from, to, t) {
-    var s = root.style;
-    for (var k in from) s.setProperty(k, mix(from[k], to[k], t));
-    s.setProperty("--shadow", t < 0.5 ? DARK_SHADOW : LIGHT_SHADOW);
-  }
-  setTheme(DARK, LIGHT, 0); // ensure correct dark start
 
   /* ---------- Lenis smooth scroll (Daylight config) ---------- */
   var lenis = null;
@@ -58,16 +42,29 @@
     gsap.ticker.lagSmoothing(0);
   }
 
+  function scrollToTarget(target) {
+    if (!target) return;
+    if (lenis) lenis.scrollTo(target, { offset: -72, duration: 1.2 });
+    else target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+  }
+
   // anchor links → smooth scroll with nav offset
-  document.querySelectorAll('[data-scroll]').forEach(function (a) {
+  document.querySelectorAll("[data-scroll]").forEach(function (a) {
     a.addEventListener("click", function (e) {
       var id = a.getAttribute("href");
       if (!id || id.charAt(0) !== "#") return;
       var target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-      if (lenis) lenis.scrollTo(target, { offset: -72, duration: 1.2 });
-      else target.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
+      scrollToTarget(target);
+    });
+  });
+
+  // hero inline form → scroll to the full form
+  document.querySelectorAll("[data-scroll-to]").forEach(function (b) {
+    b.addEventListener("click", function (e) {
+      e.preventDefault();
+      scrollToTarget(document.querySelector(b.getAttribute("data-scroll-to")));
     });
   });
 
@@ -102,18 +99,6 @@
   gsap.to(".hero__content", {
     y: -50, opacity: 0, ease: "none",
     scrollTrigger: { trigger: ".hero", start: "top top", end: "+=50%", scrub: true }
-  });
-
-  /* ---------- dark → light → dark seams ---------- */
-  // seam 1: entering "What you get" — dark → light
-  ScrollTrigger.create({
-    trigger: "#what", start: "top 92%", end: "top 38%", scrub: true,
-    onUpdate: function (self) { setTheme(DARK, LIGHT, self.progress); }
-  });
-  // seam 2: entering "The form" — light → dark
-  ScrollTrigger.create({
-    trigger: "#form", start: "top 88%", end: "top 32%", scrub: true,
-    onUpdate: function (self) { setTheme(LIGHT, DARK, self.progress); }
   });
 
   /* ---------- Reveal on scroll (batched, CSS-driven) ---------- */
