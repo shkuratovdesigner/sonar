@@ -88,8 +88,6 @@
       <p class="microtrust reveal-hero">No credit card · Report sent straight to your inbox</p>
     </div>
   </div>
-
-  <p class="hero__fineprint reveal-hero">Pre-launch — we onboard founders in small batches and read every submission ourselves. Report figures shown on this page are illustrative.</p>
 </section>
 
 <main>
@@ -112,33 +110,39 @@
   </div>
 </section>
 
-<!-- ===================== 3 · WHAT YOU GET + REPORT (bento) ===================== -->
-<section class="section" id="what">
-  <div class="container container--wide">
-    <div class="bento">
-      <div class="bento__head reveal">
-        <span class="eyebrow">What you get</span>
-        <h2 class="h2">Three answers, pulled from your real market. <em>Not an opinion.</em></h2>
-        <div class="accordion" data-accordion>
-          <div class="acc is-open">
-            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Is the demand real?</span></button>
-            <div class="acc__body"><div class="acc__inner"><p>Proof in live numbers — search volume, active communities, and competitor momentum. A clear verdict, not a vibe.</p></div></div>
-          </div>
-          <div class="acc">
-            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Who wants it?</span></button>
-            <div class="acc__body"><div class="acc__inner"><p>The exact people who described wanting it, with links to their posts so you can read the context and message them today.</p></div></div>
-          </div>
-          <div class="acc">
-            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Where are more?</span></button>
-            <div class="acc__body"><div class="acc__inner"><p>The channels and communities where more of them gather — ranked by where you'll actually win, with the first moves to make.</p></div></div>
-          </div>
+<!-- ===================== 3 · WHAT YOU GET + REPORT (Mercury showcase) ===================== -->
+<section class="section showcase" id="what">
+  <div class="container container--wide showcase__grid">
+    <!-- Left: copy + accordion -->
+    <div class="showcase__text reveal">
+      <span class="eyebrow">What you get</span>
+      <h2 class="h2">Three answers, pulled from your real market. <em>Not an opinion.</em></h2>
+      <div class="accordion" data-accordion>
+        <div class="acc is-open">
+          <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Is the demand real?</span></button>
+          <div class="acc__body"><div class="acc__inner"><p>Proof in live numbers — search volume, active communities, and competitor momentum. A clear verdict, not a vibe.</p></div></div>
         </div>
-        <a href="#form" class="bento__link" data-scroll>Get your report →</a>
+        <div class="acc">
+          <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Who wants it?</span></button>
+          <div class="acc__body"><div class="acc__inner"><p>The exact people who described wanting it, with links to their posts so you can read the context and message them today.</p></div></div>
+        </div>
+        <div class="acc">
+          <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Where are more?</span></button>
+          <div class="acc__body"><div class="acc__inner"><p>The channels and communities where more of them gather — ranked by where you'll actually win, with the first moves to make.</p></div></div>
+        </div>
       </div>
+      <a href="#form" class="bento__link" data-scroll>Get your report →</a>
+    </div>
 
-      <div class="demo reveal">
-        <div class="demo__peek"></div>
-        <div class="demo__card">
+    <!-- Right: 50%-screen media that bleeds to the right viewport edge with a blurred right edge.
+         SWAP LATER → drop the product video in and delete the .report block below:
+         <video class="showcase__video" autoplay muted loop playsinline
+                poster="assets/img/report-poster.jpg">
+           <source src="assets/video/report.mp4" type="video/mp4">
+         </video> -->
+    <div class="showcase__media reveal">
+      <div class="showcase__panel">
+        <div class="showcase__screen">
           <div class="report">
             <div class="report__head"><b>Your demand report</b><span class="ill">Illustrative</span></div>
             <div class="report__row"><span class="report__lab">Demand verdict</span><span class="report__val"><span class="pill">Real</span>Search demand up <span class="tnum">34%</span> in 6 months, active in 4 communities</span></div>
@@ -149,6 +153,7 @@
             <div class="report__row"><span class="report__lab">Do this first</span><span class="report__val">3 concrete moves to reach them this week</span></div>
           </div>
         </div>
+        <span class="showcase__edge" aria-hidden="true"></span>
       </div>
     </div>
   </div>
