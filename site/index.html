@@ -22,7 +22,7 @@
       <a href="#faq" data-scroll>FAQ</a>
     </nav>
     <div class="nav__cta">
-      <a href="#form" class="btn btn--primary" data-scroll>Show me my users</a>
+      <a href="#form" class="btn btn--primary" data-scroll>Get more users</a>
     </div>
   </div>
 </header>
@@ -30,60 +30,20 @@
 <!-- ===================== 1 · HERO ===================== -->
 <section class="hero" id="hero">
   <div class="hero__stage">
-    <!-- SWAP LATER: replace this SVG with <img class="hero__img" src="assets/img/hero.jpg" alt=""> -->
-    <svg class="sonar" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <radialGradient id="vig" cx="50%" cy="42%" r="62%">
-          <stop offset="0%" stop-color="#1e1f30"/>
-          <stop offset="55%" stop-color="#1a1b27"/>
-          <stop offset="100%" stop-color="#171721"/>
-        </radialGradient>
-        <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
-        <radialGradient id="dot" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#b3c0ff"/><stop offset="100%" stop-color="#5266eb"/>
-        </radialGradient>
-      </defs>
-      <rect width="1000" height="600" fill="url(#vig)"/>
-      <!-- concentric sonar rings -->
-      <g fill="none" stroke="#5266eb" stroke-opacity=".18">
-        <circle cx="500" cy="252" r="90"/><circle cx="500" cy="252" r="170"/>
-        <circle cx="500" cy="252" r="255" stroke-opacity=".13"/><circle cx="500" cy="252" r="350" stroke-opacity=".09"/>
-        <circle cx="500" cy="252" r="450" stroke-opacity=".05"/>
-      </g>
-      <!-- faint lat/long graticule -->
-      <g stroke="#5266eb" stroke-opacity=".06">
-        <path d="M120 252h760M180 160h640M180 344h640M500 40v430" fill="none"/>
-      </g>
-      <!-- user dots -->
-      <g fill="#5266eb" fill-opacity=".75">
-        <circle cx="360" cy="190" r="3"/><circle cx="612" cy="150" r="2.5"/><circle cx="430" cy="300" r="2.5"/>
-        <circle cx="560" cy="330" r="3"/><circle cx="300" cy="280" r="2"/><circle cx="700" cy="250" r="2.5"/>
-        <circle cx="660" cy="360" r="2"/><circle cx="380" cy="380" r="2.5"/><circle cx="520" cy="210" r="2"/>
-        <circle cx="250" cy="220" r="2"/><circle cx="760" cy="200" r="2"/><circle cx="470" cy="160" r="2"/>
-        <circle cx="600" cy="430" r="2"/><circle cx="410" cy="430" r="2"/>
-      </g>
-      <!-- warm leads (bright, glowing) -->
-      <g>
-        <circle cx="455" cy="248" r="13" fill="#5266eb" fill-opacity=".20" filter="url(#soft)"/>
-        <circle cx="455" cy="248" r="5" fill="url(#dot)"/>
-        <circle cx="585" cy="285" r="12" fill="#5266eb" fill-opacity=".20" filter="url(#soft)"/>
-        <circle cx="585" cy="285" r="4.5" fill="url(#dot)"/>
-        <circle cx="520" cy="360" r="11" fill="#fc92b4" fill-opacity=".18" filter="url(#soft)"/>
-        <circle cx="520" cy="360" r="4" fill="#fc92b4"/>
-      </g>
-    </svg>
-    <div class="sonar__sweep"></div>
+    <!-- Canvas sonar: a rotating beam reveals blips only where the light passes,
+         and the text zone is kept clear. SWAP LATER: replace the canvas with
+         <img class="hero__img" src="assets/img/hero.jpg" alt=""> -->
+    <canvas class="sonar-canvas" aria-hidden="true"></canvas>
   </div>
   <div class="hero__overlay"></div>
 
   <div class="hero__content">
     <div class="container">
       <span class="eyebrow reveal-hero">Demand &amp; distribution agent for founders</span>
-      <h1 class="h1 reveal-hero">Find your <em>users</em>.<br>We'll show you where<br>they are.</h1>
-      <p class="lead reveal-hero">Sonar reads your live market and hands you the people who already want it — real profiles you can message today, plus where to reach more. Data, not guesses.</p>
+      <h1 class="h1 reveal-hero">Find your first paying users today. <em>We'll show you where they are and how to reach them.</em></h1>
       <form class="hero__form reveal-hero" onsubmit="return false" aria-label="Get your demand report">
         <input type="email" name="email" autocomplete="email" placeholder="Your email" aria-label="Your email">
-        <button class="btn btn--primary" type="submit" data-scroll-to="#form">Show me my users</button>
+        <button class="btn btn--primary" type="submit" data-scroll-to="#form">Get more users</button>
       </form>
       <p class="microtrust reveal-hero">No credit card · Report sent straight to your inbox</p>
     </div>
@@ -159,66 +119,108 @@
   </div>
 </section>
 
-<!-- ===================== 4 · HOW IT WORKS (split) ===================== -->
+<!-- ===================== 4 · HOW IT WORKS (feature cards) ===================== -->
 <section class="section" id="how">
   <div class="container">
-    <div class="split">
-      <div class="reveal">
-        <span class="eyebrow">How it works</span>
-        <h2 class="h2">Drop a link. <em>Get a market.</em></h2>
-        <div class="steps">
-          <div class="step">
-            <h3>You drop your link.</h3>
-            <p>A website, an app, or one clear sentence about the idea. That's all we need to start.</p>
-          </div>
-          <div class="step">
-            <h3>Sonar reads your live market.</h3>
-            <p>We scan public conversations, search behavior and competitor signals — fresh, not last year's.</p>
-          </div>
-          <div class="step">
-            <h3>You get real users + a plan.</h3>
-            <p>Named people you can message, and the concrete moves to reach more this week.</p>
-          </div>
+    <div class="heading-block reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 class="h2">Drop a link. <em>Get a market.</em></h2>
+    </div>
+
+    <div class="grid g3 market reveal">
+      <!-- Each card: a media area (color placeholder now) + title + text.
+           SWAP LATER → replace the .market-card__media div with:
+           <img class="market-card__img" src="assets/img/how-1.jpg" alt=""> -->
+      <article class="market-card">
+        <div class="market-card__media market-card__media--1" aria-hidden="true">
+          <span class="market-card__step">Step 01</span>
         </div>
-      </div>
-      <div class="split__visual reveal">
-        <div class="visual" aria-hidden="true">
-          <div class="visual__inner">
-            <div class="vbar"><span class="dot"></span>yourproduct.com</div>
-            <div class="vchip">Reading live market…</div>
-            <div class="vline"></div>
-            <div class="vline"></div>
-            <div class="vline"></div>
-            <div class="vrows">
-              <div class="vrow"><span>Demand</span><b>Real</b></div>
-              <div class="vrow"><span>People asking</span><b>47</b></div>
-              <div class="vrow"><span>Best channel</span><b>r/SaaS</b></div>
-            </div>
-          </div>
+        <h3 class="market-card__title">You drop your link.</h3>
+        <p class="market-card__text">A website, an app, or one clear sentence about the idea. That's all we need to start.</p>
+      </article>
+
+      <article class="market-card">
+        <div class="market-card__media market-card__media--2" aria-hidden="true">
+          <span class="market-card__step">Step 02</span>
         </div>
-      </div>
+        <h3 class="market-card__title">Sonar reads your live market.</h3>
+        <p class="market-card__text">We scan public conversations, search behavior and competitor signals — fresh, not last year's.</p>
+      </article>
+
+      <article class="market-card">
+        <div class="market-card__media market-card__media--3" aria-hidden="true">
+          <span class="market-card__step">Step 03</span>
+        </div>
+        <h3 class="market-card__title">You get real users + a plan.</h3>
+        <p class="market-card__text">Named people you can message, and the concrete moves to reach more this week.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ===================== 5 · WHY SONAR (split) ===================== -->
+<!-- ===================== 5 · WHY SONAR (tall media + bottom-anchored list) ===================== -->
 <section class="section" id="why">
-  <div class="container">
-    <div class="split">
-      <div class="reveal">
-        <span class="eyebrow">Why Sonar</span>
-        <h2 class="h2">Data, <em>not guesses.</em></h2>
-        <p class="lead">ChatGPT agrees with you. Friends are polite. Gut feel is hope. Sonar reads your real, live market right now and shows you the evidence.</p>
-        <div class="note">
-          <b>And it's today's data, not last year's.</b> Yesterday, someone on X or in a buried Reddit comment asked for exactly what you're building. In a week that thread is gone. We catch demand while it's still warm, so you reach those people first.
+  <div class="container container--wide">
+    <div class="why__grid">
+      <!-- Left: heading anchored to the top, feature list anchored to the bottom -->
+      <div class="why__copy reveal">
+        <div class="why__head">
+          <span class="eyebrow">Why Sonar</span>
+          <h2 class="h2">Data, <em>not guesses.</em></h2>
+        </div>
+        <div class="accordion why__list" data-accordion>
+          <div class="acc is-open">
+            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Your real, live market — not an opinion</span></button>
+            <div class="acc__body"><div class="acc__inner"><p>ChatGPT agrees with you, friends are polite, gut feel is hope. Sonar reads what your market is actually saying right now and shows you the evidence.</p></div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Today's data, not last year's</span></button>
+            <div class="acc__body"><div class="acc__inner"><p>Yesterday, someone on X or in a buried Reddit comment asked for exactly what you're building. In a week that thread is gone — we catch demand while it's still warm, so you reach those people first.</p></div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Proof you can act on</span></button>
+            <div class="acc__body"><div class="acc__inner"><p>Real numbers, real people, and the exact channels where they gather — ranked by where you'll actually win, with the first moves to make this week.</p></div></div>
+          </div>
         </div>
       </div>
-      <div class="split__visual reveal">
-        <div class="vs">
-          <div class="vs__row"><span class="label">Gut feel / asking friends</span><span class="tail">opinion</span></div>
-          <div class="vs__row"><span class="label">Generic AI chat</span><span class="tail">agrees with you</span></div>
-          <div class="vs__row"><span class="label">Spray-and-pray posting</span><span class="tail">hope</span></div>
-          <div class="vs__row vs__row--win"><span class="label">Sonar</span><span class="tail">your real, live market</span></div>
+
+      <!-- Right: tall 4:5 media. SWAP LATER → drop the generated image in and delete the .tall-media__scene:
+           <img class="tall-media__img" src="assets/img/why.jpg" alt=""> -->
+      <div class="tall-media reveal">
+        <div class="tall-media__scene" aria-hidden="true">
+          <svg class="tall-media__svg" viewBox="0 0 440 560" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <radialGradient id="tmBg" cx="50%" cy="40%" r="78%">
+                <stop offset="0%" stop-color="#24253b"/><stop offset="55%" stop-color="#1c1d2b"/><stop offset="100%" stop-color="#171721"/>
+              </radialGradient>
+              <radialGradient id="tmDot" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#b3c0ff"/><stop offset="100%" stop-color="#5266eb"/>
+              </radialGradient>
+              <filter id="tmSoft"><feGaussianBlur stdDeviation="4"/></filter>
+            </defs>
+            <rect width="440" height="560" fill="url(#tmBg)"/>
+            <g fill="none" stroke="#5266eb">
+              <circle cx="220" cy="252" r="62" stroke-opacity=".22"/><circle cx="220" cy="252" r="122" stroke-opacity=".15"/>
+              <circle cx="220" cy="252" r="188" stroke-opacity=".10"/><circle cx="220" cy="252" r="258" stroke-opacity=".06"/>
+              <circle cx="220" cy="252" r="335" stroke-opacity=".035"/>
+            </g>
+            <g stroke="#5266eb" stroke-opacity=".06">
+              <path d="M40 252h360M220 40v424M96 128l248 248M344 128L96 376" fill="none"/>
+            </g>
+            <g fill="#5266eb" fill-opacity=".7">
+              <circle cx="150" cy="172" r="2.5"/><circle cx="300" cy="152" r="2"/><circle cx="120" cy="300" r="2"/>
+              <circle cx="332" cy="320" r="2.5"/><circle cx="200" cy="384" r="2"/><circle cx="272" cy="432" r="2"/>
+              <circle cx="168" cy="430" r="1.8"/><circle cx="352" cy="232" r="2"/><circle cx="96" cy="222" r="1.8"/>
+            </g>
+            <g>
+              <circle cx="190" cy="242" r="14" fill="#5266eb" fill-opacity=".18" filter="url(#tmSoft)"/><circle cx="190" cy="242" r="5" fill="url(#tmDot)"/>
+              <circle cx="286" cy="286" r="12" fill="#5266eb" fill-opacity=".18" filter="url(#tmSoft)"/><circle cx="286" cy="286" r="4.5" fill="url(#tmDot)"/>
+              <circle cx="226" cy="336" r="11" fill="#fc92b4" fill-opacity=".16" filter="url(#tmSoft)"/><circle cx="226" cy="336" r="4" fill="#fc92b4"/>
+            </g>
+          </svg>
+          <span class="tall-media__sweep"></span>
+          <span class="tall-media__chip tall-media__chip--a"><span class="tall-media__pulse"></span>Reading live market…</span>
+          <span class="tall-media__chip tall-media__chip--b"><b>47</b> people asking now</span>
         </div>
       </div>
     </div>
@@ -246,30 +248,42 @@
   </div>
 </section>
 
-<!-- ===================== 7 · THE FORM (atmosphere) ===================== -->
-<section class="section section--lg atmos" id="form">
+<!-- ===================== 7 · THE FORM ===================== -->
+<section class="section section--lg" id="form">
   <div class="container center">
     <h2 class="h2 reveal">Drop your product. <em>We'll show you your users.</em></h2>
     <p class="lead measure-sm center reveal">We read every submission and send your report by email.</p>
-    <form class="form reveal" onsubmit="return false">
+    <form class="form reveal" id="demand-form" novalidate>
       <div class="field">
         <label for="f-link">Your product link <span class="opt">optional</span></label>
-        <input id="f-link" name="product_link" class="input" type="url" placeholder="Website, app, or product link, if you have one">
+        <input id="f-link" name="product_link" class="input" type="url" inputmode="url" autocomplete="url"
+               placeholder="yourproduct.com" aria-describedby="e-link">
+        <p class="field__error" id="e-link">Enter a valid link, like yourproduct.com</p>
       </div>
       <div class="field">
         <label for="f-store">App Store / Google Play link <span class="opt">optional</span></label>
-        <input id="f-store" name="store_link" class="input" type="url" placeholder="Paste it if you have a mobile app">
+        <input id="f-store" name="store_link" class="input" type="url" inputmode="url"
+               placeholder="apps.apple.com/… or play.google.com/…" aria-describedby="e-store">
+        <p class="field__error" id="e-store">Enter a valid link to your app.</p>
       </div>
       <div class="field">
         <label for="f-about">Tell us about it <span class="req">*</span></label>
-        <textarea id="f-about" name="about" class="input" required placeholder="What does it do, and who is it for? One or two lines."></textarea>
+        <textarea id="f-about" name="about" class="input" required minlength="12"
+                  placeholder="What does it do, and who is it for? One or two lines." aria-describedby="e-about"></textarea>
+        <p class="field__error" id="e-about">Tell us a little about it — a sentence or two is plenty.</p>
       </div>
       <div class="field">
         <label for="f-email">Email <span class="req">*</span></label>
-        <input id="f-email" name="email" class="input" type="email" autocomplete="email" required placeholder="Where we send your report">
+        <input id="f-email" name="email" class="input" type="email" inputmode="email" autocomplete="email" required
+               placeholder="you@company.com" aria-describedby="e-email">
+        <p class="field__error" id="e-email">Enter a valid email so we can send your report.</p>
       </div>
-      <button class="btn btn--primary btn--block btn--lg" type="submit">Show me my users</button>
+      <button class="btn btn--primary btn--block btn--lg form__submit" type="submit">Get more users</button>
       <p class="microtrust center">No spam · No credit card · We only email you about your report</p>
+      <div class="form__success" role="status" aria-live="polite" hidden>
+        <strong>Got it — your product is in.</strong>
+        We read every submission ourselves. Your demand report will land in your inbox shortly.
+      </div>
     </form>
   </div>
 </section>
@@ -290,7 +304,7 @@
     <div class="center" style="margin-top:clamp(56px,7vw,88px)">
       <h2 class="display-xl reveal">Stop guessing who<br>your users are.</h2>
       <div class="reveal" style="margin-top:2rem">
-        <a href="#form" class="btn btn--primary btn--lg" data-scroll>Show me my users</a>
+        <a href="#form" class="btn btn--primary btn--lg" data-scroll>Get more users</a>
       </div>
     </div>
   </div>

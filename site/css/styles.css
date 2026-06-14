@@ -224,14 +224,17 @@ p{margin:0 0 1rem;text-wrap:pretty}
    linear-gradient(to bottom,rgba(23,23,33,.55) 0%,transparent 24%,transparent 56%,var(--page-bg) 100%);
 }
 .hero__content{position:relative;z-index:2;width:100%}
-.hero__content .container{max-width:980px;display:flex;flex-direction:column;align-items:center;text-align:center}
-.hero .h1{margin-top:.4rem}
-.hero .lead{max-width:560px}
+.hero__content .container{max-width:1160px;display:flex;flex-direction:column;align-items:center;text-align:center}
+/* single hero headline — longer copy, so a touch smaller + a wider measure + softer leading */
+.hero .h1{
+  margin-top:.4rem;max-width:24ch;
+  font-size:clamp(2.1rem,4.8vw,3.7rem);line-height:1.08;
+}
 
 /* hero eyebrow → accented badge (Daylight sets eyebrows in the accent color) */
 .hero .eyebrow{
   display:inline-flex;align-items:center;gap:.6rem;
-  margin:0 0 1.6rem;padding:.5rem 1.05rem .5rem .85rem;
+  margin:0 0 clamp(2.2rem,3.6vw,3.2rem);padding:.5rem 1.05rem .5rem .85rem;
   border-radius:999px;letter-spacing:.16em;line-height:1.4;text-align:center;
   color:#c4ccff;
   background:var(--brand-soft);
@@ -256,13 +259,13 @@ p{margin:0 0 1rem;text-wrap:pretty}
 .hero__form .btn{flex-shrink:0}
 .hero__cta{margin-top:1.9rem;display:flex;flex-direction:column;align-items:center;gap:.2rem}
 
-/* SVG sonar placeholder scene (swap for a generated raster anytime) */
-.sonar{position:absolute;inset:0;width:100%;height:100%}
-.sonar__sweep{
-  position:absolute;left:50%;top:42%;width:160vmax;height:160vmax;transform:translate(-50%,-50%);border-radius:50%;
-  background:conic-gradient(from 0deg,rgba(82,102,235,.22),transparent 22%,transparent 100%);
-  animation:sweep 7s linear infinite;opacity:.8;
+/* Canvas sonar scene — dark vignette under a rotating beam that reveals blips.
+   The JS draws rings + sweep + blips and keeps the text zone clear. */
+.hero__stage{
+  background:
+    radial-gradient(64% 60% at 50% 48%,#1e1f30 0%,#1a1b27 56%,#171721 100%);
 }
+.sonar-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
 @keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
 
 /* hero intro state (JS on; GSAP fades the text in — no zoom) */
@@ -337,29 +340,62 @@ html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 }
 
 /* ============================================================
-   STEPS — Mercury GetStarted (2-col: list + visual)
+   HOW IT WORKS — feature cards (media + title + text)
+   Mercury "Head Start" idiom: 3:2 media on top, bold title, muted body
    ============================================================ */
-.split{display:grid;gap:clamp(40px,5vw,72px);grid-template-columns:1fr;align-items:center}
-@media(min-width:1000px){.split{grid-template-columns:1fr 1.06fr}.split--rev .split__visual{order:-1}}
-.steps{counter-reset:step;margin-top:clamp(28px,3vw,40px)}
-.step{position:relative;border-top:1px solid var(--line);padding:20px 0 20px 2.6rem}
-.step::before{counter-increment:step;content:"0" counter(step);position:absolute;left:0;top:22px;
-  font-family:var(--ext);font-size:11px;letter-spacing:.14em;color:var(--brand)}
-.step h3{font-family:var(--sans);font-weight:500;font-size:1.0625rem;letter-spacing:-.01em;color:var(--fg);margin-bottom:.35rem}
-.step p{margin:0;font-size:.95rem;color:var(--fg-soft)}
+.market{margin-top:clamp(40px,5vw,64px)}
+.market-card{display:flex;flex-direction:column}
+.market-card__media{position:relative;aspect-ratio:3/2;border-radius:var(--radius-2xl);overflow:hidden;
+  border:1px solid var(--line);transition:transform .3s ease,box-shadow .3s ease}
+.market-card:hover .market-card__media{transform:translateY(-4px);box-shadow:var(--shadow-card)}
+.market-card__img{width:100%;height:100%;object-fit:cover}
+.market-card__step{position:absolute;top:14px;left:14px;z-index:2;
+  font-family:var(--ext);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#cdd4ff;
+  background:rgba(23,23,33,.45);border:1px solid var(--line-2);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  padding:.32rem .65rem;border-radius:999px}
+.market-card__title{font-family:var(--sans);font-weight:500;font-size:1.125rem;letter-spacing:-.01em;
+  color:var(--fg);margin:1.3rem 0 .45rem}
+.market-card__text{color:var(--fg-soft);font-size:.95rem;line-height:1.55;max-width:34ch;margin:0}
+/* colored placeholders — faint sonar rings, swap for generated images later */
+.market-card__media::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background:repeating-radial-gradient(circle at 50% 60%,transparent 0 17px,rgba(82,102,235,.12) 17px 18px);
+  -webkit-mask-image:radial-gradient(circle at 50% 60%,#000,transparent 74%);
+          mask-image:radial-gradient(circle at 50% 60%,#000,transparent 74%)}
+.market-card__media--1{background:radial-gradient(120% 120% at 32% 22%,#2b2d54,#1d1e2b 70%)}
+.market-card__media--2{background:radial-gradient(120% 120% at 68% 26%,#262a57,#1b1c28 72%)}
+.market-card__media--3{background:radial-gradient(120% 130% at 50% 84%,#3a2742,#1e1e2a 72%)}
 
-/* code-built visual frame (aspect 4/5) */
-.visual{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--radius-3xl);overflow:hidden;
-  background:linear-gradient(160deg,var(--card-2),var(--page-bg-2));border:1px solid var(--line);box-shadow:var(--shadow-card)}
-.visual__inner{position:absolute;inset:clamp(20px,3vw,34px);display:flex;flex-direction:column;gap:14px}
-.vbar{display:flex;align-items:center;gap:.6rem;background:var(--card-3);border:1px solid var(--line);border-radius:10px;padding:.7rem .85rem;font-size:.85rem;color:var(--fg-soft)}
-.vbar .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px var(--brand-glow)}
-.vline{height:1px;background:var(--line)}
-.vchip{display:inline-flex;align-items:center;gap:.45rem;align-self:flex-start;background:var(--brand-soft);
-  border:1px solid color-mix(in srgb,var(--brand) 35%,transparent);border-radius:999px;padding:.3rem .8rem;font-size:.78rem;color:#cdd4ff}
-.vrows{margin-top:auto;display:flex;flex-direction:column;gap:.5rem}
-.vrow{display:flex;justify-content:space-between;font-size:.82rem;color:var(--fg-soft)}
-.vrow b{font-family:var(--serif);font-weight:300;color:#fff}
+/* ============================================================
+   WHY SONAR — heading (top) + list (bottom), tall media right
+   Mercury "Get Started" idiom: bottom-anchored list beside a tall 4:5 visual
+   ============================================================ */
+.why__grid{display:grid;gap:clamp(40px,6vw,56px);grid-template-columns:1fr;align-items:stretch}
+@media(min-width:1000px){.why__grid{grid-template-columns:1fr 1.04fr;gap:clamp(56px,5vw,88px)}}
+.why__copy{display:flex;flex-direction:column}
+.why__head{max-width:32ch}
+.why__list{margin-top:clamp(28px,4vw,40px)}
+@media(min-width:1000px){.why__list{margin-top:auto}}   /* anchor the list to the bottom edge */
+
+/* tall 4:5 media — placeholder sonar scene now, generated image later */
+.tall-media{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--radius-3xl);overflow:hidden;
+  border:1px solid var(--line);box-shadow:var(--shadow-card);background:var(--card-2)}
+.tall-media__img{width:100%;height:100%;object-fit:cover}
+.tall-media__scene{position:absolute;inset:0}
+.tall-media__svg{width:100%;height:100%}
+.tall-media__sweep{position:absolute;left:50%;top:45%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);
+  border-radius:50%;background:conic-gradient(from 0deg,rgba(82,102,235,.20),transparent 24%,transparent 100%);
+  animation:sweep 7s linear infinite}
+.tall-media__chip{position:absolute;z-index:2;display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--sans);font-size:.8rem;color:var(--fg-strong);
+  background:rgba(23,23,33,.62);border:1px solid var(--line-2);
+  -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);
+  padding:.5rem .8rem;border-radius:999px;box-shadow:0 12px 30px -16px rgba(0,0,0,.8)}
+.tall-media__chip b{font-family:var(--serif);font-weight:300;color:#fff;font-size:.95rem}
+.tall-media__chip--a{top:8%;left:7%}
+.tall-media__chip--b{bottom:9%;right:7%}
+.tall-media__pulse{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px var(--brand-glow);
+  animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
 
 /* ============================================================
    CARDS / blocks — Mercury
@@ -376,21 +412,6 @@ html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 .chip{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:1.2rem;
   background:var(--brand-soft);border:1px solid color-mix(in srgb,var(--brand) 32%,transparent)}
 .chip svg{width:22px;height:22px;stroke:#aeb8ff;fill:none;stroke-width:1.6}
-
-/* ============================================================
-   COMPARISON — "vs" table card
-   ============================================================ */
-.vs{border:1px solid var(--line);border-radius:var(--radius-2xl);overflow:hidden;background:var(--card)}
-.vs__row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.05rem 1.4rem;border-bottom:1px solid var(--line);font-size:1.02rem;color:var(--fg-strong)}
-.vs__row:last-child{border-bottom:none}
-.vs__row .tail{color:var(--fg-muted);font-family:var(--ext);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-.vs__row--win{background:var(--brand-soft)}
-.vs__row--win .label{font-weight:500;color:#fff}
-.vs__row--win .tail{color:#aeb8ff}
-.vs__row--win .label::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--brand);margin-right:.6rem;box-shadow:0 0 12px var(--brand-glow)}
-.note{margin-top:1.5rem;border:1px solid var(--line);border-left:2px solid var(--brand);border-radius:var(--radius-sm);
-  padding:1.1rem 1.3rem;background:var(--card);color:var(--fg-soft);font-size:1rem}
-.note b{color:var(--fg)}
 
 /* ============================================================
    Demand Report mockup (inside bento demo card)
@@ -417,15 +438,9 @@ html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 .founder figcaption{margin-top:1.6rem;font-family:var(--ext);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-muted)}
 
 /* ============================================================
-   FORM — inside FinalCta atmosphere
+   FORM
    ============================================================ */
-.atmos{position:relative;overflow:hidden}
-.atmos::before,.atmos::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
-.atmos::before{width:560px;height:560px;left:50%;top:-160px;transform:translateX(-50%);background:var(--brand);opacity:.18}
-.atmos::after{width:420px;height:420px;right:-120px;bottom:-120px;background:var(--pink);opacity:.10}
-.atmos .container{position:relative;z-index:1}
-
-.form{max-width:520px;margin:2.2rem auto 0;text-align:left}
+.form{max-width:520px;margin:clamp(2.6rem,4vw,3.4rem) auto 0;text-align:left}
 .field{margin-bottom:1.1rem}
 .field label{display:block;font-size:.9rem;font-weight:400;margin-bottom:.45rem;color:var(--fg-strong)}
 .field .opt{font-family:var(--ext);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-muted);margin-left:.4rem}
@@ -436,6 +451,23 @@ html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 .input::placeholder{color:var(--fg-muted)}
 .input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft)}
 textarea.input{min-height:92px;resize:vertical}
+
+/* validation — error state + inline message (hidden until invalid) */
+.field__error{margin:.45rem 0 0;font-size:.82rem;line-height:1.4;color:#fca8c4;
+  max-height:0;opacity:0;overflow:hidden;transition:max-height .25s ease,opacity .2s ease}
+.field.is-invalid .field__error{max-height:4rem;opacity:1}
+.field.is-invalid .input{border-color:var(--pink)}
+.field.is-invalid .input:focus{box-shadow:0 0 0 3px rgba(252,146,180,.18)}
+
+/* increased breathing room between the form fields and the submit button */
+.form__submit{margin-top:clamp(1.9rem,3.5vw,2.8rem)}
+
+/* success confirmation (shown after a valid submit; fields hide via JS) */
+.form__success{border:1px solid color-mix(in srgb,var(--brand) 42%,transparent);border-radius:var(--radius-2xl);
+  background:var(--brand-soft);padding:clamp(1.1rem,2.4vw,1.5rem) clamp(1.2rem,2.6vw,1.6rem);
+  color:var(--fg-soft);font-size:1rem;line-height:1.5;text-align:center}
+.form__success strong{display:block;margin-bottom:.3rem;font-family:var(--serif);font-weight:300;
+  font-size:1.25rem;letter-spacing:-.01em;color:#fff}
 
 /* ============================================================
    FAQ — Mercury accordion (native details)
@@ -472,6 +504,6 @@ html.js .reveal.is-in{opacity:1;transform:none;transition:opacity .8s cubic-bezi
 
 @media(prefers-reduced-motion:reduce){
   .reveal,.reveal-hero{opacity:1!important;transform:none!important}
-  .sonar__sweep{animation:none}
+  .tall-media__sweep,.tall-media__pulse{animation:none}
   *{scroll-behavior:auto!important}
 }
