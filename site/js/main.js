@@ -79,27 +79,11 @@
     document.querySelectorAll(".reveal, .reveal-hero").forEach(function (el) {
       el.classList.add("is-in"); el.style.opacity = 1; el.style.transform = "none";
     });
-    gsap.set(".hero__stage", { scale: 1 });
     return;
   }
 
-  /* ---------- Hero: intro zoom on load ---------- */
-  var intro = gsap.timeline({ defaults: { ease: "power3.out" } });
-  intro.to(".hero__stage", { scale: 1, duration: 1.5 }, 0)
-       .to(".reveal-hero", { opacity: 1, y: 0, duration: 1.0, stagger: 0.12 }, 0.2);
-
-  /* ---------- Hero: scroll-scrub zoom (pinned) ---------- */
-  gsap.fromTo(".hero__stage",
-    { scale: 1 },
-    {
-      scale: 1.18, ease: "none", immediateRender: false,
-      scrollTrigger: { trigger: ".hero", start: "top top", end: "+=70%", scrub: true, pin: true, pinSpacing: true, anticipatePin: 1 }
-    }
-  );
-  gsap.to(".hero__content", {
-    y: -50, opacity: 0, ease: "none",
-    scrollTrigger: { trigger: ".hero", start: "top top", end: "+=50%", scrub: true }
-  });
+  /* ---------- Hero: text fade-in on load (no zoom, no pin) ---------- */
+  gsap.to(".reveal-hero", { opacity: 1, y: 0, duration: 1.0, stagger: 0.12, ease: "power3.out", delay: 0.15 });
 
   /* ---------- Reveal on scroll (batched, CSS-driven) ---------- */
   ScrollTrigger.batch(".reveal", {

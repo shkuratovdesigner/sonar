@@ -16,16 +16,16 @@
 @font-face{font-family:"ABC Room";src:url("../assets/fonts/ABCRoom-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"ABC Room";src:url("../assets/fonts/ABCRoom-Medium.woff") format("woff");font-weight:500;font-style:normal;font-display:swap}
 @font-face{font-family:"ABC Room";src:url("../assets/fonts/ABCRoom-Extrabold.woff") format("woff");font-weight:800;font-style:normal;font-display:swap}
-@font-face{font-family:"ABC Room Extended";src:url("../assets/fonts/ABCRoomExtended-Regular.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
 
 /* ============================================================
    Tokens
    ============================================================ */
 :root{
-  /* type families (Daylight) */
+  /* type families (Daylight) — only ABC Arizona Flare (serif) + ABC Room (sans).
+     Labels/eyebrows reuse the sans; no separate "Extended" display face. */
   --serif:"ABC Arizona Flare",Georgia,"Times New Roman",serif;
   --sans:"ABC Room",-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif;
-  --ext:"ABC Room Extended","ABC Room",sans-serif;
+  --ext:var(--sans);
 
   /* ---- Mercury palette, exact values, dark shell ---- */
   --page-bg:#171721;        /* surface-dark — body */
@@ -152,6 +152,8 @@ p{margin:0 0 1rem;text-wrap:pretty}
 .measure{max-width:680px}
 .measure-sm{max-width:560px}
 .measure-lg{max-width:760px}
+/* center the measure-limited block whether .center is on the same element or an ancestor */
+.center.measure,.center.measure-sm,.center.measure-lg,
 .center .measure,.center .measure-sm,.center .measure-lg{margin-inline:auto}
 
 /* Mercury hairline above a section header: border-t + pt-6 */
@@ -204,27 +206,42 @@ p{margin:0 0 1rem;text-wrap:pretty}
 .nav__links a{font-family:var(--sans);font-size:16px;font-weight:300;letter-spacing:-.02em;color:var(--fg-soft);transition:color .2s}
 .nav__links a:hover{color:#fff}
 .nav__cta{display:flex;align-items:center;gap:1rem}
-.nav__login{display:none;font-size:16px;font-weight:300;letter-spacing:-.02em;color:var(--fg-soft);transition:color .2s}
-.nav__login:hover{color:#fff}
 .nav .btn{height:38px;padding:0 18px}
-@media(min-width:560px){.nav__login{display:inline}}
 @media(min-width:1000px){.nav__links{display:flex}}
 
 /* ============================================================
    HERO — Mercury (full-height, centered, bg visual, overlays)
    ============================================================ */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--page-bg)}
-.hero__stage{position:absolute;inset:0;z-index:0;will-change:transform;transform-origin:50% 42%}
+.hero__stage{position:absolute;inset:0;z-index:0}
 .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}   /* drop a generated <img> here later */
 .hero__overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-   radial-gradient(120% 90% at 50% 30%,transparent 30%,rgba(8,10,16,.55) 78%,rgba(8,10,16,.92) 100%),
-   linear-gradient(to bottom,rgba(8,10,16,.6) 0%,transparent 26%,transparent 58%,rgba(8,10,16,.9) 100%);
+   radial-gradient(120% 90% at 50% 30%,transparent 34%,rgba(23,23,33,.42) 78%,rgba(23,23,33,.82) 100%),
+   linear-gradient(to bottom,rgba(23,23,33,.55) 0%,transparent 24%,transparent 56%,var(--page-bg) 100%);
 }
 .hero__content{position:relative;z-index:2;width:100%}
 .hero__content .container{max-width:980px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .hero .h1{margin-top:.4rem}
 .hero .lead{max-width:560px}
+
+/* hero eyebrow → accented badge (Daylight sets eyebrows in the accent color) */
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  margin:0 0 1.6rem;padding:.5rem 1.05rem .5rem .85rem;
+  border-radius:999px;letter-spacing:.16em;line-height:1.4;text-align:center;
+  color:#c4ccff;
+  background:var(--brand-soft);
+  border:1px solid color-mix(in srgb,var(--brand) 36%,transparent);
+  box-shadow:0 0 0 1px rgba(82,102,235,.04),0 8px 24px -12px var(--brand-glow);
+}
+.hero .eyebrow::before{
+  content:"";flex-shrink:0;width:7px;height:7px;border-radius:50%;
+  background:var(--brand);box-shadow:0 0 12px var(--brand-glow);
+}
+@media(max-width:480px){
+  .hero .eyebrow{letter-spacing:.1em;padding:.5rem .95rem;gap:.5rem}
+}
 
 /* inline email pill — Mercury hero form */
 .hero__form{margin-top:2.2rem;width:100%;max-width:460px;display:flex;gap:.5rem;
@@ -252,8 +269,7 @@ p{margin:0 0 1rem;text-wrap:pretty}
 }
 @keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
 
-/* hero intro states (JS on; GSAP animates to final) */
-html.js .hero__stage{transform:scale(1.12)}
+/* hero intro state (JS on; GSAP fades the text in — no zoom) */
 html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 
 /* ============================================================
