@@ -518,6 +518,275 @@
     }
   })();
 
+  /* ---------- "Data, not guesses" sonar — the hero's beam-reveal logic, scaled to
+     the 4:5 block. The beam is centred so it sweeps clean to every edge (no clipped
+     arc at the bottom), platform "+N new users" cards ping in far more often than the
+     hero, and the live count ticks up next to the blinking dot. ---------- */
+  (function initWhySonar() {
+    var media = document.querySelector("#why .tall-media");
+    if (!media) return;
+    var canvas = media.querySelector(".tall-media__canvas");
+    var fx = media.querySelector(".tall-media__fx");
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext("2d");
+    var reduceW = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var TWO = Math.PI * 2;
+    var TRAIL = Math.PI * 1.1;          // afterglow length behind the leading edge
+    var SPEED = TWO / 6;                // ~6s per revolution (a touch faster than hero)
+    var BRAND = [82, 102, 235], HOT = [179, 192, 255], WARM = [252, 146, 180];
+
+    var PLATFORMS = [
+      { src: "assets/img/logos/reddit.png" },
+      { src: "assets/img/logos/x.png" },
+      { src: "assets/img/logos/youtube.png" },
+      { src: "assets/img/logos/linkedin.png" }
+    ];
+    PLATFORMS.forEach(function (p) { var im = new Image(); im.src = p.src; });
+
+    // cards ping in much more often than the hero (shorter gap + cooldown, near-certain fire)
+    var MAX_ACTIVE = 3, MIN_GAP = 360, SPOT_COOLDOWN = 1900, FIRE_PROB = 0.95;
+
+    var askEl = media.querySelector("[data-asking]");
+    var asking = askEl ? (parseInt(askEl.textContent, 10) || 532) : 532;
+
+    var W = 0, H = 0, DPR = 1, cx = 0, cy = 0, maxR = 0;
+    var blips = [], rings = [], spots = [], cards = [];
+    var angle = -Math.PI / 2, last = 0, raf = 0, running = false, lastSpawn = -1e9;
+
+    function rgba(c, a) { return "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + a + ")"; }
+
+    function measure() {
+      var r = media.getBoundingClientRect();
+      W = Math.max(1, Math.round(r.width));
+      H = Math.max(1, Math.round(r.height));
+      DPR = Math.min(2, window.devicePixelRatio || 1);
+      canvas.width = Math.round(W * DPR);
+      canvas.height = Math.round(H * DPR);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      cx = W / 2; cy = H / 2;            // centred → the beam reaches every corner and edge
+      maxR = Math.max(
+        Math.hypot(cx, cy), Math.hypot(W - cx, cy),
+        Math.hypot(cx, H - cy), Math.hypot(W - cx, H - cy)
+      ) + 8;
+      build();
+    }
+
+    function build() {
+      rings = [];
+      var n = 5;
+      for (var k = 1; k <= n; k++) rings.push({ r: maxR * (k / (n + 0.6)), o: 0.13 * (1 - (k - 1) / n) });
+
+      blips = [];
+      var target = Math.round(Math.min(74, Math.max(28, (W * H) / 5200)));
+      var warmLeft = Math.max(2, Math.round(target * 0.1));
+      var tries = 0;
+      while (blips.length < target && tries < target * 40) {
+        tries++;
+        var x = Math.random() * W, y = Math.random() * H;
+        if (Math.hypot(x - cx, y - cy) > maxR) continue;
+        var warm = warmLeft > 0 && Math.random() < 0.14;
+        if (warm) warmLeft--;
+        blips.push({
+          x: x, y: y, a: Math.atan2(y - cy, x - cx),
+          r: warm ? (3.2 + Math.random() * 1.8) : (1.5 + Math.random() * 1.8),
+          warm: warm, pink: warm && Math.random() < 0.4, ph: Math.random() * TWO
+        });
+      }
+      buildSpots();
+    }
+
+    // one hotspot per platform, spread around the dial and marched out to a radius
+    // that keeps its card fully inside the block
+    function buildSpots() {
+      spots = [];
+      if (reduceW) return;
+      var count = 5;
+      var startA = -Math.PI / 2 + Math.random() * TWO;
+      for (var s = 0; s < count; s++) {
+        var base = startA + (s / count) * TWO;
+        for (var j = 0; j < 6; j++) {
+          var p = findSpot(base + (Math.random() - 0.5) * 0.8);
+          if (!p) continue;
+          p.platform = PLATFORMS[spots.length % PLATFORMS.length];
+          p.prevD = null; p.last = -1e9;
+          spots.push(p);
+          break;
+        }
+      }
+    }
+
+    function findSpot(theta) {
+      var padX = 66, padY = 66;          // card half-size + edge margin
+      var cos = Math.cos(theta), sin = Math.sin(theta);
+      var lo = 0, hi = 0, found = false;
+      for (var r = Math.min(W, H) * 0.18; r <= maxR; r += 5) {
+        var x = cx + cos * r, y = cy + sin * r;
+        var inBox = x >= padX && x <= W - padX && y >= padY && y <= H - padY;
+        if (inBox) { if (!found) { lo = r; found = true; } hi = r; }
+        else if (found) break;
+      }
+      if (!found) return null;
+      var rr = lo + (hi - lo) * (0.4 + Math.random() * 0.45);
+      return { a: Math.atan2(sin, cos), x: cx + cos * rr, y: cy + sin * rr };
+    }
+
+    function draw(animate) {
+      ctx.clearRect(0, 0, W, H);
+
+      ctx.lineWidth = 1;
+      for (var i = 0; i < rings.length; i++) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, rings[i].r, 0, TWO);
+        ctx.strokeStyle = rgba(BRAND, rings[i].o);
+        ctx.stroke();
+      }
+
+      if (animate) {
+        var slices = 44;
+        for (var s = 0; s < slices; s++) {
+          var t = s / slices, k = (1 - t) * (1 - t);
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.arc(cx, cy, maxR, angle - (s + 1) / slices * TRAIL, angle - t * TRAIL);
+          ctx.closePath();
+          ctx.fillStyle = rgba(BRAND, 0.16 * k);
+          ctx.fill();
+        }
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(angle) * maxR, cy + Math.sin(angle) * maxR);
+        ctx.strokeStyle = rgba(HOT, 0.55);
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+      }
+
+      for (var b = 0; b < blips.length; b++) {
+        var bl = blips[b], bright;
+        if (animate) {
+          var d = angle - bl.a; d = ((d % TWO) + TWO) % TWO;
+          bright = d < TRAIL ? 1 - d / TRAIL : 0;
+          bright *= bright;
+        } else { bright = 0.5; }
+        if (bright <= 0.002) continue;
+        var col = bl.pink ? WARM : (bl.warm ? HOT : BRAND);
+        var rad = bl.r * (0.86 + 0.14 * Math.sin((animate ? angle * 2 : 0) + bl.ph));
+        ctx.beginPath();
+        ctx.arc(bl.x, bl.y, rad * (bl.warm ? 3.2 : 2.6), 0, TWO);
+        ctx.fillStyle = rgba(col, (bl.warm ? 0.24 : 0.15) * bright);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(bl.x, bl.y, rad, 0, TWO);
+        ctx.fillStyle = rgba(col, (bl.warm ? 1 : 0.95) * bright);
+        ctx.fill();
+      }
+
+      for (var sp = 0; sp < spots.length; sp++) {
+        var S = spots[sp], sb;
+        if (animate) {
+          var sd = angle - S.a; sd = ((sd % TWO) + TWO) % TWO;
+          sb = sd < TRAIL ? 1 - sd / TRAIL : 0; sb *= sb;
+        } else { sb = 0.5; }
+        ctx.beginPath();
+        ctx.arc(S.x, S.y, 6, 0, TWO);
+        ctx.fillStyle = rgba(HOT, 0.26 * (0.32 + 0.68 * sb));
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(S.x, S.y, 2.7, 0, TWO);
+        ctx.fillStyle = rgba(HOT, 0.24 + 0.76 * sb);
+        ctx.fill();
+      }
+    }
+
+    function tick(t) {
+      if (!running) return;
+      if (!last) last = t;
+      var dt = Math.min(0.05, (t - last) / 1000); last = t;
+      angle += SPEED * dt;
+      if (angle > Math.PI) angle -= TWO;
+      detect(t);
+      draw(true);
+      raf = requestAnimationFrame(tick);
+    }
+
+    function start() { if (running || reduceW) return; running = true; last = 0; raf = requestAnimationFrame(tick); }
+    function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; clearFx(); }
+
+    function detect(t) {
+      for (var i = 0; i < spots.length; i++) {
+        var S = spots[i];
+        var d = (((angle - S.a) % TWO) + TWO) % TWO;
+        if (S.prevD != null && d < S.prevD) tryFire(S, t);
+        S.prevD = d;
+      }
+    }
+
+    function tryFire(S, t) {
+      if (t - lastSpawn < MIN_GAP) return;
+      if (cards.length >= MAX_ACTIVE) return;
+      if (t - S.last < SPOT_COOLDOWN) return;
+      if (Math.random() > FIRE_PROB) return;
+      S.last = t; lastSpawn = t;
+      spawnCard(S);
+    }
+
+    function spawnCard(S) {
+      var p = S.platform;
+      var n = 3 + Math.floor(Math.random() * 5);   // +3..+7 new users per ping
+      var card = document.createElement("div");
+      card.className = "sonar-card";
+      card.style.left = S.x + "px";
+      card.style.top = S.y + "px";
+      var inner = document.createElement("div");
+      inner.className = "sonar-card__inner";
+      inner.innerHTML =
+        '<span class="sonar-card__ping"></span>' +
+        '<span class="sonar-card__chip"><img src="' + p.src + '" alt="" draggable="false"></span>' +
+        '<span class="sonar-card__meta"><b>+' + n + '</b><i>new users</i></span>';
+      card.appendChild(inner);
+      fx.appendChild(card);
+
+      // nudge the live count so "people asking now" keeps ticking up
+      if (askEl && Math.random() < 0.55) { asking += 1; askEl.textContent = asking; }
+
+      var rec = { el: card };
+      cards.push(rec);
+      inner.addEventListener("animationend", function (e) {
+        if (e.animationName === "sonarCardLife") removeCard(rec);   // ignore the ping's animation
+      });
+    }
+
+    function removeCard(rec) {
+      var i = cards.indexOf(rec);
+      if (i >= 0) cards.splice(i, 1);
+      if (rec.el && rec.el.parentNode) rec.el.parentNode.removeChild(rec.el);
+    }
+    function clearFx() { for (var i = cards.length - 1; i >= 0; i--) removeCard(cards[i]); }
+
+    measure();
+    draw(false);                                     // paint a static radar up front so the block is never blank
+    if (!reduceW) {
+      // Keep the beam running whenever the tab is visible. The hero can lean on an
+      // IntersectionObserver because it starts on-screen; this block starts off-screen,
+      // so the observer-driven restart was unreliable (it left the canvas blank until a
+      // re-trigger that sometimes never came). Running while visible — paused only when
+      // the tab is hidden — guarantees it's live by the time the section is scrolled to.
+      start();
+      document.addEventListener("visibilitychange", function () {
+        document.hidden ? stop() : start();
+      });
+    }
+
+    var rzW;
+    window.addEventListener("resize", function () {
+      clearTimeout(rzW);
+      rzW = setTimeout(function () { clearFx(); measure(); draw(false); }, 150);
+    });
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { measure(); draw(false); });
+    }
+  })();
+
   // If GSAP failed to load, un-hide everything and bail to native scroll.
   if (!window.gsap) {
     root.classList.remove("js");
