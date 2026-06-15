@@ -97,25 +97,14 @@
       <a href="#form" class="bento__link" data-scroll>Get your report →</a>
     </div>
 
-    <!-- Right: 50%-screen media that bleeds to the right viewport edge with a blurred right edge.
-         SWAP LATER → drop the product video in and delete the .report block below:
-         <video class="showcase__video" autoplay muted loop playsinline
-                poster="assets/img/report-poster.jpg">
-           <source src="assets/video/report.mp4" type="video/mp4">
-         </video> -->
+    <!-- Right: product video that fills the panel and bleeds to the right viewport edge,
+         sitting UNDER the frosted / dissolving right edge (.showcase__edge). -->
     <div class="showcase__media reveal">
-      <div class="showcase__panel">
-        <div class="showcase__screen">
-          <div class="report">
-            <div class="report__head"><b>Your demand report</b><span class="ill">Illustrative</span></div>
-            <div class="report__row"><span class="report__lab">Demand verdict</span><span class="report__val"><span class="pill">Real</span>Search demand up <span class="tnum">34%</span> in 6 months, active in 4 communities</span></div>
-            <div class="report__row"><span class="report__lab">Keyword volume</span><span class="report__val tnum">12 buying-intent terms · ~28,000 searches / month combined</span></div>
-            <div class="report__row"><span class="report__lab">Competitors</span><span class="report__val">3 rivals + their traffic trend — one up <span class="tnum">2×</span> this quarter, two flat</span></div>
-            <div class="report__row"><span class="report__lab">People asking</span><span class="report__val"><span class="tnum">47</span> real people asked for this in the last 30 days, across Reddit, X &amp; YouTube</span></div>
-            <div class="report__row"><span class="report__lab">Warm leads</span><span class="report__val">Their profiles, with links, ranked by intent — message them and land your first users</span></div>
-            <div class="report__row"><span class="report__lab">Do this first</span><span class="report__val">3 concrete moves to reach them this week</span></div>
-          </div>
-        </div>
+      <div class="showcase__panel showcase__panel--video">
+        <video class="showcase__video" autoplay muted loop playsinline preload="auto"
+               poster="assets/video/sonar-report-poster.jpg">
+          <source src="assets/video/sonar-report.mp4" type="video/mp4">
+        </video>
         <span class="showcase__edge" aria-hidden="true"></span>
       </div>
     </div>
