@@ -182,7 +182,7 @@ p{margin:0 0 1rem;text-wrap:pretty}
   .g3{grid-template-columns:repeat(3,1fr)}
 }
 
-.heading-block{max-width:680px}
+.heading-block{max-width:760px}   /* fits "Drop a link. Start your" on one line before the go-to-market break */
 .heading-block .lead{margin-top:1.25rem}
 
 /* ============================================================
