@@ -175,7 +175,7 @@ body.dr-body{background:var(--page-bg);overflow-x:hidden}
 .dr-plat--youtube{color:#ff3a44}
 .dr-plat--linkedin{color:#5aa2ff}
 
-.dr-av{flex-shrink:0;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+.dr-av{flex-shrink:0;width:34px;height:34px;border-radius:50%;object-fit:cover;display:grid;place-items:center;
   font-family:var(--ext);font-size:12px;font-weight:600;color:#fff;letter-spacing:.02em}
 .dr-av--1{background:linear-gradient(135deg,#5266eb,#8b5cf6)}
 .dr-av--2{background:linear-gradient(135deg,#ec6f9b,#b14bd8)}

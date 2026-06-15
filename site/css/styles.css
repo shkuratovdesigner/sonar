@@ -124,8 +124,20 @@ h1,h2,h3,h4{font-family:var(--serif);font-weight:300;margin:0;color:var(--fg);te
 /* closing display — Daylight OrderFooter (48→92), leading .97, tracking -.06 */
 .display-xl{font-size:clamp(3rem,6.4vw,5.5rem);line-height:.97;letter-spacing:-.06em}
 
-/* Daylight signature: italic serif emphasis inside light-weight headings */
+/* Italic serif emphasis — kept for the report pages, which still use <em> */
 .h1 em,.h2 em,.h3 em,.display-xl em,.em{font-style:italic;font-weight:300}
+
+/* Title accent (homepage) — replaces the old italic. A bespoke indigo "scan line"
+   drawn under the phrase Sonar has surfaced: same serif, upright, one weight heavier,
+   brand colour used with intent (not generic AI gradient text). box-decoration-break
+   keeps the underline intact if the phrase wraps to a second line. */
+.h1 .hl,.h2 .hl,.h3 .hl,.display-xl .hl,.hl{
+  font-style:normal;font-weight:400;color:var(--fg);
+  background-image:linear-gradient(90deg,var(--brand) 0%,#8b99ff 68%,rgba(139,153,255,.34) 100%);
+  background-repeat:no-repeat;background-position:0 100%;background-size:100% .072em;
+  padding-bottom:.14em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
 
 /* lead / intro — Daylight intro body */
 .lead{
@@ -393,24 +405,72 @@ html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 .market{margin-top:clamp(40px,5vw,64px)}
 .market-card{display:flex;flex-direction:column}
 .market-card__media{position:relative;aspect-ratio:3/2;border-radius:var(--radius-2xl);overflow:hidden;
-  border:1px solid var(--line);transition:transform .3s ease,box-shadow .3s ease}
+  background:var(--card-3);border:1px solid var(--line);transition:transform .3s ease,box-shadow .3s ease}
 .market-card:hover .market-card__media{transform:translateY(-4px);box-shadow:var(--shadow-card)}
 .market-card__img{width:100%;height:100%;object-fit:cover}
-.market-card__step{position:absolute;top:14px;left:14px;z-index:2;
+.market-card__step{align-self:flex-start;margin:0 0 1rem;
   font-family:var(--ext);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#cdd4ff;
-  background:rgba(23,23,33,.45);border:1px solid var(--line-2);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  background:var(--brand-soft);border:1px solid rgba(82,102,235,.3);
   padding:.32rem .65rem;border-radius:999px}
 .market-card__title{font-family:var(--sans);font-weight:500;font-size:1.125rem;letter-spacing:-.01em;
   color:var(--fg);margin:1.3rem 0 .45rem}
 .market-card__text{color:var(--fg-soft);font-size:.95rem;line-height:1.55;max-width:34ch;margin:0}
-/* colored placeholders — faint sonar rings, swap for generated images later */
-.market-card__media::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
-  background:repeating-radial-gradient(circle at 50% 60%,transparent 0 17px,rgba(82,102,235,.12) 17px 18px);
-  -webkit-mask-image:radial-gradient(circle at 50% 60%,#000,transparent 74%);
-          mask-image:radial-gradient(circle at 50% 60%,#000,transparent 74%)}
-.market-card__media--1{background:radial-gradient(120% 120% at 32% 22%,#2b2d54,#1d1e2b 70%)}
-.market-card__media--2{background:radial-gradient(120% 120% at 68% 26%,#262a57,#1b1c28 72%)}
-.market-card__media--3{background:radial-gradient(120% 130% at 50% 84%,#3a2742,#1e1e2a 72%)}
+/* ---- How-it-works concrete mockups (Mercury-style coded UI fragments on a solid card) ---- */
+.mock{position:absolute;inset:0;z-index:2;display:grid;place-items:center;padding:9%}
+/* Step 01 — the input/"drop your link" moment */
+.mock-field{position:relative;z-index:2;display:flex;align-items:center;gap:.6rem;
+  width:min(86%,300px);padding:.62rem .62rem .62rem .85rem;
+  background:rgba(30,30,42,.74);border:1px solid var(--line-2);border-radius:14px;
+  box-shadow:0 20px 44px -20px rgba(0,0,0,.78),0 0 0 1px rgba(82,102,235,.08),0 0 30px -12px var(--brand-glow);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.mock-field__icon{flex-shrink:0;display:grid;place-items:center;color:var(--brand)}
+.mock-field__url{flex:1;min-width:0;font-family:var(--sans);font-size:.95rem;color:#fff;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-field__caret{display:inline-block;width:1.5px;height:1.05em;background:var(--brand);
+  margin-left:1px;vertical-align:-.18em;animation:mockCaret 1.1s step-end infinite}
+.mock-field__btn{flex-shrink:0;font-family:var(--sans);font-weight:600;font-size:.8rem;color:#fff;
+  background:var(--brand);padding:.44rem .82rem;border-radius:9px}
+.mock-chip{position:absolute;z-index:3;display:flex;align-items:center;gap:.4rem;
+  font-family:var(--sans);font-size:.78rem;font-weight:500;color:#fff;letter-spacing:-.01em;
+  padding:.4rem .72rem;border-radius:999px;white-space:nowrap;
+  background:rgba(30,30,42,.66);border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 12px 30px -14px rgba(0,0,0,.72),0 0 24px -10px var(--brand-glow);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.mock-chip svg{color:var(--brand);flex-shrink:0}
+.mock-chip--a{top:15%;right:8%}
+.mock-chip--b{bottom:15%;left:7%}
+@keyframes mockCaret{50%{opacity:0}}
+/* Step 02 — reading the live market */
+.mock-feed{position:relative;z-index:2;display:flex;flex-direction:column;gap:.5rem;width:min(86%,300px)}
+.mock-post{display:flex;align-items:center;gap:.55rem;padding:.5rem .66rem;
+  background:rgba(30,30,42,.74);border:1px solid var(--line-2);border-radius:12px;
+  box-shadow:0 14px 34px -18px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.mock-post__src{flex-shrink:0;width:26px;height:26px;border-radius:7px;background:#fff;
+  display:grid;place-items:center;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.28)}
+.mock-post__src img{width:18px;height:18px;object-fit:contain;display:block}
+.mock-post__txt{font-family:var(--sans);font-size:.82rem;line-height:1.3;color:var(--fg-strong);letter-spacing:-.01em}
+.mock-post__txt mark{background:rgba(82,102,235,.24);color:#fff;border-radius:4px;padding:.02em .22em;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone}
+.mock-chip--live{top:11%;right:7%}
+.mock-live{width:7px;height:7px;border-radius:50%;background:var(--brand);
+  box-shadow:0 0 0 0 var(--brand-glow);animation:mockPulse 1.6s ease-out infinite}
+@keyframes mockPulse{0%{box-shadow:0 0 0 0 rgba(82,102,235,.5)}70%{box-shadow:0 0 0 8px rgba(82,102,235,0)}100%{box-shadow:0 0 0 0 rgba(82,102,235,0)}}
+/* Step 03 — named users + a plan */
+.mock-people{position:relative;z-index:2;display:flex;flex-direction:column;gap:.5rem;width:min(86%,300px)}
+.mock-person{display:flex;align-items:center;gap:.6rem;padding:.46rem .6rem;
+  background:rgba(30,30,42,.74);border:1px solid var(--line-2);border-radius:12px;
+  box-shadow:0 14px 34px -18px rgba(0,0,0,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.mock-person__av{flex-shrink:0;width:30px;height:30px;border-radius:50%;object-fit:cover;display:grid;place-items:center;
+  font-family:var(--sans);font-weight:700;font-size:.7rem;color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.mock-person__av--1{background:linear-gradient(140deg,#5266eb,#8a5cf0)}
+.mock-person__av--2{background:linear-gradient(140deg,#fc92b4,#a45cf0)}
+.mock-person__id{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.18}
+.mock-person__id b{font-family:var(--sans);font-weight:600;font-size:.84rem;color:#fff;letter-spacing:-.01em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-person__id i{font-style:normal;font-size:.7rem;color:var(--fg-muted);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-person__score{flex-shrink:0;font-family:var(--ext);font-size:.66rem;font-weight:600;letter-spacing:.03em;color:#fff;
+  background:var(--brand-soft);border:1px solid rgba(82,102,235,.35);border-radius:999px;padding:.22rem .5rem}
+.mock-chip--plan{bottom:11%;right:7%}
 
 /* ============================================================
    WHY SONAR — heading (top) + list (bottom), tall media right
@@ -419,30 +479,56 @@ html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 .why__grid{display:grid;gap:clamp(40px,6vw,56px);grid-template-columns:1fr;align-items:stretch}
 @media(min-width:1000px){.why__grid{grid-template-columns:1fr 1.04fr;gap:clamp(56px,5vw,88px)}}
 .why__copy{display:flex;flex-direction:column}
-.why__head{max-width:32ch}
+.why__head{max-width:none}
+/* keep "Data, not guesses." on a single line (the old 32ch cap, measured in the
+   small body font, was forcing a wrap); allow a natural break only on tiny screens */
+.why__head .h2{white-space:nowrap}
+@media(max-width:480px){.why__head .h2{white-space:normal}}
 .why__list{margin-top:clamp(28px,4vw,40px)}
 @media(min-width:1000px){.why__list{margin-top:auto}}   /* anchor the list to the bottom edge */
 
-/* tall 4:5 media — placeholder sonar scene now, generated image later */
+/* tall 4:5 media — canvas sonar scene now, generated image later */
 .tall-media{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--radius-3xl);overflow:hidden;
-  border:1px solid var(--line);box-shadow:var(--shadow-card);background:var(--card-2)}
+  border:1px solid var(--line);box-shadow:var(--shadow-card);
+  background:radial-gradient(125% 90% at 50% 40%,#23243a 0%,#1a1b28 55%,#141420 100%)}
 .tall-media__img{width:100%;height:100%;object-fit:cover}
 .tall-media__scene{position:absolute;inset:0}
-.tall-media__svg{width:100%;height:100%}
-.tall-media__sweep{position:absolute;left:50%;top:45%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);
-  border-radius:50%;background:conic-gradient(from 0deg,rgba(82,102,235,.20),transparent 24%,transparent 100%);
-  animation:sweep 7s linear infinite}
+.tall-media__canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+
+/* platform "+N new users" cards ping in here — same markup/animation as the hero's
+   .sonar-card, just sized down for the smaller block */
+.tall-media__fx{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.tall-media__fx .sonar-card__inner{padding:.28rem .52rem .28rem .3rem;gap:.42rem}
+.tall-media__fx .sonar-card__chip{width:23px;height:23px;border-radius:7px}
+.tall-media__fx .sonar-card__chip img{width:17px;height:17px}
+.tall-media__fx .sonar-card__meta b{font-size:12.5px}
+.tall-media__fx .sonar-card__meta i{font-size:9.5px;margin-top:2px}
+.tall-media__fx .sonar-card__ping{left:16px;width:21px;height:21px}
+
 .tall-media__chip{position:absolute;z-index:2;display:inline-flex;align-items:center;gap:.5rem;
   font-family:var(--sans);font-size:.8rem;color:var(--fg-strong);
   background:rgba(23,23,33,.62);border:1px solid var(--line-2);
   -webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);
   padding:.5rem .8rem;border-radius:999px;box-shadow:0 12px 30px -16px rgba(0,0,0,.8)}
-.tall-media__chip b{font-family:var(--serif);font-weight:300;color:#fff;font-size:.95rem}
-.tall-media__chip--a{top:8%;left:7%}
-.tall-media__chip--b{bottom:9%;right:7%}
+.tall-media__chip--a{top:7%;left:7%}
+
+/* bottom-right live stat — a blinking dot + a big "people asking now" count */
+.tall-media__chip--stat{bottom:7%;right:7%;gap:.6rem;padding:.58rem .95rem .58rem .78rem;
+  border-radius:16px;background:rgba(19,19,28,.74)}
+.tall-media__stat{display:flex;flex-direction:column;line-height:1}
+.tall-media__stat b{font-family:var(--serif);font-weight:300;color:#fff;letter-spacing:-.01em;
+  font-size:clamp(1.7rem,3.4vw,2.35rem);font-variant-numeric:tabular-nums}
+.tall-media__stat i{font-style:normal;font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--fg-muted);margin-top:.22rem}
+.tall-media__live{flex-shrink:0;width:9px;height:9px;border-radius:50%;background:var(--pink);
+  animation:tmBlink 1.4s ease-in-out infinite}
+
 .tall-media__pulse{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px var(--brand-glow);
   animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+/* a true blink — full on, then nearly off, with a soft expanding ring on the way out */
+@keyframes tmBlink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(252,146,180,.5)}
+  50%{opacity:.22;box-shadow:0 0 0 5px rgba(252,146,180,0)}}
 
 /* ============================================================
    CARDS / blocks — Mercury
@@ -453,7 +539,7 @@ html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 .card .tag{font-family:var(--ext);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-dim);display:block;margin-bottom:1.1rem}
 .card__title{font-family:var(--sans);font-weight:500;font-size:1.125rem;letter-spacing:-.01em;color:var(--fg);margin:0 0 .45rem}
 /* body text matches the lead beneath the cards — readable, no sub-16px copy */
-.card p{color:var(--fg-soft);margin:0;font-size:clamp(1.1rem,1.5vw,1.35rem);line-height:1.5}
+.card p{color:var(--fg);margin:0;font-size:clamp(1.1rem,1.5vw,1.35rem);line-height:1.5}
 
 /* icon chip */
 .chip{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:1.2rem;
@@ -577,7 +663,7 @@ html.js .reveal.is-in{opacity:1;transform:none;transition:opacity .8s cubic-bezi
 
 @media(prefers-reduced-motion:reduce){
   .reveal,.reveal-hero{opacity:1!important;transform:none!important}
-  .tall-media__sweep,.tall-media__pulse{animation:none}
+  .tall-media__pulse,.tall-media__live{animation:none}
   .modal,.modal__dialog{transition:opacity .15s ease,visibility .15s ease}
   .modal__dialog{transform:none!important}
   *{scroll-behavior:auto!important}

@@ -6,7 +6,7 @@
 <title>Sonar — Find your users. We'll show you where they are.</title>
 <meta name="description" content="Sonar reads your live market and hands you the people who already want what you're building — real profiles you can message today, plus where to reach more. Data, not guesses.">
 <link rel="icon" href="assets/img/sonar-logo-black.png">
-<link rel="stylesheet" href="css/styles.css?v=3">
+<link rel="stylesheet" href="css/styles.css?v=10">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -58,7 +58,7 @@
 <!-- ===================== 2 · PROBLEM ===================== -->
 <section class="section" id="problem">
   <div class="container">
-    <h2 class="h2 measure-lg center reveal">Building the product was never the hard part. Finding the people who want it <em>is</em>.</h2>
+    <h2 class="h2 measure-lg center reveal">Building the product was never the hard part. Finding the people who want it <span class="hl">is</span>.</h2>
     <div class="grid g2 reveal">
       <div class="card">
         <span class="tag">Before you build</span>
@@ -79,7 +79,7 @@
     <!-- Left: copy + accordion -->
     <div class="showcase__text reveal">
       <span class="eyebrow">What you get</span>
-      <h2 class="h2">Three answers, pulled from your real market. <em>Not an opinion.</em></h2>
+      <h2 class="h2">Three answers, pulled from your real market. <span class="hl">Not an opinion.</span></h2>
       <div class="accordion" data-accordion>
         <div class="acc is-open">
           <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Is the demand real?</span></button>
@@ -127,7 +127,7 @@
   <div class="container">
     <div class="heading-block reveal">
       <span class="eyebrow">How it works</span>
-      <h2 class="h2">Drop a link. <em>Get a market.</em></h2>
+      <h2 class="h2">Drop a link. <span class="hl">Get a market.</span></h2>
     </div>
 
     <div class="grid g3 market reveal">
@@ -135,24 +135,63 @@
            SWAP LATER → replace the .market-card__media div with:
            <img class="market-card__img" src="assets/img/how-1.jpg" alt=""> -->
       <article class="market-card">
+        <span class="market-card__step">Step 01</span>
         <div class="market-card__media market-card__media--1" aria-hidden="true">
-          <span class="market-card__step">Step 01</span>
+          <div class="mock mock--drop">
+            <div class="mock-field">
+              <span class="mock-field__icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 0 1 0 10h-2"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              </span>
+              <span class="mock-field__url">yourstartup.com<span class="mock-field__caret"></span></span>
+              <span class="mock-field__btn">Scan</span>
+            </div>
+          </div>
         </div>
         <h3 class="market-card__title">You drop your link.</h3>
         <p class="market-card__text">A website, an app, or one clear sentence about the idea. That's all we need to start.</p>
       </article>
 
       <article class="market-card">
+        <span class="market-card__step">Step 02</span>
         <div class="market-card__media market-card__media--2" aria-hidden="true">
-          <span class="market-card__step">Step 02</span>
+          <div class="mock mock--scan">
+            <div class="mock-feed">
+              <div class="mock-post">
+                <span class="mock-post__src"><img src="assets/img/logos/reddit.png" alt=""></span>
+                <span class="mock-post__txt">"Is there a tool that <mark>actually finds my users</mark>?"</span>
+              </div>
+              <div class="mock-post">
+                <span class="mock-post__src"><img src="assets/img/logos/x.png" alt=""></span>
+                <span class="mock-post__txt">"honestly i'd <mark>pay for this</mark> today"</span>
+              </div>
+              <div class="mock-post">
+                <span class="mock-post__src"><img src="assets/img/logos/youtube.png" alt=""></span>
+                <span class="mock-post__txt">"still <mark>looking for</mark> something like this"</span>
+              </div>
+            </div>
+          </div>
         </div>
         <h3 class="market-card__title">Sonar reads your live market.</h3>
         <p class="market-card__text">We scan public conversations, search behavior and competitor signals — fresh, not last year's.</p>
       </article>
 
       <article class="market-card">
+        <span class="market-card__step">Step 03</span>
         <div class="market-card__media market-card__media--3" aria-hidden="true">
-          <span class="market-card__step">Step 03</span>
+          <div class="mock mock--users">
+            <div class="mock-people">
+              <div class="mock-person">
+                <img class="mock-person__av" src="assets/img/avatars/w-01.jpg" alt="" width="30" height="30">
+                <span class="mock-person__id"><b>Maya Chen</b><i>@mayabuilds · r/SaaS</i></span>
+                <span class="mock-person__score">92</span>
+              </div>
+              <div class="mock-person">
+                <img class="mock-person__av" src="assets/img/avatars/m-01.jpg" alt="" width="30" height="30">
+                <span class="mock-person__id"><b>Devin Brooks</b><i>@devbrooks · X</i></span>
+                <span class="mock-person__score">88</span>
+              </div>
+            </div>
+          </div>
         </div>
         <h3 class="market-card__title">You get real users + a plan.</h3>
         <p class="market-card__text">Named people you can message, and the concrete moves to reach more this week.</p>
@@ -169,7 +208,7 @@
       <div class="why__copy reveal">
         <div class="why__head">
           <span class="eyebrow">Why Sonar</span>
-          <h2 class="h2">Data, <em>not guesses.</em></h2>
+          <h2 class="h2">Data, <span class="hl">not guesses.</span></h2>
         </div>
         <div class="accordion why__list" data-accordion>
           <div class="acc is-open">
@@ -191,39 +230,18 @@
            <img class="tall-media__img" src="assets/img/why.jpg" alt=""> -->
       <div class="tall-media reveal">
         <div class="tall-media__scene" aria-hidden="true">
-          <svg class="tall-media__svg" viewBox="0 0 440 560" preserveAspectRatio="xMidYMid slice">
-            <defs>
-              <radialGradient id="tmBg" cx="50%" cy="40%" r="78%">
-                <stop offset="0%" stop-color="#24253b"/><stop offset="55%" stop-color="#1c1d2b"/><stop offset="100%" stop-color="#171721"/>
-              </radialGradient>
-              <radialGradient id="tmDot" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#b3c0ff"/><stop offset="100%" stop-color="#5266eb"/>
-              </radialGradient>
-              <filter id="tmSoft"><feGaussianBlur stdDeviation="4"/></filter>
-            </defs>
-            <rect width="440" height="560" fill="url(#tmBg)"/>
-            <g fill="none" stroke="#5266eb">
-              <circle cx="220" cy="252" r="62" stroke-opacity=".22"/><circle cx="220" cy="252" r="122" stroke-opacity=".15"/>
-              <circle cx="220" cy="252" r="188" stroke-opacity=".10"/><circle cx="220" cy="252" r="258" stroke-opacity=".06"/>
-              <circle cx="220" cy="252" r="335" stroke-opacity=".035"/>
-            </g>
-            <g stroke="#5266eb" stroke-opacity=".06">
-              <path d="M40 252h360M220 40v424M96 128l248 248M344 128L96 376" fill="none"/>
-            </g>
-            <g fill="#5266eb" fill-opacity=".7">
-              <circle cx="150" cy="172" r="2.5"/><circle cx="300" cy="152" r="2"/><circle cx="120" cy="300" r="2"/>
-              <circle cx="332" cy="320" r="2.5"/><circle cx="200" cy="384" r="2"/><circle cx="272" cy="432" r="2"/>
-              <circle cx="168" cy="430" r="1.8"/><circle cx="352" cy="232" r="2"/><circle cx="96" cy="222" r="1.8"/>
-            </g>
-            <g>
-              <circle cx="190" cy="242" r="14" fill="#5266eb" fill-opacity=".18" filter="url(#tmSoft)"/><circle cx="190" cy="242" r="5" fill="url(#tmDot)"/>
-              <circle cx="286" cy="286" r="12" fill="#5266eb" fill-opacity=".18" filter="url(#tmSoft)"/><circle cx="286" cy="286" r="4.5" fill="url(#tmDot)"/>
-              <circle cx="226" cy="336" r="11" fill="#fc92b4" fill-opacity=".16" filter="url(#tmSoft)"/><circle cx="226" cy="336" r="4" fill="#fc92b4"/>
-            </g>
-          </svg>
-          <span class="tall-media__sweep"></span>
+          <!-- Canvas sonar: same rotating-beam-reveals-blips logic as the hero, scaled
+               to this 4:5 block. The beam is centred so it sweeps clean to every edge
+               (no clipped arc), and platform "+N new users" cards ping in where it
+               crosses a hotspot — more often than the hero. SWAP LATER → drop the
+               generated image into <img class="tall-media__img"> and delete this scene. -->
+          <canvas class="tall-media__canvas"></canvas>
+          <div class="tall-media__fx"></div>
           <span class="tall-media__chip tall-media__chip--a"><span class="tall-media__pulse"></span>Reading live market…</span>
-          <span class="tall-media__chip tall-media__chip--b"><b>47</b> people asking now</span>
+          <span class="tall-media__chip tall-media__chip--stat">
+            <span class="tall-media__live"></span>
+            <span class="tall-media__stat"><b data-asking>532</b><i>people asking now</i></span>
+          </span>
         </div>
       </div>
     </div>
@@ -233,7 +251,7 @@
 <!-- ===================== 6 · WHO IT'S FOR ===================== -->
 <section class="section" id="who">
   <div class="container">
-    <h2 class="h2 measure center reveal">If this is you, <em>drop your link.</em></h2>
+    <h2 class="h2 measure center reveal">If this is you, <span class="hl">drop your link.</span></h2>
     <div class="grid g2 reveal">
       <div class="card">
         <span class="tag">You already shipped</span>
@@ -254,7 +272,7 @@
 <!-- ===================== 7 · THE FORM ===================== -->
 <section class="section section--lg" id="form">
   <div class="container center">
-    <h2 class="h2 reveal">Drop your product. <em>We'll show you your users.</em></h2>
+    <h2 class="h2 reveal">Drop your product. <span class="hl">We'll show you your users.</span></h2>
     <p class="lead measure-sm center reveal">We read every submission and send your report by email.</p>
     <form class="form reveal" id="demand-form" data-demand novalidate>
       <div class="field">
@@ -390,6 +408,6 @@
 <script src="js/vendor/gsap.min.js"></script>
 <script src="js/vendor/ScrollTrigger.min.js"></script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=4"></script>
 </body>
 </html>
