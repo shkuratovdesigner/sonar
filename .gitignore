@@ -43,3 +43,11 @@ out/
 # Oversized master screenshots (per-section crops + research JSON are kept)
 **/docs/design-references/*-fullpage-*.png
 **/docs/design-references/_*.png
+
+# Agent/skill tooling (reinstall: npx skills add heygen-com/hyperframes)
+.agents/
+.claude/
+skills-lock.json
+
+# HyperFrames intermediate QA frame captures (the rendered MP4 is kept)
+**/snapshots/

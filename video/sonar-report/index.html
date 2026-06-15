@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Sonar — The Sweep</title>
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      /* ============ Fonts (local, deterministic) — ONE family: ABC Room ============ */
+      @font-face{font-family:"ABC Room";src:url("assets/fonts/ABCRoom-Regular.woff") format("woff");font-weight:400;font-style:normal}
+      @font-face{font-family:"ABC Room";src:url("assets/fonts/ABCRoom-Medium.woff") format("woff");font-weight:500;font-style:normal}
+      @font-face{font-family:"ABC Room";src:url("assets/fonts/ABCRoom-Extrabold.woff") format("woff");font-weight:800;font-style:normal}
+      @font-face{font-family:"ABC Room Extended";src:url("assets/fonts/ABCRoomExtended-Regular.woff") format("woff");font-weight:400;font-style:normal}
+
+      *{margin:0;padding:0;box-sizing:border-box}
+      html,body{margin:0;width:1920px;height:1080px;overflow:hidden;background:#07080d}
+
+      :root{
+        --sans:"ABC Room",system-ui,sans-serif;
+        --ext:"ABC Room Extended","ABC Room",system-ui,sans-serif;
+        --accent:#4a5bd6;
+        --accent-lite:#8c9bf5;
+        --ok:#46d39a;
+        --txt:#f3f4f9;
+        --txt-soft:rgba(243,244,249,.66);
+        --txt-faint:rgba(243,244,249,.42);
+        --line:rgba(255,255,255,.12);
+        --panel:rgba(12,14,22,.62);
+      }
+      #root{font-family:var(--sans);color:var(--txt)}
+
+      /* ============ Shared primitives ============ */
+      .scene{position:absolute;inset:0}
+      .si{position:absolute;inset:0;opacity:0}
+      .label{font-family:var(--ext);text-transform:uppercase;letter-spacing:.16em;font-size:13px;color:var(--txt-faint)}
+      /* one title style — grotesque, no italic */
+      .title{font-family:var(--sans);font-weight:500;line-height:1.06;letter-spacing:-.025em;color:#fff}
+      .title--lg{font-size:74px}
+      .title--md{font-size:56px}
+      .bignum{font-family:var(--sans);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.045em;line-height:.86;color:#fff}
+      .glyph{width:15px;height:15px;flex:0 0 auto;fill:currentColor}
+      .glyph--lg{width:18px;height:18px}
+
+      .verdict{display:inline-flex;align-items:center;gap:.6em;font-family:var(--ext);font-size:15px;letter-spacing:.16em;
+        text-transform:uppercase;color:var(--ok);background:rgba(70,211,154,.10);border:1px solid rgba(70,211,154,.38);
+        padding:.6em 1.2em;border-radius:999px}
+      .verdict::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 14px rgba(70,211,154,.9)}
+
+      /* ============ Beat 1 — drop a link ============ */
+      #b1 .wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:46px;text-align:center}
+      .field{display:flex;align-items:center;gap:18px;min-width:720px;justify-content:flex-start;
+        background:rgba(14,16,26,.78);border:1px solid var(--line);border-radius:18px;padding:26px 30px;
+        box-shadow:0 30px 80px -40px rgba(0,0,0,.8)}
+      .field.is-scan{border-color:rgba(74,91,214,.7);box-shadow:0 0 0 4px rgba(74,91,214,.16),0 30px 80px -40px rgba(0,0,0,.8)}
+      .field__icon{width:26px;height:26px;color:var(--accent-lite);flex:0 0 auto}
+      .field__url{font-family:var(--sans);font-weight:500;font-size:34px;letter-spacing:-.01em;color:#fff;white-space:nowrap}
+      .caret{display:inline-block;width:3px;height:38px;background:var(--accent-lite);margin-left:2px;transform:translateY(6px)}
+      #b1 .sub{font-size:24px;color:var(--txt-soft);font-weight:400}
+      .ripple{position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:999px;border:2px solid rgba(140,155,245,.7);opacity:0}
+
+      /* ============ Beat 2 — scan resolves ============ */
+      #b2 .wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:54px;text-align:center}
+      .stats3{display:flex;align-items:flex-start;gap:96px}
+      .stat{display:flex;flex-direction:column;align-items:center;gap:18px;min-width:300px}
+      .stat__n{display:flex;align-items:baseline;justify-content:center;font-family:var(--sans);font-weight:800;
+        font-variant-numeric:tabular-nums;letter-spacing:-.04em;font-size:118px;line-height:.9;color:#fff}
+      .stat__n .pre{font-size:.62em;color:var(--ok);margin-right:.04em}
+      .stat__n .suf{font-size:.5em;color:var(--accent-lite);margin-left:.06em;font-weight:800}
+      .stat__n.is-ok{color:var(--ok)}
+      .stat__k{font-family:var(--ext);text-transform:uppercase;letter-spacing:.14em;font-size:15px;color:var(--txt-soft);max-width:13ch;line-height:1.4}
+      #b2 .verdict-wrap{opacity:0}
+
+      /* ============ Beat 3 — the 94 + leads ============ */
+      #b3 .grid{position:absolute;inset:0;display:grid;grid-template-columns:0.92fr 1.08fr;align-items:center;gap:80px;padding:110px 150px}
+      #b3 .hero94{display:flex;flex-direction:column;justify-content:center;gap:8px}
+      #b3 .n94{font-size:380px}
+      #b3 .h94lab{font-family:var(--sans);font-weight:500;font-size:44px;line-height:1.08;letter-spacing:-.02em;color:#fff;max-width:11ch;margin-top:6px}
+      .leads{display:flex;flex-direction:column;gap:18px}
+      .lead{display:grid;grid-template-columns:1fr auto;gap:6px 18px;align-items:center;background:var(--panel);
+        border:1px solid var(--line);border-radius:16px;padding:22px 26px;opacity:0;box-shadow:0 24px 60px -44px rgba(0,0,0,.9)}
+      .lead__main{display:flex;gap:18px;align-items:flex-start;min-width:0}
+      .av{width:54px;height:54px;border-radius:50%;flex:0 0 auto;object-fit:cover;display:block;
+        background:rgba(74,91,214,.16);border:1px solid rgba(74,91,214,.45)}
+      .lead__who{display:flex;align-items:center;gap:.6rem;line-height:1.1}
+      .lead__name{font-weight:600;color:#fff;font-size:23px}
+      .lead__handle{display:inline-flex;align-items:center;gap:.34rem;font-size:17px;color:var(--txt-faint)}
+      .lead__say{margin-top:8px;font-size:21px;color:var(--txt-soft);line-height:1.35}
+      .lead__act{display:flex;align-items:center;gap:22px;justify-content:flex-end}
+      .intent{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+      .intent__n{font-family:var(--sans);font-weight:800;font-size:30px;color:var(--ok);line-height:1}
+      .intent__bar{width:90px;height:6px;background:rgba(255,255,255,.14);border-radius:3px;overflow:hidden}
+      .intent__bar i{display:block;width:100%;height:100%;background:var(--ok);transform:scaleX(0);transform-origin:left center;border-radius:3px}
+      .msg{display:inline-flex;align-items:center;gap:.5em;font-family:var(--ext);font-size:13px;letter-spacing:.08em;
+        text-transform:uppercase;color:#fff;background:var(--accent);border:1px solid var(--accent);border-radius:10px;padding:.7em 1.05em;white-space:nowrap}
+      .msg svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9}
+
+      /* ============ Beat 4a — communities ============ */
+      #b4a .wrap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:30px;padding:110px 170px}
+      #b4a .head{font-family:var(--sans);font-weight:800;letter-spacing:-.03em;font-size:64px;color:#fff;display:flex;align-items:baseline;gap:.34em;flex-wrap:wrap}
+      #b4a .head .hn{color:var(--accent-lite)}
+      .places{display:flex;flex-direction:column}
+      .place{display:grid;grid-template-columns:1.5fr auto auto;gap:8px 50px;align-items:center;padding:24px 6px;border-top:1px solid var(--line);opacity:0}
+      .place:last-child{border-bottom:1px solid var(--line)}
+      .place__name{display:flex;align-items:center;gap:16px;min-width:0}
+      .place__name b{font-weight:600;color:#fff;font-size:27px}
+      .place__plat{font-size:17px;color:var(--txt-faint);font-family:var(--ext);letter-spacing:.06em;text-transform:uppercase}
+      .place__reach{text-align:right;white-space:nowrap}
+      .place__count{font-family:var(--sans);font-weight:800;font-size:34px;color:#fff;line-height:1;letter-spacing:-.03em}
+      .place__unit{margin-top:6px;font-family:var(--ext);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt-faint)}
+      .place__fit{display:flex;flex-direction:column;align-items:flex-end;gap:7px}
+      .place__fit .intent__n{color:var(--accent-lite)}
+      .place__fit .intent__bar i{background:var(--accent-lite)}
+
+      /* ============ Beat 4b — trend chart (FINALE) ============ */
+      #b4b .wrap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:40px;padding:110px 170px}
+      #b4b .head{font-family:var(--sans);font-weight:800;letter-spacing:-.03em;font-size:66px;color:#fff}
+      #b4b .head .hn{color:var(--ok)}
+      .chart{position:relative;width:100%;height:520px;border:1px solid var(--line);border-radius:14px;
+        background:linear-gradient(to bottom,rgba(255,255,255,.025),rgba(255,255,255,0));padding:34px 40px}
+      .chart svg{width:100%;height:100%;display:block;overflow:visible}
+      .dc-grid{stroke:rgba(255,255,255,.08);stroke-width:1}
+      .dc-base{stroke:rgba(255,255,255,.18);stroke-width:1}
+      .dc-area{fill:url(#agrad);opacity:0}
+      .dc-line{fill:none;stroke:var(--accent-lite);stroke-width:3.2;stroke-linejoin:round;stroke-linecap:round}
+      .dc-dot{fill:#fff}
+      .dc-halo{fill:var(--ok);opacity:0}
+      .dc-callout{font-family:var(--sans);font-weight:800;font-size:40px;letter-spacing:-.02em;fill:var(--ok);opacity:0}
+      .dc-xlab{font-family:var(--ext);font-size:18px;letter-spacing:.1em;fill:var(--txt-faint);text-transform:uppercase}
+
+      /* overlays */
+      #grain{position:absolute;inset:0;background-image:url("assets/noise.png");background-size:520px;opacity:.045;mix-blend-mode:overlay;pointer-events:none;z-index:50}
+      #fadeout{position:absolute;inset:0;background:#000;opacity:0;z-index:60}
+
+      .scene{z-index:5}
+      #cvs-wrap{z-index:1}
+      #b1{z-index:6}#b2{z-index:7}#b3{z-index:8}#b4a{z-index:9}#b4b{z-index:10}
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="sonar-report" data-start="0" data-width="1920" data-height="1080" data-duration="32"
+         style="position:relative;width:1920px;height:1080px;overflow:hidden;background:#07080d">
+
+      <!-- ====== Sonar canvas background (subtle, full length) ====== -->
+      <div id="cvs-wrap" class="clip" data-start="0" data-duration="32" data-track-index="0" style="position:absolute;inset:0">
+        <canvas id="sonar" width="1920" height="1080" style="position:absolute;inset:0;width:1920px;height:1080px"></canvas>
+      </div>
+
+      <!-- ====== Beat 1 — Drop a link (0–6.4) ====== -->
+      <section id="b1" class="scene clip" data-start="0" data-duration="6.4" data-track-index="1">
+        <div class="si wrap">
+          <div class="title title--lg" data-a="b1-head">Drop a link. Get a market.</div>
+          <div style="position:relative">
+            <div class="field" id="b1-field" data-a="b1-field">
+              <svg class="field__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+              <span class="field__url"><span id="b1-url"></span><span class="caret" data-a="b1-caret"></span></span>
+            </div>
+          </div>
+          <div class="sub" data-a="b1-sub">reelo.app — turning long videos into ready-to-post shorts.</div>
+        </div>
+      </section>
+
+      <!-- ====== Beat 2 — Scan resolves demand (6.0–15.4) ====== -->
+      <section id="b2" class="scene clip" data-start="6.0" data-duration="9.4" data-track-index="2">
+        <div class="si wrap">
+          <div class="title title--md" data-a="b2-head">Data, not guesses.</div>
+          <div class="stats3">
+            <div class="stat" data-a="b2-s1">
+              <div class="stat__n"><span id="b2-n1">0</span></div>
+              <div class="stat__k">asked · last 30 days</div>
+            </div>
+            <div class="stat" data-a="b2-s2">
+              <div class="stat__n is-ok"><span class="pre">+</span><span id="b2-n2">0</span><span class="suf" style="color:var(--ok)">%</span></div>
+              <div class="stat__k">demand growth · 6 months</div>
+            </div>
+            <div class="stat" data-a="b2-s3">
+              <div class="stat__n"><span id="b2-n3">0</span><span class="suf">M+</span></div>
+              <div class="stat__k">people · 12 communities</div>
+            </div>
+          </div>
+          <div class="verdict-wrap" data-a="b2-verd"><span class="verdict">Demand — Real</span></div>
+        </div>
+      </section>
+
+      <!-- ====== Beat 3 — The 94 + leads (15.0–23.4) ====== -->
+      <section id="b3" class="scene clip" data-start="15.0" data-duration="8.4" data-track-index="3">
+        <div class="si">
+          <div class="grid">
+            <div class="hero94">
+              <div class="label" data-a="b3-lab">People you can message</div>
+              <div class="bignum n94" data-a="b3-n"><span id="b3-94">0</span></div>
+              <div class="h94lab" data-a="b3-sub">people you can message today.</div>
+            </div>
+            <div class="leads">
+              <div class="lead" data-a="b3-c1">
+                <div class="lead__main"><img class="av" src="assets/avatars/w-02.jpg" alt=""><div><div class="lead__who"><span class="lead__name">Lena Mraz</span><span class="lead__handle"><svg class="glyph" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@creator_lena</span></div><div class="lead__say">“Would pay for auto long→shorts.”</div></div></div>
+                <div class="lead__act"><span class="intent"><span class="intent__n">96</span><span class="intent__bar"><i style="--v:.96"></i></span></span><span class="msg"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>Message</span></div>
+              </div>
+              <div class="lead" data-a="b3-c2">
+                <div class="lead__main"><img class="av" src="assets/avatars/m-02.jpg" alt=""><div><div class="lead__who"><span class="lead__name">Mike Alvarez</span><span class="lead__handle"><svg class="glyph" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>u/mike_audio</span></div><div class="lead__say">“Editing eats my whole weekend.”</div></div></div>
+                <div class="lead__act"><span class="intent"><span class="intent__n">94</span><span class="intent__bar"><i style="--v:.94"></i></span></span><span class="msg"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>Message</span></div>
+              </div>
+              <div class="lead" data-a="b3-c3">
+                <div class="lead__main"><img class="av" src="assets/avatars/w-03.jpg" alt=""><div><div class="lead__who"><span class="lead__name">Dana Reyes</span><span class="lead__handle"><svg class="glyph" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Content Lead</span></div><div class="lead__say">“Repurpose webinars at scale.”</div></div></div>
+                <div class="lead__act"><span class="intent"><span class="intent__n">91</span><span class="intent__bar"><i style="--v:.91"></i></span></span><span class="msg"><svg viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>Message</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== Beat 4a — Communities (23.0–27.8) ====== -->
+      <section id="b4a" class="scene clip" data-start="23.0" data-duration="4.8" data-track-index="4">
+        <div class="si wrap">
+          <div class="head" data-a="b4a-head"><span class="hn">12</span> communities · <span class="hn">11M+</span> people.</div>
+          <div class="places">
+            <div class="place" data-a="b4a-p1">
+              <div class="place__name"><svg class="glyph glyph--lg" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg><b>r/podcasting</b><span class="place__plat">Reddit</span></div>
+              <div class="place__reach"><div class="place__count">1.2M</div><div class="place__unit">members</div></div>
+              <div class="place__fit"><span class="intent__n">94</span><span class="intent__bar"><i style="--v:.94"></i></span></div>
+            </div>
+            <div class="place" data-a="b4a-p2">
+              <div class="place__name"><svg class="glyph glyph--lg" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg><b>r/NewTubers</b><span class="place__plat">Reddit</span></div>
+              <div class="place__reach"><div class="place__count">432K</div><div class="place__unit">members</div></div>
+              <div class="place__fit"><span class="intent__n">89</span><span class="intent__bar"><i style="--v:.89"></i></span></div>
+            </div>
+            <div class="place" data-a="b4a-p3">
+              <div class="place__name"><svg class="glyph glyph--lg" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><b>Creator YouTube</b><span class="place__plat">YouTube</span></div>
+              <div class="place__reach"><div class="place__count">2.4M</div><div class="place__unit">subscribers</div></div>
+              <div class="place__fit"><span class="intent__n">85</span><span class="intent__bar"><i style="--v:.85"></i></span></div>
+            </div>
+            <div class="place" data-a="b4a-p4">
+              <div class="place__name"><svg class="glyph glyph--lg" viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249z"/></svg><b>r/youtubers</b><span class="place__plat">Reddit</span></div>
+              <div class="place__reach"><div class="place__count">310K</div><div class="place__unit">members</div></div>
+              <div class="place__fit"><span class="intent__n">86</span><span class="intent__bar"><i style="--v:.86"></i></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====== Beat 4b — Trend chart (FINALE 27.4–32.0) ====== -->
+      <section id="b4b" class="scene clip" data-start="27.4" data-duration="4.6" data-track-index="5">
+        <div class="si wrap">
+          <div class="head" data-a="b4b-head">Demand is up <span class="hn">180%</span>.</div>
+          <div class="chart" data-a="b4b-chart">
+            <svg viewBox="0 0 1000 360" preserveAspectRatio="none">
+              <defs><linearGradient id="agrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8c9bf5" stop-opacity="0.26"/>
+                <stop offset="100%" stop-color="#8c9bf5" stop-opacity="0"/>
+              </linearGradient></defs>
+              <line class="dc-grid" x1="0" y1="70" x2="1000" y2="70"/>
+              <line class="dc-grid" x1="0" y1="140" x2="1000" y2="140"/>
+              <line class="dc-grid" x1="0" y1="210" x2="1000" y2="210"/>
+              <line class="dc-grid" x1="0" y1="280" x2="1000" y2="280"/>
+              <line class="dc-base" x1="0" y1="340" x2="1000" y2="340"/>
+              <polygon class="dc-area" points="0,340 0,312 91,306 182,310 273,298 364,303 455,290 545,256 636,210 727,224 818,150 909,106 1000,58 1000,340"/>
+              <polyline id="dcline" class="dc-line" points="0,312 91,306 182,310 273,298 364,303 455,290 545,256 636,210 727,224 818,150 909,106 1000,58"/>
+              <circle class="dc-halo" id="dchalo" cx="1000" cy="58" r="15"/>
+              <circle class="dc-dot" id="dcdot" cx="1000" cy="58" r="6"/>
+              <text class="dc-callout" id="dccallout" x="980" y="40" text-anchor="end">+180%</text>
+              <text class="dc-xlab" x="0" y="356">Jul</text>
+              <text class="dc-xlab" x="273" y="356" text-anchor="middle">Oct</text>
+              <text class="dc-xlab" x="545" y="356" text-anchor="middle">Jan</text>
+              <text class="dc-xlab" x="818" y="356" text-anchor="middle">Apr</text>
+              <text class="dc-xlab" x="1000" y="356" text-anchor="end">Jun</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- overlays -->
+      <div id="grain" class="clip" data-start="0" data-duration="32" data-track-index="8"></div>
+      <div id="fadeout" class="clip" data-start="30.8" data-duration="1.2" data-track-index="9"></div>
+    </div>
+
+    <script>
+      (function () {
+        function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+        function clamp(v,a,b){return v<a?a:v>b?b:v;}
+        var rng = mulberry32(20260615);
+
+        var cvs = document.getElementById("sonar");
+        var ctx = cvs.getContext("2d");
+        var W = 1920, H = 1080, CX = 960, CY = 540;
+        var S = { t: 0 };
+
+        // fewer, fainter elements — the sonar is a quiet backdrop, not the subject
+        var PARTS = [];
+        for (var i = 0; i < 64; i++) PARTS.push({ x: rng()*W, y: rng()*H, r: rng()*1.3+0.4, ph: rng()*6.283, sp: rng()*0.45+0.16, amp: rng()*14+4, a: rng()*0.20+0.04 });
+        var BLIPS = [];
+        for (var j = 0; j < 84; j++){ var bx = rng()*W, by = rng()*H; BLIPS.push({ x: bx, y: by, ang: Math.atan2(by-CY, bx-CX), hot: rng()<0.16, sz: rng()*1.5+1.2, ph: rng()*6.283 }); }
+        // radial mask: 0 across the centre (content zone), ramps to 1 only near the frame edges
+        function edgeMask(x,y){ var dx=x-CX, dy=y-CY; return clamp((Math.sqrt(dx*dx+dy*dy)-560)/300,0,1); }
+
+        function ring(cx, cy, t0, speed) {
+          var t = S.t; if (t < t0) return; var r = (t - t0)*speed*300; if (r > 980) return;
+          var a = clamp(1-(r/980),0,1)*0.14;
+          ctx.strokeStyle = "rgba(125,140,240,"+a+")"; ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, 6.283); ctx.stroke();
+        }
+
+        function drawSonar() {
+          var t = S.t;
+          ctx.globalCompositeOperation = "source-over";
+          ctx.clearRect(0,0,W,H);
+          var g = ctx.createRadialGradient(CX,CY,0,CX,CY,1150);
+          g.addColorStop(0,"#0f111a"); g.addColorStop(0.55,"#0a0c13"); g.addColorStop(1,"#070810");
+          ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+          var gridA = clamp((t-0.2)/1.6,0,1);
+          var beamA = t*0.6;                       // slow continuous sweep
+          var lock = clamp((t-4)/3,0,1);
+
+          ctx.globalCompositeOperation = "screen";
+          // faint ambient dots, kept off the central content zone by edgeMask
+          for (var p=0;p<PARTS.length;p++){ var P=PARTS[p];
+            var px=P.x+Math.sin(t*P.sp+P.ph)*P.amp, py=P.y+Math.cos(t*P.sp*0.8+P.ph)*P.amp*0.6;
+            var m=edgeMask(px,py); if(m<=0) continue;
+            ctx.beginPath(); ctx.arc(px,py,P.r,0,6.283); ctx.fillStyle="rgba(150,170,255,"+(P.a*gridA*0.34*m)+")"; ctx.fill();
+          }
+
+          // blips — dark until the beam passes, then flash + fade in the trailing afterglow
+          // (the main-screen reveal: dots only show where the light currently is)
+          var TRAIL = 0.95;
+          for (var b=0;b<BLIPS.length;b++){ var B=BLIPS[b];
+            var d = beamA - B.ang; d = ((d % 6.283)+6.283) % 6.283;
+            if (d >= TRAIL) continue;
+            var bri = 1 - d/TRAIL; bri *= bri;                 // quadratic trailing fade
+            var dx=B.x-CX, dy=B.y-CY; var cf = clamp((Math.sqrt(dx*dx+dy*dy)-220)/320, 0.32, 1); // ease behind centred copy
+            bri *= gridA * cf;
+            if (bri <= 0.002) continue;
+            var col = B.hot ? "70,211,154" : "150,165,255";
+            var rad = B.sz * (0.86 + 0.14*Math.sin(beamA*2 + B.ph));
+            ctx.beginPath(); ctx.arc(B.x,B.y, rad*(B.hot?3.2:2.6), 0, 6.283);
+            ctx.fillStyle = "rgba("+col+","+((B.hot?0.18:0.13)*bri)+")"; ctx.fill();   // soft halo
+            ctx.beginPath(); ctx.arc(B.x,B.y, rad, 0, 6.283);
+            ctx.fillStyle = "rgba("+col+","+((B.hot?0.58:0.44)*bri)+")"; ctx.fill();    // core
+          }
+
+          // ---- the sonar sweep (the animation) — soft wedge, transparent centre, ~12-18% ----
+          ctx.save(); ctx.translate(CX,CY); ctx.rotate(beamA);
+          var R = 1240, A = 0.6;                    // radius + wedge span (rad)
+          var wedge = ctx.createRadialGradient(0,0,90, 0,0,R);
+          wedge.addColorStop(0, "rgba(130,145,240,0)");
+          wedge.addColorStop(0.30, "rgba(130,145,240,"+(0.049*gridA)+")");
+          wedge.addColorStop(0.70, "rgba(120,135,235,"+(0.07*gridA)+")");
+          wedge.addColorStop(1, "rgba(120,135,235,0)");
+          ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,R,-A,0); ctx.closePath();
+          ctx.fillStyle = wedge; ctx.fill();
+          // leading edge, brighter, fading along its length
+          var edge = ctx.createLinearGradient(0,0,R,0);
+          edge.addColorStop(0, "rgba(170,185,255,0)");
+          edge.addColorStop(0.45, "rgba(170,185,255,"+(0.126*gridA)+")");
+          edge.addColorStop(1, "rgba(170,185,255,0)");
+          ctx.strokeStyle = edge; ctx.lineWidth = 2.5;
+          ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(R,0); ctx.stroke();
+          ctx.restore();
+
+          ctx.globalCompositeOperation = "source-over";
+          // light scrim + edge vignette (no hard centre shield — keeps the sweep visible)
+          ctx.fillStyle = "rgba(7,8,13,0.16)"; ctx.fillRect(0,0,W,H);
+          var vg = ctx.createRadialGradient(CX,CY,440,CX,CY,1180);
+          vg.addColorStop(0,"rgba(0,0,0,0)"); vg.addColorStop(1,"rgba(0,0,0,0.56)");
+          ctx.fillStyle = vg; ctx.fillRect(0,0,W,H);
+        }
+
+        function el(a){ return document.querySelector('[data-a="'+a+'"]'); }
+        function counter(id, target, plain){ var node = document.getElementById(id); var o = { v: 0 };
+          return { o: o, tick: function(){ node.textContent = plain ? Math.round(o.v) : Math.round(o.v).toLocaleString(); }, target: target }; }
+
+        window.__timelines = window.__timelines || {};
+        gsap.defaults({ overwrite: "auto" });
+        var tl = gsap.timeline({ paused: true });
+
+        // canvas driver (linear, deterministic; onUpdate runs every seek)
+        tl.to(S, { t: 32, duration: 32, ease: "none", onUpdate: drawSonar }, 0);
+        drawSonar();
+
+        function sceneFade(sel, inAt, outAt){
+          var n = document.querySelector(sel + " .si");
+          tl.to(n, { opacity: 1, duration: 0.5, ease: "power2.out" }, inAt);
+          tl.to(n, { opacity: 0, duration: 0.45, ease: "power2.in" }, outAt);
+        }
+
+        /* ===== Beat 1 (0–6.4) ===== */
+        sceneFade("#b1", 0.2, 5.8);
+        tl.from(el("b1-head"), { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.3);
+        tl.from(el("b1-field"), { y: 26, opacity: 0, scale: 0.96, duration: 0.7, ease: "power3.out" }, 0.7);
+        var urlNode = document.getElementById("b1-url"); var FULL = "reelo.app"; var typ = { c: 0 };
+        tl.to(typ, { c: FULL.length, duration: 1.4, ease: "none", onUpdate: function(){ urlNode.textContent = FULL.slice(0, Math.round(typ.c)); } }, 1.3);
+        tl.fromTo(el("b1-sub"), { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 2.9);
+        tl.to(el("b1-caret"), { opacity: 0, duration: 0.3 }, 3.0);
+        tl.add(function(){ el("b1-field").classList.add("is-scan"); }, 4.2);
+
+        /* ===== Beat 2 (6.0–15.4) ===== */
+        sceneFade("#b2", 6.2, 14.7);
+        tl.from(el("b2-head"), { y: 24, opacity: 0, duration: 0.7, ease: "power3.out" }, 6.4);
+        var c1 = counter("b2-n1", 312, false), c2 = counter("b2-n2", 180, false), c3 = counter("b2-n3", 11, true);
+        [["b2-s1",c1],["b2-s2",c2],["b2-s3",c3]].forEach(function(pair, idx){
+          tl.from(el(pair[0]), { y: 26, opacity: 0, duration: 0.6, ease: "power3.out" }, 6.8 + idx*0.12);
+          tl.to(pair[1].o, { v: pair[1].target, duration: 2.0, ease: "power3.out", onUpdate: pair[1].tick }, 7.3);
+        });
+        tl.fromTo(el("b2-verd"), { opacity: 0, scale: 1.25, y: 8 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)" }, 12.4);
+
+        /* ===== Beat 3 (15.0–23.4) ===== */
+        sceneFade("#b3", 15.2, 22.9);
+        tl.from(el("b3-lab"), { y: 18, opacity: 0, duration: 0.6, ease: "power3.out" }, 15.4);
+        var n94 = document.getElementById("b3-94"); var o94 = { v: 0, fs: 200 };
+        tl.to(o94, { v: 94, fs: 380, duration: 1.7, ease: "power3.out", onUpdate: function(){ n94.textContent = Math.round(o94.v); el("b3-n").style.fontSize = o94.fs + "px"; } }, 15.7);
+        tl.fromTo(el("b3-sub"), { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 16.8);
+        ["b3-c1","b3-c2","b3-c3"].forEach(function(c, i){
+          tl.fromTo(el(c), { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, ease: "power3.out" }, 16.4 + i*0.45);
+          tl.to(el(c).querySelector(".intent__bar i"), { scaleX: parseFloat(el(c).querySelector(".intent__bar i").style.getPropertyValue("--v")), duration: 0.9, ease: "power2.out" }, 16.9 + i*0.45);
+        });
+
+        /* ===== Beat 4a (23.0–27.8) ===== */
+        sceneFade("#b4a", 23.2, 27.3);
+        tl.from(el("b4a-head"), { y: 22, opacity: 0, duration: 0.7, ease: "power3.out" }, 23.4);
+        ["b4a-p1","b4a-p2","b4a-p3","b4a-p4"].forEach(function(p, i){
+          tl.fromTo(el(p), { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 23.7 + i*0.22);
+          tl.to(el(p).querySelector(".intent__bar i"), { scaleX: parseFloat(el(p).querySelector(".intent__bar i").style.getPropertyValue("--v")), duration: 0.8, ease: "power2.out" }, 24.0 + i*0.22);
+        });
+
+        /* ===== Beat 4b — FINALE (27.4–32.0) ===== */
+        sceneFade("#b4b", 27.6, 31.4);
+        tl.from(el("b4b-head"), { y: 22, opacity: 0, duration: 0.6, ease: "power3.out" }, 27.8);
+        var line = document.getElementById("dcline"); var LEN = line.getTotalLength();
+        line.style.strokeDasharray = LEN; line.style.strokeDashoffset = LEN;
+        tl.to(line, { strokeDashoffset: 0, duration: 1.9, ease: "power2.out" }, 28.1);
+        tl.to(".dc-area", { opacity: 1, duration: 0.9, ease: "power1.out" }, 29.2);
+        tl.fromTo("#dccallout", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }, 29.9);
+        tl.fromTo("#dchalo", { opacity: 0, scale: 0.4, transformOrigin: "1000px 58px" }, { opacity: 0.5, scale: 1, duration: 0.6, ease: "power2.out" }, 29.9);
+
+        /* ===== final fade to black ===== */
+        tl.to("#fadeout", { opacity: 1, duration: 1.0, ease: "power2.in" }, 30.9);
+
+        window.__timelines["sonar-report"] = tl;
+        tl.seek(0);
+      })();
+    </script>
+  </body>
+</html>
