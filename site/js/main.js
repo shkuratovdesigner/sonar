@@ -207,10 +207,12 @@
        randomness + cooldowns so it stays intermittent, never cluttered). */
     var fx = document.querySelector(".sonar-fx");
     var PLATFORMS = [
-      { key: "linkedin", src: "assets/img/logos/linkedin.png" },
-      { key: "youtube",  src: "assets/img/logos/youtube.png" },
-      { key: "reddit",   src: "assets/img/logos/reddit.png" },
-      { key: "x",        src: "assets/img/logos/x.png" }
+      { key: "linkedin",  src: "assets/img/logos/linkedin.png" },
+      { key: "youtube",   src: "assets/img/logos/youtube.png" },
+      { key: "reddit",    src: "assets/img/logos/reddit.png" },
+      { key: "x",         src: "assets/img/logos/x.png" },
+      { key: "instagram", src: "assets/img/logos/instagram.png" },
+      { key: "facebook",  src: "assets/img/logos/facebook.png" }
     ];
     PLATFORMS.forEach(function (p) { var im = new Image(); im.src = p.src; });  // warm the cache
     var spots = [], cards = [], lastSpawn = -1e9;
@@ -296,7 +298,7 @@
     function buildSpots() {
       spots = [];
       if (!fxEnabled()) return;
-      var count = W >= 1024 ? 7 : 5;
+      var count = W >= 1024 ? 8 : 6;   // one hotspot per platform (6) + a couple repeats on wide screens
       var start = -Math.PI / 2 + Math.random() * TWO;
       // one spot per evenly-spaced sector, with a few jittered tries so a blocked
       // ray (headline in the way) can still find open space nearby.
@@ -845,7 +847,7 @@
   }
 
   /* ---------- Hero: text fade-in on load (no zoom, no pin) ---------- */
-  gsap.to(".reveal-hero", { opacity: 1, y: 0, duration: 1.0, stagger: 0.12, ease: "power3.out", delay: 0.15 });
+  gsap.to(".reveal-hero", { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.1, stagger: 0.12, ease: "power3.out", delay: 0.15 });
 
   /* ---------- Reveal on scroll (batched, CSS-driven) ---------- */
   ScrollTrigger.batch(".reveal", {
@@ -860,6 +862,41 @@
   gsap.delayedCall(2.6, function () {
     document.querySelectorAll(".reveal:not(.is-in)").forEach(function (el) { el.classList.add("is-in"); });
   });
+
+  /* ---------- Report reel: slow scrub-zoom as it scrolls through ---------- */
+  (function () {
+    var v = document.querySelector(".report-reel__video");
+    if (!v) return;
+    gsap.fromTo(v, { scale: 1.14 }, {
+      scale: 1, ease: "none",
+      scrollTrigger: { trigger: ".report-reel", start: "top bottom", end: "bottom top", scrub: true }
+    });
+  })();
+
+  /* ---------- Magnetic CTAs: the button drifts toward the cursor and springs back.
+     Pointer-only; transform is owned by GSAP (CSS transform transition is disabled
+     for [data-magnetic]) so the two never fight. ---------- */
+  (function () {
+    if (!window.matchMedia("(hover:hover) and (pointer:fine)").matches) return;
+    var STR = 0.3, MAX = 9;
+    document.querySelectorAll("[data-magnetic]").forEach(function (el) {
+      var xTo = gsap.quickTo(el, "x", { duration: 0.5, ease: "power3.out" });
+      var yTo = gsap.quickTo(el, "y", { duration: 0.5, ease: "power3.out" });
+      var sTo = gsap.quickTo(el, "scale", { duration: 0.4, ease: "power2.out" });
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width / 2)) * STR;
+        var dy = (e.clientY - (r.top + r.height / 2)) * STR;
+        var d = Math.hypot(dx, dy);
+        if (d > MAX) { dx *= MAX / d; dy *= MAX / d; }
+        xTo(dx); yTo(dy);
+      });
+      el.addEventListener("pointerenter", function () { sTo(1.04); });
+      el.addEventListener("pointerleave", function () { xTo(0); yTo(0); sTo(1); });
+      el.addEventListener("pointerdown", function () { sTo(0.97); });
+      el.addEventListener("pointerup", function () { sTo(1.04); });
+    });
+  })();
 
   /* ---------- Refresh after fonts load (layout shifts) ---------- */
   if (document.fonts && document.fonts.ready) {

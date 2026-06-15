@@ -6,7 +6,7 @@
 <title>Sonar — Find your users. We'll show you where they are.</title>
 <meta name="description" content="Sonar reads your live market and hands you the people who already want what you're building — real profiles you can message today, plus where to reach more. Data, not guesses.">
 <link rel="icon" href="assets/img/sonar-logo-black.png">
-<link rel="stylesheet" href="css/styles.css?v=11">
+<link rel="stylesheet" href="css/styles.css?v=13">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -22,7 +22,7 @@
       <a href="#faq" data-scroll>FAQ</a>
     </nav>
     <div class="nav__cta">
-      <a href="#form" class="btn btn--secondary" data-scroll>Get more users</a>
+      <a href="#form" class="btn btn--secondary" data-scroll data-magnetic>Get more users</a>
     </div>
   </div>
 </header>
@@ -43,7 +43,7 @@
   <div class="hero__content">
     <div class="container">
       <span class="eyebrow reveal-hero">Demand &amp; distribution agent for founders</span>
-      <h1 class="h1 reveal-hero">Find your first paying users today. We'll hand you real profiles to message now, plus where to reach more.</h1>
+      <h1 class="h1 reveal-hero">Find your first paying users today. Get real user contacts and understand how to reach them.</h1>
       <form class="hero__form reveal-hero" novalidate onsubmit="return false" aria-label="Get your demand report">
         <input type="email" name="email" autocomplete="email" placeholder="Your email" aria-label="Your email">
         <button class="btn btn--primary" type="submit">Get more users</button>
@@ -55,10 +55,25 @@
 
 <main>
 
-<!-- ===================== 2 · PROBLEM ===================== -->
+<!-- ===================== 2 · THE REPORT (full-width product reel) ===================== -->
+<section class="section showcase" id="what">
+  <div class="container container--wide">
+    <!-- One full-width card, no surrounding copy — just the report video and a small
+         corner tag (placed top-right, clear of the video's left-aligned content). -->
+    <figure class="report-reel reveal">
+      <video class="report-reel__video" autoplay muted loop playsinline preload="auto"
+             poster="assets/video/sonar-report-poster.jpg">
+        <source src="assets/video/sonar-report.mp4" type="video/mp4">
+      </video>
+      <figcaption class="report-reel__tag">The exact report you'll get</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===================== 3 · PROBLEM ===================== -->
 <section class="section" id="problem">
   <div class="container">
-    <h2 class="h2 measure-lg center reveal">Building the product was never the hard part. Finding the people who want it is.</h2>
+    <h2 class="h2 measure-lg center reveal">Building the product is easy. Finding the people who will pay for it is the hardest part.</h2>
     <div class="grid g2 reveal">
       <div class="card">
         <span class="tag">Before you build</span>
@@ -73,50 +88,12 @@
   </div>
 </section>
 
-<!-- ===================== 3 · WHAT YOU GET + REPORT (Mercury showcase) ===================== -->
-<section class="section showcase" id="what">
-  <div class="container container--wide showcase__grid">
-    <!-- Left: copy + accordion -->
-    <div class="showcase__text reveal">
-      <span class="eyebrow">What you get</span>
-      <h2 class="h2">Three answers, pulled from your real market. <span class="hl">Not an opinion.</span></h2>
-      <div class="accordion" data-accordion>
-        <div class="acc is-open">
-          <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Is the demand real?</span></button>
-          <div class="acc__body"><div class="acc__inner"><p>Proof in live numbers — search volume, active communities, and competitor momentum. A clear verdict, not a vibe.</p></div></div>
-        </div>
-        <div class="acc">
-          <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Who wants it?</span></button>
-          <div class="acc__body"><div class="acc__inner"><p>The exact people who described wanting it, with links to their posts so you can read the context and message them today.</p></div></div>
-        </div>
-        <div class="acc">
-          <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Where are more?</span></button>
-          <div class="acc__body"><div class="acc__inner"><p>The channels and communities where more of them gather — ranked by where you'll actually win, with the first moves to make.</p></div></div>
-        </div>
-      </div>
-      <a href="#form" class="bento__link" data-scroll>Get your report →</a>
-    </div>
-
-    <!-- Right: product video that fills the panel and bleeds to the right viewport edge,
-         sitting UNDER the frosted / dissolving right edge (.showcase__edge). -->
-    <div class="showcase__media reveal">
-      <div class="showcase__panel showcase__panel--video">
-        <video class="showcase__video" autoplay muted loop playsinline preload="auto"
-               poster="assets/video/sonar-report-poster.jpg">
-          <source src="assets/video/sonar-report.mp4" type="video/mp4">
-        </video>
-        <span class="showcase__edge" aria-hidden="true"></span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== 4 · HOW IT WORKS (feature cards) ===================== -->
 <section class="section" id="how">
   <div class="container">
     <div class="heading-block reveal">
       <span class="eyebrow">How it works</span>
-      <h2 class="h2">Drop a link. <span class="hl">Get a market.</span></h2>
+      <h2 class="h2">Drop a link. <span class="hl">Start your go-to-market.</span></h2>
     </div>
 
     <div class="grid g3 market reveal">
@@ -197,7 +174,7 @@
       <div class="why__copy reveal">
         <div class="why__head">
           <span class="eyebrow">Why Sonar</span>
-          <h2 class="h2">Data, <span class="hl">not guesses.</span></h2>
+          <h2 class="h2">Pure data, <span class="hl">no guesswork.</span></h2>
         </div>
         <div class="accordion why__list" data-accordion>
           <div class="acc is-open">
@@ -314,7 +291,7 @@
     <div class="center" style="margin-top:clamp(56px,7vw,88px)">
       <h2 class="display-xl reveal">Stop guessing who<br>your users are.</h2>
       <div class="reveal" style="margin-top:2rem">
-        <a href="#form" class="btn btn--primary btn--lg" data-scroll>Get more users</a>
+        <a href="#form" class="btn btn--primary btn--lg" data-scroll data-magnetic>Get more users</a>
       </div>
     </div>
   </div>
@@ -397,6 +374,6 @@
 <script src="js/vendor/gsap.min.js"></script>
 <script src="js/vendor/ScrollTrigger.min.js"></script>
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=7"></script>
 </body>
 </html>

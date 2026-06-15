@@ -407,6 +407,23 @@ html.js .reveal-hero{opacity:0;transform:translateY(22px)}
   .showcase__edge{display:none}                  /* clean, fully readable card when stacked */
 }
 
+/* full-width product reel — the report video fills one wide card, Mercury-style:
+   no surrounding copy, just a small corner tag. */
+.report-reel{position:relative;margin:0;overflow:hidden;aspect-ratio:16/9;
+  border:1px solid var(--line);border-radius:var(--radius-card);
+  background:var(--card-2);box-shadow:var(--shadow-float)}
+.report-reel__video{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block}
+/* small label, top-right — clear of the video's left-aligned content */
+.report-reel__tag{position:absolute;top:clamp(14px,1.6vw,22px);right:clamp(14px,1.6vw,22px);z-index:2;
+  margin:0;display:inline-flex;align-items:center;padding:.46rem .78rem;border-radius:10px;
+  font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.01em;color:#fff;
+  background:rgba(18,18,26,.58);border:1px solid rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+@media(max-width:600px){
+  .report-reel__tag{font-size:12px;padding:.38rem .62rem}
+}
+
 /* ============================================================
    HOW IT WORKS — feature cards (media + title + text)
    Mercury "Head Start" idiom: 3:2 media on top, bold title, muted body
@@ -676,4 +693,57 @@ html.js .reveal.is-in{opacity:1;transform:none;transition:opacity .8s cubic-bezi
   .modal,.modal__dialog{transition:opacity .15s ease,visibility .15s ease}
   .modal__dialog{transform:none!important}
   *{scroll-behavior:auto!important}
+}
+
+/* ============================================================
+   Premium motion polish — restrained micro-interactions.
+   Interruptible CSS transitions, spring easing, depth via shadow.
+   Source-ordered after the base rules so it layers cleanly.
+   ============================================================ */
+:root{
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);   /* gentle overshoot — tactile */
+  --ease-soft:cubic-bezier(.22,.61,.36,1);        /* smooth deceleration */
+}
+
+/* Buttons: spring transition, lift on hover, tactile press.
+   Magnetic buttons are transform-driven by JS, so the CSS transform is scoped away. */
+.btn{transition:transform .24s var(--ease-spring),background-color .2s ease,border-color .2s ease,box-shadow .3s var(--ease-soft)}
+.btn[data-magnetic]{transition:background-color .2s ease,border-color .2s ease,box-shadow .3s var(--ease-soft)}
+.btn:not([data-magnetic]):hover{transform:translateY(-2px)}
+.btn:not([data-magnetic]):active{transform:translateY(0) scale(.96)}
+.btn--primary:hover{box-shadow:0 12px 30px -12px var(--brand-glow),0 0 0 1px rgba(82,102,235,.35)}
+
+/* Nav links: hairline underline that wipes in from the left */
+.nav__links a{position:relative}
+.nav__links a::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1.5px;
+  background:currentColor;opacity:.75;transform:scaleX(0);transform-origin:left;
+  transition:transform .34s var(--ease-soft)}
+.nav__links a:hover::after{transform:scaleX(1)}
+
+/* Content cards: gentle lift + brighter edge (depth from shadow, not borders) */
+.card{transition:transform .35s var(--ease-soft),border-color .35s var(--ease-soft),box-shadow .35s var(--ease-soft)}
+.card:hover{transform:translateY(-3px);border-color:var(--line-3);box-shadow:var(--shadow-card)}
+
+/* Report reel: lifts toward the viewer on hover */
+.report-reel{transition:transform .5s var(--ease-soft),box-shadow .5s var(--ease-soft),border-color .5s var(--ease-soft)}
+.report-reel:hover{transform:translateY(-4px);border-color:var(--line-3);
+  box-shadow:0 52px 92px -28px rgba(0,0,0,.78),0 0 0 1px rgba(82,102,235,.2)}
+.report-reel__video{will-change:transform}
+
+/* Inline text link: nudge forward on hover */
+.bento__link{transition:color .2s,text-decoration-color .2s,transform .3s var(--ease-spring)}
+.bento__link:hover{transform:translateX(3px)}
+
+/* Reveal-on-scroll: add a soft blur dissolve to the existing rise */
+html.js .reveal{filter:blur(7px);will-change:opacity,transform,filter}
+html.js .reveal.is-in{filter:blur(0);
+  transition:opacity .85s var(--ease-soft),transform .85s var(--ease-soft),filter .85s var(--ease-soft)}
+/* Hero copy starts blurred too — GSAP animates it clear on load */
+html.js .reveal-hero{filter:blur(8px)}
+
+@media(prefers-reduced-motion:reduce){
+  html.js .reveal,html.js .reveal-hero{filter:none!important}
+  .btn,.card,.report-reel,.bento__link{transition:none!important}
+  .btn:hover,.card:hover,.report-reel:hover,.bento__link:hover{transform:none!important}
+  .nav__links a::after{display:none}
 }
