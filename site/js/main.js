@@ -202,6 +202,25 @@
     var blips = [], rings = [];
     var angle = -Math.PI / 2, last = 0, raf = 0, running = false;
 
+    /* ---- Detection cards: a labeled hotspot per platform that the beam "finds" ----
+       As the sweep crosses a hotspot, a logo + "+N new users" card pings in (with
+       randomness + cooldowns so it stays intermittent, never cluttered). */
+    var fx = document.querySelector(".sonar-fx");
+    var PLATFORMS = [
+      { key: "linkedin", src: "assets/img/logos/linkedin.png" },
+      { key: "youtube",  src: "assets/img/logos/youtube.png" },
+      { key: "reddit",   src: "assets/img/logos/reddit.png" },
+      { key: "x",        src: "assets/img/logos/x.png" }
+    ];
+    PLATFORMS.forEach(function (p) { var im = new Image(); im.src = p.src; });  // warm the cache
+    var spots = [], cards = [], lastSpawn = -1e9;
+    var MAX_ACTIVE = 3;        // cards on screen at once
+    var MIN_GAP = 520;         // ms between any two spawns
+    var SPOT_COOLDOWN = 4200;  // ms before the same hotspot fires again
+    var FIRE_PROB = 0.8;       // chance a crossing actually spawns a card
+
+    function fxEnabled() { return !!fx && !reduce && W >= 720; }
+
     function rgba(c, a) { return "rgba(" + c[0] + "," + c[1] + "," + c[2] + "," + a + ")"; }
 
     function measure() {
@@ -269,6 +288,47 @@
           ph: Math.random() * TWO
         });
       }
+      buildSpots();
+    }
+
+    /* labeled hotspots: one per platform, spread around the dial, marched out along
+       each ray to a radius that's fully on-screen and clear of the headline. */
+    function buildSpots() {
+      spots = [];
+      if (!fxEnabled()) return;
+      var count = W >= 1024 ? 7 : 5;
+      var start = -Math.PI / 2 + Math.random() * TWO;
+      // one spot per evenly-spaced sector, with a few jittered tries so a blocked
+      // ray (headline in the way) can still find open space nearby.
+      for (var s = 0; s < count; s++) {
+        var base = start + (s / count) * TWO;
+        for (var j = 0; j < 5; j++) {
+          var p = findSpot(base + (Math.random() - 0.5) * 0.9);
+          if (!p) continue;
+          p.platform = PLATFORMS[spots.length % PLATFORMS.length];
+          p.prevD = null;
+          p.last = -1e9;
+          spots.push(p);
+          break;
+        }
+      }
+    }
+
+    function findSpot(theta) {
+      var padX = 92, padTop = 104, padBottom = 56;  // card half-size + edge margin; top clears the nav
+      var iRx = ex.rx + 22, iRy = ex.ry + 14;       // off the copy (ex already buffers 62/52px)
+      var cos = Math.cos(theta), sin = Math.sin(theta);
+      var lo = 0, hi = 0, found = false;
+      for (var r = Math.min(W, H) * 0.14; r <= maxR; r += 6) {
+        var x = cx + cos * r, y = cy + sin * r;
+        var inBox = x >= padX && x <= W - padX && y >= padTop && y <= H - padBottom;
+        var ndx = (x - ex.x) / iRx, ndy = (y - ex.y) / iRy;
+        if (inBox && ndx * ndx + ndy * ndy >= 1) { if (!found) { lo = r; found = true; } hi = r; }
+        else if (found) break;                  // left the valid window along this ray
+      }
+      if (!found) return null;
+      var rr = lo + (hi - lo) * (0.35 + Math.random() * 0.5);
+      return { a: Math.atan2(sin, cos), x: cx + cos * rr, y: cy + sin * rr };
     }
 
     function draw(animate) {
@@ -329,6 +389,24 @@
         ctx.fill();
       }
 
+      // labeled hotspots — the brighter dots the cards latch onto. Dimly visible
+      // when unlit, flaring as the beam passes (so a card has something to land on).
+      for (var sp = 0; sp < spots.length; sp++) {
+        var S = spots[sp], sb;
+        if (animate) {
+          var sd = angle - S.a; sd = ((sd % TWO) + TWO) % TWO;
+          sb = sd < TRAIL ? 1 - sd / TRAIL : 0; sb *= sb;
+        } else { sb = 0.5; }
+        ctx.beginPath();
+        ctx.arc(S.x, S.y, 6.6, 0, TWO);
+        ctx.fillStyle = rgba(HOT, 0.26 * (0.32 + 0.68 * sb));
+        ctx.fill();
+        ctx.beginPath();
+        ctx.arc(S.x, S.y, 2.9, 0, TWO);
+        ctx.fillStyle = rgba(HOT, 0.24 + 0.76 * sb);
+        ctx.fill();
+      }
+
       // punch a soft elliptical hole so the copy sits on clean darkness
       ctx.globalCompositeOperation = "destination-out";
       ctx.save();
@@ -352,12 +430,66 @@
       var dt = Math.min(0.05, (t - last) / 1000); last = t;
       angle += SPEED * dt;
       if (angle > Math.PI) angle -= TWO;
+      if (fxEnabled()) detect(t);
       draw(true);
       raf = requestAnimationFrame(tick);
     }
 
     function start() { if (running) return; running = true; last = 0; raf = requestAnimationFrame(tick); }
-    function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
+    function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; clearFx(); }
+
+    /* The beam advances by a small step each frame, so d = (angle − spot.a) mod 2π
+       grows monotonically and wraps 2π→0 exactly when the beam crosses the spot —
+       that one-frame drop (d < prevD) is the clean "found it" trigger. */
+    function detect(t) {
+      for (var i = 0; i < spots.length; i++) {
+        var S = spots[i];
+        var d = (((angle - S.a) % TWO) + TWO) % TWO;
+        if (S.prevD != null && d < S.prevD) tryFire(S, t);
+        S.prevD = d;
+      }
+    }
+
+    function tryFire(S, t) {
+      if (t - lastSpawn < MIN_GAP) return;
+      if (cards.length >= MAX_ACTIVE) return;
+      if (t - S.last < SPOT_COOLDOWN) return;
+      if (Math.random() > FIRE_PROB) return;
+      S.last = t; lastSpawn = t;
+      spawnCard(S);
+    }
+
+    function spawnCard(S) {
+      var p = S.platform;
+      var n = 7 + Math.floor(Math.random() * 6);   // +7..+12 acquired users per ping
+
+      var card = document.createElement("div");
+      card.className = "sonar-card";
+      card.style.left = S.x + "px";
+      card.style.top = S.y + "px";
+      var inner = document.createElement("div");
+      inner.className = "sonar-card__inner";
+      inner.innerHTML =
+        '<span class="sonar-card__ping"></span>' +
+        '<span class="sonar-card__chip"><img src="' + p.src + '" alt="" draggable="false"></span>' +
+        '<span class="sonar-card__meta"><b>+' + n + '</b><i>new users</i></span>';
+      card.appendChild(inner);
+      fx.appendChild(card);
+
+      var rec = { el: card };
+      cards.push(rec);
+      inner.addEventListener("animationend", function (e) {
+        if (e.animationName === "sonarCardLife") removeCard(rec);   // ignore the ping's animation
+      });
+    }
+
+    function removeCard(rec) {
+      var i = cards.indexOf(rec);
+      if (i >= 0) cards.splice(i, 1);
+      if (rec.el && rec.el.parentNode) rec.el.parentNode.removeChild(rec.el);
+    }
+
+    function clearFx() { for (var i = cards.length - 1; i >= 0; i--) removeCard(cards[i]); }
 
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     measure();
@@ -379,7 +511,7 @@
     var rz;
     window.addEventListener("resize", function () {
       clearTimeout(rz);
-      rz = setTimeout(function () { measure(); if (reduce) draw(false); }, 150);
+      rz = setTimeout(function () { clearFx(); measure(); if (reduce) draw(false); }, 150);
     });
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(function () { measure(); if (reduce) draw(false); });

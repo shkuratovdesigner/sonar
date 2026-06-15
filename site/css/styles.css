@@ -274,6 +274,47 @@ p{margin:0 0 1rem;text-wrap:pretty}
 .sonar-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
 @keyframes sweep{to{transform:translate(-50%,-50%) rotate(360deg)}}
 
+/* Detection cards — a platform logo + "+N new users" pings in where the rotating
+   beam crosses a hotspot, then fades. Sits above the overlay, below the copy. */
+.sonar-fx{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.sonar-card{position:absolute;transform:translate(-50%,-50%);will-change:transform}
+.sonar-card__inner{
+  position:relative;display:flex;align-items:center;gap:.5rem;
+  padding:.34rem .62rem .34rem .36rem;border-radius:999px;
+  background:rgba(30,30,42,.64);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 12px 30px -14px rgba(0,0,0,.72),0 0 0 1px rgba(82,102,235,.10),
+             0 0 24px -8px var(--brand-glow);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transform-origin:center;
+  animation:sonarCardLife 3s cubic-bezier(.22,.61,.36,1) both;
+}
+.sonar-card__chip{
+  position:relative;z-index:1;flex-shrink:0;width:28px;height:28px;border-radius:8px;
+  background:#fff;display:grid;place-items:center;overflow:hidden;
+  box-shadow:0 1px 2px rgba(0,0,0,.28)}
+.sonar-card__chip img{width:22px;height:22px;object-fit:contain;display:block}
+.sonar-card__meta{display:flex;flex-direction:column;line-height:1;padding-right:.15rem}
+.sonar-card__meta b{font-family:var(--sans);font-weight:800;font-size:14px;color:#fff;letter-spacing:.01em}
+.sonar-card__meta i{font-style:normal;font-size:10.5px;color:var(--fg-muted);margin-top:3px;letter-spacing:.03em}
+/* radar ping ringing out from the logo on arrival */
+.sonar-card__ping{
+  position:absolute;left:19px;top:50%;width:26px;height:26px;border-radius:50%;
+  border:1.5px solid var(--brand);pointer-events:none;
+  animation:sonarPing 1.05s ease-out both}
+@keyframes sonarCardLife{
+  0%{opacity:0;transform:scale(.78) translateY(7px)}
+  12%{opacity:1;transform:scale(1) translateY(0)}
+  82%{opacity:1;transform:scale(1) translateY(0)}
+  100%{opacity:0;transform:scale(.97) translateY(-4px)}
+}
+@keyframes sonarPing{
+  0%{opacity:.65;transform:translate(-50%,-50%) scale(.5)}
+  70%,100%{opacity:0;transform:translate(-50%,-50%) scale(2.15)}
+}
+@media(max-width:719px){.sonar-fx{display:none}}
+@media(prefers-reduced-motion:reduce){.sonar-fx{display:none}}
+
 /* hero intro state (JS on; GSAP fades the text in — no zoom) */
 html.js .reveal-hero{opacity:0;transform:translateY(22px)}
 
