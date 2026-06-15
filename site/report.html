@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Demand + Hot Users Report — Reelo · Sonar</title>
-<meta name="description" content="A sample Sonar demand + hot users report: live demand across the internet, the hot users asking for your product right now, and where to reach more.">
+<meta name="description" content="A sample Sonar demand + hot users report: the hot users asking for your product right now, where to reach more, and the live demand behind it.">
 <link rel="icon" href="assets/img/sonar-logo-black.png">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/report.css">
@@ -15,7 +15,7 @@
 <header class="dr-top">
   <div class="dr-top__inner">
     <div class="dr-top__brand">
-      <a href="index.html" aria-label="Sonar home"><img class="dr-top__logo" src="assets/img/sonar-logo-white.png" alt="Sonar"></a>
+      <a href="index.html" aria-label="Sonar home"><img class="dr-top__logo" src="assets/img/sonar-logo-black.png" alt="Sonar"></a>
       <span class="dr-top__tag">Demand + Hot Users Report</span>
     </div>
     <div class="dr-top__right">
@@ -38,7 +38,7 @@
     </div>
 
     <h1 class="dr-reveal">The demand for Reelo is <em>real.</em></h1>
-    <p class="dr-hero__lead dr-reveal">Across the internet, people are actively asking for what you're building — and the signal is getting stronger. Here is the evidence, the people you can message today, and where to find more.</p>
+    <p class="dr-hero__lead dr-reveal">Across the internet, people are actively asking for what you're building — and the signal is getting stronger. Here are the people you can message today, where to find more, and the demand behind them.</p>
 
     <div class="dr-stats dr-reveal">
       <div class="dr-stat">
@@ -63,162 +63,7 @@
 
 <main class="dr-wrap">
 
-  <!-- ===================== DEMAND CURVE ===================== -->
-  <section class="dr-block">
-    <div class="dr-head dr-reveal">
-      <div class="dr-head__l">
-        <span class="eyebrow">Demand trend</span>
-        <h2>Search demand is <em>accelerating.</em></h2>
-        <p class="dr-head__note">Interest in your core buying-intent terms over the last 12 months, indexed to the start of the window.</p>
-      </div>
-      <span class="dr-head__metric">+180% · 6 mo</span>
-    </div>
-
-    <div class="dr-chart dr-reveal">
-      <svg class="dr-chart__svg" viewBox="0 0 1000 360" preserveAspectRatio="none" role="img" aria-label="Search demand trending up 180% over six months">
-        <defs>
-          <linearGradient id="drGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#5266eb" stop-opacity="0.34"/>
-            <stop offset="100%" stop-color="#5266eb" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <!-- gridlines -->
-        <line class="dr-grid" x1="0" y1="70"  x2="1000" y2="70"/>
-        <line class="dr-grid" x1="0" y1="140" x2="1000" y2="140"/>
-        <line class="dr-grid" x1="0" y1="210" x2="1000" y2="210"/>
-        <line class="dr-grid" x1="0" y1="280" x2="1000" y2="280"/>
-        <!-- area + line -->
-        <polygon class="dr-area" points="0,360 0,312 91,306 182,310 273,298 364,303 455,290 545,256 636,210 727,224 818,150 909,106 1000,58 1000,360"/>
-        <polyline class="dr-line" pathLength="1" points="0,312 91,306 182,310 273,298 364,303 455,290 545,256 636,210 727,224 818,150 909,106 1000,58"/>
-        <!-- end marker -->
-        <circle class="dr-dot__halo" cx="1000" cy="58" r="13"/>
-        <circle class="dr-dot" cx="1000" cy="58" r="5"/>
-        <!-- axis -->
-        <text class="dr-xlab" x="0"    y="348" text-anchor="start">Jul</text>
-        <text class="dr-xlab" x="273"  y="348" text-anchor="middle">Oct</text>
-        <text class="dr-xlab" x="545"  y="348" text-anchor="middle">Jan</text>
-        <text class="dr-xlab" x="818"  y="348" text-anchor="middle">Apr</text>
-        <text class="dr-xlab" x="1000" y="348" text-anchor="end">Jun</text>
-      </svg>
-      <span class="dr-chart__chip"><b>+180%</b> in 6 months</span>
-    </div>
-  </section>
-
-  <!-- ===================== SEARCH VOLUME ===================== -->
-  <section class="dr-block">
-    <div class="dr-head dr-reveal">
-      <div class="dr-head__l">
-        <span class="eyebrow">Search volume</span>
-        <h2><em>Twelve</em> buying-intent terms.</h2>
-        <p class="dr-head__note">Monthly searches for terms that signal someone is ready to buy — not just browsing.</p>
-      </div>
-      <span class="dr-head__metric">~80,000 / mo</span>
-    </div>
-
-    <div class="dr-keys dr-reveal">
-      <div class="dr-key">
-        <div class="dr-key__row"><span class="dr-key__term">turn podcast into shorts</span><span class="dr-key__vol">24,000 <span>/mo</span> <span class="dr-tr dr-tr--up">↑</span></span></div>
-        <div class="dr-key__bar"><div class="dr-key__fill" style="--w:100%"></div></div>
-      </div>
-      <div class="dr-key">
-        <div class="dr-key__row"><span class="dr-key__term">ai video clipping tool</span><span class="dr-key__vol">16,000 <span>/mo</span> <span class="dr-tr dr-tr--up">↑</span></span></div>
-        <div class="dr-key__bar"><div class="dr-key__fill" style="--w:67%"></div></div>
-      </div>
-      <div class="dr-key">
-        <div class="dr-key__row"><span class="dr-key__term">repurpose long video to reels</span><span class="dr-key__vol">11,000 <span>/mo</span> <span class="dr-tr dr-tr--up">↑</span></span></div>
-        <div class="dr-key__bar"><div class="dr-key__fill" style="--w:44%"></div></div>
-      </div>
-      <div class="dr-key">
-        <div class="dr-key__row"><span class="dr-key__term">auto generate short clips</span><span class="dr-key__vol">8,600 <span>/mo</span> <span class="dr-tr dr-tr--up">↑</span></span></div>
-        <div class="dr-key__bar"><div class="dr-key__fill" style="--w:36%"></div></div>
-      </div>
-      <div class="dr-key">
-        <div class="dr-key__row"><span class="dr-key__term">best opus clip alternative</span><span class="dr-key__vol">7,200 <span>/mo</span> <span class="dr-tr dr-tr--up">↑</span></span></div>
-        <div class="dr-key__bar"><div class="dr-key__fill" style="--w:30%"></div></div>
-      </div>
-      <div class="dr-key">
-        <div class="dr-key__row"><span class="dr-key__term">podcast to tiktok tool</span><span class="dr-key__vol">5,700 <span>/mo</span> <span class="dr-tr dr-tr--up">↑</span></span></div>
-        <div class="dr-key__bar"><div class="dr-key__fill" style="--w:23%"></div></div>
-      </div>
-      <div class="dr-key">
-        <div class="dr-key__row"><span class="dr-key__term">ai reels generator</span><span class="dr-key__vol">4,800 <span>/mo</span> <span class="dr-tr dr-tr--flat">→</span></span></div>
-        <div class="dr-key__bar"><div class="dr-key__fill" style="--w:20%"></div></div>
-      </div>
-      <div class="dr-key">
-        <div class="dr-key__row"><span class="dr-key__term">cut highlights from video automatically</span><span class="dr-key__vol">3,900 <span>/mo</span> <span class="dr-tr dr-tr--up">↑</span></span></div>
-        <div class="dr-key__bar"><div class="dr-key__fill" style="--w:16%"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===================== PEOPLE ASKING ===================== -->
-  <section class="dr-block">
-    <div class="dr-head dr-reveal">
-      <div class="dr-head__l">
-        <span class="eyebrow">People asking</span>
-        <h2><em>312</em> people asked for this in 30 days.</h2>
-        <p class="dr-head__note">Real, recent public posts describing the exact problem Reelo solves. A representative sample — unedited.</p>
-      </div>
-    </div>
-
-    <div class="dr-voices dr-reveal">
-      <article class="dr-voice">
-        <div class="dr-voice__top">
-          <span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>
-          <span class="dr-voice__who"><span class="dr-voice__name">u/mike_audio</span><span class="dr-voice__meta">r/podcasting · 5d ago</span></span>
-        </div>
-        <p class="dr-voice__q">Is there a tool that auto-cuts my 2-hour episodes into clips? Editing eats my entire weekend.</p>
-        <div class="dr-voice__foot"><span>142 upvotes</span><a class="dr-voice__link" href="#">View thread →</a></div>
-      </article>
-
-      <article class="dr-voice">
-        <div class="dr-voice__top">
-          <span class="dr-plat dr-plat--x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
-          <span class="dr-voice__who"><span class="dr-voice__name">@creator_lena</span><span class="dr-voice__meta">X · 1w ago</span></span>
-        </div>
-        <p class="dr-voice__q">I would pay real money for something that turns my long videos into shorts automatically. Opus is fine but pricey.</p>
-        <div class="dr-voice__foot"><span>88 likes</span><a class="dr-voice__link" href="#">View post →</a></div>
-      </article>
-
-      <article class="dr-voice">
-        <div class="dr-voice__top">
-          <span class="dr-plat dr-plat--youtube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
-          <span class="dr-voice__who"><span class="dr-voice__name">@PodcastPete</span><span class="dr-voice__meta">YouTube · 3d ago</span></span>
-        </div>
-        <p class="dr-voice__q">Anyone know software that finds the best moments and clips them for you? Doing it by hand is brutal.</p>
-        <div class="dr-voice__foot"><span>64 likes</span><a class="dr-voice__link" href="#">View comment →</a></div>
-      </article>
-
-      <article class="dr-voice">
-        <div class="dr-voice__top">
-          <span class="dr-plat dr-plat--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
-          <span class="dr-voice__who"><span class="dr-voice__name">Dana Reyes</span><span class="dr-voice__meta">LinkedIn · 2d ago</span></span>
-        </div>
-        <p class="dr-voice__q">Looking for an AI tool to repurpose our webinar recordings into LinkedIn-ready clips at scale. Recommendations?</p>
-        <div class="dr-voice__foot"><span>31 reactions</span><a class="dr-voice__link" href="#">View post →</a></div>
-      </article>
-
-      <article class="dr-voice">
-        <div class="dr-voice__top">
-          <span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>
-          <span class="dr-voice__who"><span class="dr-voice__name">u/sara_makes</span><span class="dr-voice__meta">r/NewTubers · 6d ago</span></span>
-        </div>
-        <p class="dr-voice__q">My retention is fine but I have zero time to make shorts. Is there anything that does it from my existing uploads?</p>
-        <div class="dr-voice__foot"><span>97 upvotes</span><a class="dr-voice__link" href="#">View thread →</a></div>
-      </article>
-
-      <article class="dr-voice">
-        <div class="dr-voice__top">
-          <span class="dr-plat dr-plat--x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
-          <span class="dr-voice__who"><span class="dr-voice__name">@julesmakesvids</span><span class="dr-voice__meta">X · 4d ago</span></span>
-        </div>
-        <p class="dr-voice__q">Opus Clip got expensive fast. What's everyone using to cut shorts from long videos now?</p>
-        <div class="dr-voice__foot"><span>53 likes</span><a class="dr-voice__link" href="#">View post →</a></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ===================== WARM LEADS ===================== -->
+  <!-- ===================== WARM LEADS (block 2) ===================== -->
   <section class="dr-block">
     <div class="dr-head dr-reveal">
       <div class="dr-head__l">
@@ -226,10 +71,10 @@
         <h2><em>94</em> people you can message today.</h2>
         <p class="dr-head__note">Ranked by intent — strongest signal first. Each row links to the public post it came from.</p>
       </div>
-      <span class="dr-head__metric">Top 10 shown</span>
+      <span class="dr-head__metric">Top 15 shown</span>
     </div>
 
-    <div class="dr-tablewrap dr-reveal">
+    <div class="dr-tablewrap dr-reveal" id="dr-leads">
       <div class="dr-tablescroll">
         <table class="dr-table">
           <thead>
@@ -316,82 +161,355 @@
               <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:72%"></span></span><span class="dr-score__n">72</span></span></td>
               <td><a class="dr-prof" href="#">Profile →</a></td>
             </tr>
+            <tr>
+              <td class="dr-rank">11</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--3">TB</span><span class="dr-person__txt"><span class="dr-person__n">Tom Becker</span><span class="dr-person__h">@tombuilds</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>X</span></td>
+              <td class="dr-said">Auto-clip my long streams</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:70%"></span></span><span class="dr-score__n">70</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <tr>
+              <td class="dr-rank">12</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--2">RL</span><span class="dr-person__txt"><span class="dr-person__n">Rosa Lind</span><span class="dr-person__h">u/rosa_edits</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>Reddit</span></td>
+              <td class="dr-said">Spend hours trimming VODs</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:68%"></span></span><span class="dr-score__n">68</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <tr>
+              <td class="dr-rank">13</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--5">KP</span><span class="dr-person__txt"><span class="dr-person__n">Kevin Park</span><span class="dr-person__h">@kpvideo</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--youtube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>YouTube</span></td>
+              <td class="dr-said">Need shorts from old uploads</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:66%"></span></span><span class="dr-score__n">66</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <tr>
+              <td class="dr-rank">14</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--4">AO</span><span class="dr-person__txt"><span class="dr-person__n">Amara Osei</span><span class="dr-person__h">Content Strategist</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>LinkedIn</span></td>
+              <td class="dr-said">Repurpose town-halls to clips</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:64%"></span></span><span class="dr-score__n">64</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <tr>
+              <td class="dr-rank">15</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--1">DR</span><span class="dr-person__txt"><span class="dr-person__n">Diego Ruiz</span><span class="dr-person__h">u/diego_pods</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>Reddit</span></td>
+              <td class="dr-said">Looking for an Opus alternative</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:62%"></span></span><span class="dr-score__n">62</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <!-- revealed by "Watch more" -->
+            <tr class="dr-hidden">
+              <td class="dr-rank">16</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--2">MC</span><span class="dr-person__txt"><span class="dr-person__n">Mei Chen</span><span class="dr-person__h">@meifilms</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>X</span></td>
+              <td class="dr-said">Turn webinars into reels</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:60%"></span></span><span class="dr-score__n">60</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <tr class="dr-hidden">
+              <td class="dr-rank">17</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--3">SW</span><span class="dr-person__txt"><span class="dr-person__n">Sam Wright</span><span class="dr-person__h">u/samspeaks</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>Reddit</span></td>
+              <td class="dr-said">Clip highlights automatically</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:58%"></span></span><span class="dr-score__n">58</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <tr class="dr-hidden">
+              <td class="dr-rank">18</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--5">LA</span><span class="dr-person__txt"><span class="dr-person__n">Lior Adler</span><span class="dr-person__h">Founder</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>LinkedIn</span></td>
+              <td class="dr-said">Shorts pipeline for our podcast</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:56%"></span></span><span class="dr-score__n">56</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <tr class="dr-hidden">
+              <td class="dr-rank">19</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--4">NF</span><span class="dr-person__txt"><span class="dr-person__n">Noah Frost</span><span class="dr-person__h">@noahcreates</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--youtube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>YouTube</span></td>
+              <td class="dr-said">Best tool to auto-cut clips?</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:54%"></span></span><span class="dr-score__n">54</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
+            <tr class="dr-hidden">
+              <td class="dr-rank">20</td>
+              <td><div class="dr-person"><span class="dr-av dr-av--1">PR</span><span class="dr-person__txt"><span class="dr-person__n">Priyanka Rao</span><span class="dr-person__h">u/priya_makes</span></span></div></td>
+              <td><span class="dr-plat-cell"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>Reddit</span></td>
+              <td class="dr-said">Manual editing is unsustainable</td>
+              <td><span class="dr-score"><span class="dr-score__bar"><span class="dr-score__fill" style="--s:52%"></span></span><span class="dr-score__n">52</span></span></td>
+              <td><a class="dr-prof" href="#">Profile →</a></td>
+            </tr>
           </tbody>
         </table>
       </div>
       <div class="dr-table__foot">
-        <span>Showing the top 10 of 94 warm leads</span>
+        <span>Showing the top 15 of 94 warm leads</span>
         <span>Full list with direct links in your report</span>
       </div>
     </div>
+
+    <div class="dr-morewrap">
+      <button type="button" class="dr-more" data-more="#dr-leads .dr-hidden">
+        Watch more <span class="dr-more__c">+5</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
   </section>
 
-  <!-- ===================== WHERE THEY GATHER ===================== -->
+  <!-- ===================== PEOPLE ASKING (block 3) ===================== -->
   <section class="dr-block">
     <div class="dr-head dr-reveal">
       <div class="dr-head__l">
-        <span class="eyebrow">Where they gather</span>
+        <h2><em>312</em> people asked for this in 30 days.</h2>
+        <p class="dr-head__note">Real, recent public posts describing the exact problem Reelo solves. A representative sample — unedited.</p>
+      </div>
+    </div>
+
+    <div class="dr-voices dr-reveal" id="dr-voices">
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">u/mike_audio</span><span class="dr-voice__meta">r/podcasting · 5d ago</span></span>
+        </div>
+        <p class="dr-voice__q">Is there a tool that auto-cuts my 2-hour episodes into clips? Editing eats my entire weekend.</p>
+        <div class="dr-voice__foot"><span>142 upvotes</span><a class="dr-voice__link" href="#">View thread →</a></div>
+      </article>
+
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">@creator_lena</span><span class="dr-voice__meta">X · 1w ago</span></span>
+        </div>
+        <p class="dr-voice__q">I would pay real money for something that turns my long videos into shorts automatically. Opus is fine but pricey.</p>
+        <div class="dr-voice__foot"><span>88 likes</span><a class="dr-voice__link" href="#">View post →</a></div>
+      </article>
+
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--youtube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">@PodcastPete</span><span class="dr-voice__meta">YouTube · 3d ago</span></span>
+        </div>
+        <p class="dr-voice__q">Anyone know software that finds the best moments and clips them for you? Doing it by hand is brutal.</p>
+        <div class="dr-voice__foot"><span>64 likes</span><a class="dr-voice__link" href="#">View comment →</a></div>
+      </article>
+
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">Dana Reyes</span><span class="dr-voice__meta">LinkedIn · 2d ago</span></span>
+        </div>
+        <p class="dr-voice__q">Looking for an AI tool to repurpose our webinar recordings into LinkedIn-ready clips at scale. Recommendations?</p>
+        <div class="dr-voice__foot"><span>31 reactions</span><a class="dr-voice__link" href="#">View post →</a></div>
+      </article>
+
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">u/sara_makes</span><span class="dr-voice__meta">r/NewTubers · 6d ago</span></span>
+        </div>
+        <p class="dr-voice__q">My retention is fine but I have zero time to make shorts. Is there anything that does it from my existing uploads?</p>
+        <div class="dr-voice__foot"><span>97 upvotes</span><a class="dr-voice__link" href="#">View thread →</a></div>
+      </article>
+
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">@julesmakesvids</span><span class="dr-voice__meta">X · 4d ago</span></span>
+        </div>
+        <p class="dr-voice__q">Opus Clip got expensive fast. What's everyone using to cut shorts from long videos now?</p>
+        <div class="dr-voice__foot"><span>53 likes</span><a class="dr-voice__link" href="#">View post →</a></div>
+      </article>
+
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">u/devon_pods</span><span class="dr-voice__meta">r/podcasting · 2d ago</span></span>
+        </div>
+        <p class="dr-voice__q">I record three shows a week and have no editor. Something that just makes the clips would change my life.</p>
+        <div class="dr-voice__foot"><span>76 upvotes</span><a class="dr-voice__link" href="#">View thread →</a></div>
+      </article>
+
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">@samedits</span><span class="dr-voice__meta">X · 5d ago</span></span>
+        </div>
+        <p class="dr-voice__q">Tried doing shorts manually for a month. Burned out. There has to be an automated way to do this.</p>
+        <div class="dr-voice__foot"><span>61 likes</span><a class="dr-voice__link" href="#">View post →</a></div>
+      </article>
+
+      <article class="dr-voice">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">Renee Cole</span><span class="dr-voice__meta">LinkedIn · 1w ago</span></span>
+        </div>
+        <p class="dr-voice__q">We have 200 hours of webinar footage doing nothing. We need to turn it into social clips this quarter.</p>
+        <div class="dr-voice__foot"><span>44 reactions</span><a class="dr-voice__link" href="#">View post →</a></div>
+      </article>
+
+      <!-- revealed by "Watch more" -->
+      <article class="dr-voice dr-hidden">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--youtube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">@hassanvids</span><span class="dr-voice__meta">YouTube · 4d ago</span></span>
+        </div>
+        <p class="dr-voice__q">Which tool actually finds the viral moments for you? Manual scrubbing is killing my output.</p>
+        <div class="dr-voice__foot"><span>58 likes</span><a class="dr-voice__link" href="#">View comment →</a></div>
+      </article>
+
+      <article class="dr-voice dr-hidden">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">u/late_night_edits</span><span class="dr-voice__meta">r/NewTubers · 3d ago</span></span>
+        </div>
+        <p class="dr-voice__q">Editing is the only reason I post once a month instead of weekly. I need this off my plate.</p>
+        <div class="dr-voice__foot"><span>83 upvotes</span><a class="dr-voice__link" href="#">View thread →</a></div>
+      </article>
+
+      <article class="dr-voice dr-hidden">
+        <div class="dr-voice__top">
+          <span class="dr-plat dr-plat--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+          <span class="dr-voice__who"><span class="dr-voice__name">Marcus Reed</span><span class="dr-voice__meta">LinkedIn · 6d ago</span></span>
+        </div>
+        <p class="dr-voice__q">Looking to scale our founder's talking-head clips without hiring a full-time editor. What's working in 2026?</p>
+        <div class="dr-voice__foot"><span>37 reactions</span><a class="dr-voice__link" href="#">View post →</a></div>
+      </article>
+    </div>
+
+    <div class="dr-morewrap">
+      <button type="button" class="dr-more" data-more="#dr-voices .dr-hidden">
+        Watch more <span class="dr-more__c">+3</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ===================== WHERE TO FIND MORE (block 4) ===================== -->
+  <section class="dr-block">
+    <div class="dr-head dr-reveal">
+      <div class="dr-head__l">
         <h2><em>Where</em> to find more of them.</h2>
-        <p class="dr-head__note">The communities and channels with the highest concentration of people who fit your buyer.</p>
+        <p class="dr-head__note">The 12 communities and channels with the highest concentration of people who fit your buyer. Each opens the source.</p>
       </div>
     </div>
 
     <div class="dr-comm dr-reveal">
-      <div class="dr-comm__item">
+      <a class="dr-comm__item" href="https://www.reddit.com/r/podcasting/" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="dr-comm__name"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>r/podcasting</div>
         <div class="dr-comm__meta">1.2M members · ~40 relevant posts / wk</div>
         <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:94%"></span></span>94</div>
-      </div>
-      <div class="dr-comm__item">
+      </a>
+      <a class="dr-comm__item" href="https://www.reddit.com/r/NewTubers/" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="dr-comm__name"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>r/NewTubers</div>
         <div class="dr-comm__meta">432K members · ~25 relevant posts / wk</div>
         <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:89%"></span></span>89</div>
-      </div>
-      <div class="dr-comm__item">
+      </a>
+      <a class="dr-comm__item" href="https://www.reddit.com/r/youtubers/" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="dr-comm__name"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>r/youtubers</div>
+        <div class="dr-comm__meta">310K members · ~22 relevant posts / wk</div>
+        <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:86%"></span></span>86</div>
+      </a>
+      <a class="dr-comm__item" href="https://www.reddit.com/r/VideoEditing/" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="dr-comm__name"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>r/VideoEditing</div>
+        <div class="dr-comm__meta">280K members · ~18 relevant posts / wk</div>
+        <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:84%"></span></span>84</div>
+      </a>
+      <a class="dr-comm__item" href="https://www.reddit.com/r/podcast/" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="dr-comm__name"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>r/podcast</div>
+        <div class="dr-comm__meta">190K members · ~15 relevant posts / wk</div>
+        <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:82%"></span></span>82</div>
+      </a>
+      <a class="dr-comm__item" href="https://www.reddit.com/r/socialmedia/" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="dr-comm__name"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>r/socialmedia</div>
+        <div class="dr-comm__meta">220K members · ~14 relevant posts / wk</div>
+        <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:80%"></span></span>80</div>
+      </a>
+      <a class="dr-comm__item" href="https://www.youtube.com/results?search_query=repurpose+long+video+into+shorts" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="dr-comm__name"><span class="dr-plat dr-plat--youtube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>Creator YouTube</div>
         <div class="dr-comm__meta">Tutorial &amp; "day in the life" channels</div>
         <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:85%"></span></span>85</div>
-      </div>
-      <div class="dr-comm__item">
+      </a>
+      <a class="dr-comm__item" href="https://www.linkedin.com/search/results/content/?keywords=repurpose%20video" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <div class="dr-comm__name"><span class="dr-plat dr-plat--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>Content marketers</div>
         <div class="dr-comm__meta">B2B teams repurposing webinars &amp; demos</div>
         <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:81%"></span></span>81</div>
-      </div>
+      </a>
+      <a class="dr-comm__item" href="https://www.reddit.com/r/Twitch/" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="dr-comm__name"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>r/Twitch</div>
+        <div class="dr-comm__meta">1.1M members · ~12 relevant posts / wk</div>
+        <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:78%"></span></span>78</div>
+      </a>
+      <a class="dr-comm__item" href="https://x.com/search?q=auto%20clip%20podcast" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="dr-comm__name"><span class="dr-plat dr-plat--x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>Podcasters on X</div>
+        <div class="dr-comm__meta">#podcasting &amp; #contentcreation threads</div>
+        <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:76%"></span></span>76</div>
+      </a>
+      <a class="dr-comm__item" href="https://www.reddit.com/r/Entrepreneur/" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="dr-comm__name"><span class="dr-plat dr-plat--reddit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-6.991 4.87-3.86 0-6.99-2.176-6.99-4.87 0-.183.016-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12c-.688 0-1.25.561-1.25 1.249 0 .688.562 1.249 1.25 1.249.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></span>r/Entrepreneur</div>
+        <div class="dr-comm__meta">3.8M members · ~10 relevant posts / wk</div>
+        <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:74%"></span></span>74</div>
+      </a>
+      <a class="dr-comm__item" href="https://www.linkedin.com/search/results/content/?keywords=video%20repurposing" target="_blank" rel="noopener">
+        <span class="dr-comm__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div class="dr-comm__name"><span class="dr-plat dr-plat--linkedin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>Marketing leaders</div>
+        <div class="dr-comm__meta">Demand-gen &amp; brand content teams</div>
+        <div class="dr-comm__fit">Fit<span class="dr-comm__fitbar"><span class="dr-comm__fitfill" style="--w:72%"></span></span>72</div>
+      </a>
     </div>
   </section>
 
-  <!-- ===================== DO THIS FIRST ===================== -->
+  <!-- ===================== DEMAND CURVE (last block) ===================== -->
   <section class="dr-block">
     <div class="dr-head dr-reveal">
       <div class="dr-head__l">
-        <span class="eyebrow">Do this first</span>
-        <h2>Three moves <em>this week.</em></h2>
-        <p class="dr-head__note">In priority order — highest return for the least effort, starting today.</p>
+        <span class="eyebrow">Demand trend</span>
+        <h2>Search demand is <em>accelerating.</em></h2>
+        <p class="dr-head__note">Interest in your core buying-intent terms over the last 12 months, indexed to the start of the window.</p>
       </div>
+      <span class="dr-head__metric">+180% · 6 mo</span>
     </div>
 
-    <div class="dr-moves dr-reveal">
-      <div class="dr-move">
-        <span class="dr-move__n" aria-hidden="true"></span>
-        <div class="dr-move__b">
-          <h3 class="dr-move__t">Message the 24 hottest leads first</h3>
-          <p class="dr-move__d">Twenty-four people scored 90+ — they've literally described wanting Reelo. Open with the exact problem they posted (each row links to it). <b>Highest intent, lowest effort — start here.</b></p>
-        </div>
-      </div>
-      <div class="dr-move">
-        <span class="dr-move__n" aria-hidden="true"></span>
-        <div class="dr-move__b">
-          <h3 class="dr-move__t">Answer the recurring thread in r/podcasting &amp; r/NewTubers</h3>
-          <p class="dr-move__d">"How do I auto-clip my episodes?" gets asked almost weekly. Be the genuinely helpful answer and show Reelo doing it. <b>~1.6M combined members watching.</b></p>
-        </div>
-      </div>
-      <div class="dr-move">
-        <span class="dr-move__n" aria-hidden="true"></span>
-        <div class="dr-move__b">
-          <h3 class="dr-move__t">Publish an "Opus Clip alternative" page</h3>
-          <p class="dr-move__d"><b>7,200 searches a month</b> already look for an alternative. A focused comparison page captures that high-intent traffic before a competitor does.</p>
-        </div>
-      </div>
+    <div class="dr-chart dr-reveal">
+      <svg class="dr-chart__svg" viewBox="0 0 1000 360" preserveAspectRatio="none" role="img" aria-label="Search demand trending up 180% over six months">
+        <defs>
+          <linearGradient id="drGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#5266eb" stop-opacity="0.34"/>
+            <stop offset="100%" stop-color="#5266eb" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <!-- gridlines -->
+        <line class="dr-grid" x1="0" y1="70"  x2="1000" y2="70"/>
+        <line class="dr-grid" x1="0" y1="140" x2="1000" y2="140"/>
+        <line class="dr-grid" x1="0" y1="210" x2="1000" y2="210"/>
+        <line class="dr-grid" x1="0" y1="280" x2="1000" y2="280"/>
+        <!-- area + line -->
+        <polygon class="dr-area" points="0,360 0,312 91,306 182,310 273,298 364,303 455,290 545,256 636,210 727,224 818,150 909,106 1000,58 1000,360"/>
+        <polyline class="dr-line" pathLength="1" points="0,312 91,306 182,310 273,298 364,303 455,290 545,256 636,210 727,224 818,150 909,106 1000,58"/>
+        <!-- end marker -->
+        <circle class="dr-dot__halo" cx="1000" cy="58" r="13"/>
+        <circle class="dr-dot" cx="1000" cy="58" r="5"/>
+        <!-- axis -->
+        <text class="dr-xlab" x="0"    y="348" text-anchor="start">Jul</text>
+        <text class="dr-xlab" x="273"  y="348" text-anchor="middle">Oct</text>
+        <text class="dr-xlab" x="545"  y="348" text-anchor="middle">Jan</text>
+        <text class="dr-xlab" x="818"  y="348" text-anchor="middle">Apr</text>
+        <text class="dr-xlab" x="1000" y="348" text-anchor="end">Jun</text>
+      </svg>
+      <span class="dr-chart__chip"><b>+180%</b> in 6 months</span>
     </div>
   </section>
 

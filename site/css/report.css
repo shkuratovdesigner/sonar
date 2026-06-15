@@ -282,3 +282,116 @@ body.dr-body{background:var(--page-bg);overflow-x:hidden}
   .dr-area,.dr-dot,.dr-dot__halo,.dr-chart__chip{opacity:1!important;transition:none}
   .dr-key__fill,.dr-score__fill{transform:none!important;transition:none}
 }
+
+/* ============================================================
+   LIGHT THEME — report re-skin (scoped to .dr-body only, so the
+   marketing site stays dark). Locked light per theme-lock; ONE
+   indigo accent; tinted hairlines; soft tinted elevation.
+   ============================================================ */
+.dr-body{
+  --page-bg:#f6f7f9;
+  --page-bg-2:#eceef3;
+  --card:#ffffff;
+  --card-2:#ffffff;
+  --card-3:#f1f3f7;
+
+  --fg:#15161d;
+  --fg-strong:#23242e;
+  --fg-soft:rgba(21,22,29,.74);
+  --fg-dim:rgba(21,22,29,.62);
+  --fg-muted:rgba(21,22,29,.54);
+  --fg-faint:rgba(21,22,29,.42);
+
+  --line:rgba(18,19,28,.10);
+  --line-2:rgba(18,19,28,.15);
+  --line-3:rgba(18,19,28,.24);
+
+  --brand:#5266eb;
+  --brand-ink:#3b49c9;                /* AA-safe indigo for small text on white */
+  --brand-soft:rgba(82,102,235,.10);
+  --brand-glow:rgba(82,102,235,.26);
+
+  --ok:#0f8a52;                       /* readable success green on light */
+  --ok-soft:rgba(34,176,110,.12);
+  --ok-line:rgba(18,138,82,.32);
+
+  color:var(--fg-soft);
+  /* faint indigo wash top-right, echoing the hero radar */
+  background:
+    radial-gradient(1100px 460px at 82% -10%, rgba(82,102,235,.06), transparent 62%),
+    var(--page-bg);
+}
+
+/* top bar */
+.dr-top{background:rgba(255,255,255,.82);border-bottom:1px solid var(--line)}
+.dr-demo{color:var(--brand-ink);background:var(--brand-soft);
+  border-color:color-mix(in srgb,var(--brand) 30%,transparent)}
+.dr-demo::before{box-shadow:0 0 8px var(--brand-glow)}
+
+/* hero */
+.dr-hero__radar{opacity:.4}
+.dr-verdict{color:var(--ok);background:var(--ok-soft);border-color:var(--ok-line)}
+.dr-verdict::before{background:#16a35f;box-shadow:0 0 8px rgba(22,163,95,.5)}
+.dr-stat__num{color:var(--fg)}
+.dr-stat__num.is-up{color:var(--ok)}
+.dr-head__metric{color:var(--fg)}
+
+/* demand chart */
+.dr-line{filter:drop-shadow(0 6px 14px rgba(82,102,235,.22))}
+.dr-chart__chip{color:var(--brand-ink);background:rgba(255,255,255,.86);border-color:var(--line-2);
+  box-shadow:0 14px 30px -20px rgba(40,50,120,.5)}
+.dr-chart__chip b{color:var(--ok)}
+
+/* voices */
+.dr-voice__link:hover{color:var(--fg)}
+.dr-plat{background:rgba(18,19,28,.04);border-color:var(--line-2)}
+.dr-plat--x{color:#15161d}
+.dr-plat--linkedin{color:#0a66c2}
+
+/* leads table */
+.dr-table th{background:rgba(18,19,28,.022)}
+.dr-table tbody tr:hover{background:rgba(82,102,235,.045)}
+.dr-score__bar{background:rgba(18,19,28,.08)}
+.dr-score--hot .dr-score__fill{background:linear-gradient(90deg,var(--brand),#7b86f2)}
+.dr-prof:hover{color:var(--brand-ink);background:var(--brand-soft);
+  border-color:color-mix(in srgb,var(--brand) 45%,transparent)}
+.dr-table__foot{background:rgba(18,19,28,.022)}
+
+/* communities */
+.dr-comm__fitbar{background:rgba(18,19,28,.08)}
+
+/* keyword bars (kept harmless if reused) — single accent */
+.dr-key__bar{background:rgba(18,19,28,.06)}
+.dr-key__fill{background:linear-gradient(90deg,var(--brand),#7b86f2)}
+.dr-tr--up{color:var(--ok)}
+
+/* ============================================================
+   "Watch more" progressive-disclosure button + hidden rows
+   ============================================================ */
+.dr-hidden{display:none}
+.dr-morewrap{display:flex;justify-content:center;margin-top:clamp(1.3rem,2.6vw,1.9rem)}
+.dr-more{display:inline-flex;align-items:center;gap:.55em;font-family:var(--sans);font-weight:500;
+  font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--brand-ink);
+  background:var(--card);border:1px solid var(--line-2);border-radius:999px;
+  padding:.72em 1.3em;cursor:pointer;transition:border-color .2s,background .2s,transform .08s}
+.dr-more:hover{border-color:color-mix(in srgb,var(--brand) 45%,transparent);background:var(--brand-soft)}
+.dr-more:active{transform:translateY(1px)}
+.dr-more__c{font-variant-numeric:tabular-nums;color:var(--fg-faint);letter-spacing:0}
+.dr-more svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.2}
+.dr-shown{animation:dr-pop .5s cubic-bezier(.22,.61,.36,1) both}
+@keyframes dr-pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ============================================================
+   Community cards as links (where-to-find-more)
+   ============================================================ */
+a.dr-comm__item{position:relative;text-decoration:none;color:inherit;transition:background .2s}
+a.dr-comm__item:hover{background:var(--card-3)}
+.dr-comm__name{padding-right:1.6rem}
+.dr-comm__go{position:absolute;top:1.2rem;right:1.2rem;display:inline-flex;color:var(--fg-faint);
+  transition:color .2s,transform .2s}
+a.dr-comm__item:hover .dr-comm__go{color:var(--brand-ink);transform:translate(1px,-1px)}
+.dr-comm__go svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8}
+
+@media(prefers-reduced-motion:reduce){
+  .dr-shown{animation:none}
+}

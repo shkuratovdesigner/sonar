@@ -4,6 +4,22 @@
    No GSAP / no scroll hijacking. Degrades to full static if JS off
    or reduced-motion is requested.
    ============================================================ */
+// "Watch more" — progressive disclosure. Runs regardless of motion prefs so
+// the buttons work even when animations are off / IntersectionObserver is absent.
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.dr-more[data-more]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll(btn.getAttribute('data-more')).forEach(function (el) {
+        el.classList.remove('dr-hidden');
+        if (!reduce) el.classList.add('dr-shown');
+      });
+      var wrap = btn.closest('.dr-morewrap');
+      (wrap || btn).remove();
+    });
+  });
+})();
+
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
