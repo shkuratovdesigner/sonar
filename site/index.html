@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sonar — Find your users. We'll show you where they are.</title>
-<meta name="description" content="Sonar reads your live market and hands you the people who already want what you're building — real profiles you can message today, plus where to reach more. Data, not guesses.">
+<meta name="description" content="Sonar reads your live market and shows you a map of where your users already are — the exact places they gather, how many are asking, and where to start. Data, not guesses.">
 <link rel="icon" href="assets/img/sonar-logo-black.png">
 <link rel="stylesheet" href="css/styles.css?v=14">
 <script>document.documentElement.classList.add('js');</script>
@@ -22,7 +22,7 @@
       <a href="#faq" data-scroll>FAQ</a>
     </nav>
     <div class="nav__cta">
-      <a href="#form" class="btn btn--secondary" data-scroll data-magnetic>Get more users</a>
+      <a href="#form" class="btn btn--secondary" data-scroll data-magnetic>Get my demand map</a>
     </div>
   </div>
 </header>
@@ -42,13 +42,13 @@
 
   <div class="hero__content">
     <div class="container">
-      <span class="eyebrow reveal-hero">Demand &amp; distribution agent for founders</span>
-      <h1 class="h1 reveal-hero">Find your first paying users today. Get real user contacts and understand how to reach them.</h1>
+      <span class="eyebrow reveal-hero">The demand radar for founders</span>
+      <h1 class="h1 reveal-hero">Find your first users today. See exactly where they already are.</h1>
       <form class="hero__form reveal-hero" novalidate onsubmit="return false" aria-label="Get your demand report">
         <input type="email" name="email" autocomplete="email" placeholder="Your email" aria-label="Your email">
-        <button class="btn btn--primary" type="submit">Get more users</button>
+        <button class="btn btn--primary" type="submit">Get my demand map</button>
       </form>
-      <p class="microtrust reveal-hero">No credit card · Report sent straight to your inbox</p>
+      <p class="microtrust reveal-hero">No credit card · Your demand map, straight to your inbox</p>
     </div>
   </div>
 </section>
@@ -65,7 +65,7 @@
              poster="assets/video/sonar-report-poster.jpg">
         <source src="assets/video/sonar-report.mp4" type="video/mp4">
       </video>
-      <figcaption class="report-reel__tag">The exact report you'll get</figcaption>
+      <figcaption class="report-reel__tag">The exact demand map you'll get</figcaption>
     </figure>
   </div>
 </section>
@@ -147,20 +147,20 @@
           <div class="mock mock--users">
             <div class="mock-people">
               <div class="mock-person">
-                <img class="mock-person__av" src="assets/img/avatars/w-01.jpg" alt="" width="30" height="30">
-                <span class="mock-person__id"><b>Maya Chen</b><i>@mayabuilds · r/SaaS</i></span>
-                <span class="mock-person__score">92</span>
+                <span class="mock-post__src"><img src="assets/img/logos/reddit.png" alt=""></span>
+                <span class="mock-person__id"><b>r/SaaS</b><i>Reddit · very active</i></span>
+                <span class="mock-person__score">312</span>
               </div>
               <div class="mock-person">
-                <img class="mock-person__av" src="assets/img/avatars/m-01.jpg" alt="" width="30" height="30">
-                <span class="mock-person__id"><b>Devin Brooks</b><i>@devbrooks · X</i></span>
-                <span class="mock-person__score">88</span>
+                <span class="mock-post__src"><img src="assets/img/logos/x.png" alt=""></span>
+                <span class="mock-person__id"><b>#buildinpublic</b><i>X · heating up</i></span>
+                <span class="mock-person__score">204</span>
               </div>
             </div>
           </div>
         </div>
-        <h3 class="market-card__title">You get real users + a plan.</h3>
-        <p class="market-card__text">Named people you can message, and the concrete moves to reach more this week.</p>
+        <h3 class="market-card__title">You get your demand map.</h3>
+        <p class="market-card__text">The exact places your users gather — ranked, with how many are asking now and where to start.</p>
       </article>
     </div>
   </div>
@@ -188,6 +188,10 @@
           <div class="acc">
             <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Proof you can act on</span></button>
             <div class="acc__body"><div class="acc__inner"><p>Real numbers, real people, and the exact channels where they gather — ranked by where you'll actually win, with the first moves to make this week.</p></div></div>
+          </div>
+          <div class="acc">
+            <button class="acc__btn" type="button"><span class="acc__dot"></span><span class="acc__title">Not a chatbot guess — real, current demand</span></button>
+            <div class="acc__body"><div class="acc__inner"><p>Ask ChatGPT and you get a confident guess that forgets you the moment the chat closes. Sonar reads what your market is actually saying this week and shows you the receipts — a radar built for one job, not a one-off memo.</p></div></div>
           </div>
         </div>
       </div>
@@ -239,7 +243,7 @@
 <section class="section section--lg" id="form">
   <div class="container center">
     <h2 class="h2 reveal">Drop your product. <span class="hl">We'll show you your users.</span></h2>
-    <p class="lead measure-sm center reveal">We read every submission and send your report by email.</p>
+    <p class="lead measure-sm center reveal">We read every submission and send your demand map by email.</p>
     <form class="form reveal" id="demand-form" data-demand novalidate>
       <div class="field">
         <label for="f-link">Your product link <span class="opt">optional</span></label>
@@ -265,11 +269,11 @@
                placeholder="you@company.com" aria-describedby="e-email">
         <p class="field__error" id="e-email">Enter a valid email so we can send your report.</p>
       </div>
-      <button class="btn btn--primary btn--block btn--lg form__submit" type="submit">Get more users</button>
-      <p class="microtrust center">No spam · No credit card · We only email you about your report</p>
+      <button class="btn btn--primary btn--block btn--lg form__submit" type="submit">Get my demand map</button>
+      <p class="microtrust center">No spam · No credit card · We only email you about your demand map</p>
       <div class="form__success" role="status" aria-live="polite" hidden>
         <strong>Got it — your product is in.</strong>
-        We read every submission ourselves. Your demand report will land in your inbox shortly.
+        We read every submission ourselves. Your demand map will land in your inbox shortly.
       </div>
     </form>
   </div>
@@ -283,7 +287,7 @@
       <details><summary>Do I need a finished product?</summary><p>No. A live app, a website, or a clear sentence about the idea all work.</p></details>
       <details><summary>How do you actually find the people who want it?</summary><p>We read public conversations and search behavior — X, Reddit, YouTube comments, niche communities — alongside search demand and competitor signals, and match them to what your product does.</p></details>
       <details><summary>How current is the data?</summary><p>As fresh as it gets. We surface demand from the last few days, often within hours, so the people we find are still active and still warm — not names pulled from a year-old report.</p></details>
-      <details><summary>Can I trust the leads you send?</summary><p>Every person we list publicly asked for or described wanting something like your product. We include the link to the original post, so you can read it and verify it yourself.</p></details>
+      <details><summary>Can I trust what the map shows?</summary><p>Every place we surface is somewhere people publicly asked for or described wanting something like your product — and we link the original posts, so you can read them and verify the demand yourself.</p></details>
       <details><summary>How long until I hear back?</summary><p>We onboard in batches and read each submission. Your report comes by email.</p></details>
       <details><summary>Is my idea safe?</summary><p>We only use what you send to build your report. We don't share it.</p></details>
     </div>
@@ -291,7 +295,7 @@
     <div class="center" style="margin-top:clamp(56px,7vw,88px)">
       <h2 class="display-xl reveal">Stop guessing who<br>your users are.</h2>
       <div class="reveal" style="margin-top:2rem">
-        <a href="#form" class="btn btn--primary btn--lg" data-scroll data-magnetic>Get more users</a>
+        <a href="#form" class="btn btn--primary btn--lg" data-scroll data-magnetic>Get my demand map</a>
       </div>
     </div>
   </div>
@@ -327,7 +331,7 @@
         </div>
       </div>
     </div>
-    <p class="footer__legal">© 2026 Sonar. Demand &amp; distribution agent for founders. Report figures shown on this page are illustrative.</p>
+    <p class="footer__legal">© 2026 Sonar. The demand radar for founders. Figures shown on this page are illustrative.</p>
   </div>
 </footer>
 
@@ -338,7 +342,7 @@
     <button class="modal__close" type="button" aria-label="Close" data-modal-close>&times;</button>
     <span class="eyebrow">One more step</span>
     <h2 class="modal__title" id="demand-modal-title">Tell us about your product.</h2>
-    <p class="modal__lead">We've got your email — add a line about what you're building and we'll start your report.</p>
+    <p class="modal__lead">We've got your email — add a line about what you're building and we'll start your demand map.</p>
     <form class="form" id="hero-demand-form" data-demand novalidate>
       <!-- email captured on the hero; carried here for submission (backend wiring TODO) -->
       <input type="hidden" name="email" value="">
@@ -360,11 +364,11 @@
                   placeholder="What does it do, and who is it for? One or two lines." aria-describedby="em-about"></textarea>
         <p class="field__error" id="em-about">Tell us a little about it — a sentence or two is plenty.</p>
       </div>
-      <button class="btn btn--primary btn--block btn--lg form__submit" type="submit">Get more users</button>
-      <p class="microtrust center">No spam · No credit card · We only email you about your report</p>
+      <button class="btn btn--primary btn--block btn--lg form__submit" type="submit">Get my demand map</button>
+      <p class="microtrust center">No spam · No credit card · We only email you about your demand map</p>
       <div class="form__success" role="status" aria-live="polite" hidden>
         <strong>Got it — your product is in.</strong>
-        We read every submission ourselves. Your demand report will land in your inbox shortly.
+        We read every submission ourselves. Your demand map will land in your inbox shortly.
       </div>
     </form>
   </div>
